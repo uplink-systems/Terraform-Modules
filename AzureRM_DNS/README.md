@@ -1,6 +1,6 @@
 ## AzureRM_DNS
 
-The 'AzureRM_DNS' module is intended to manage a DNS zone and its records via Terraform Code.  
+The <b>AzureRM_DNS</b> module is intended to manage a DNS zone and its records via Terraform Code.  
 Authentication to Azure is done via client ID & client secret in this case but can be changed.
 
 ### Configurable Resources
