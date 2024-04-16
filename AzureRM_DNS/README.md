@@ -20,7 +20,7 @@ The following resource types can be managed:
 --> TXT recordsets
 </pre>
 
-The following recordsets cannot be managed:
+The following resource types cannot be managed:
 
 <pre>
 --> NS recordsets (root recordset)
@@ -31,14 +31,14 @@ The following recordsets cannot be managed:
 
 #### Files
 
-Besides the default Terraform code snippets the module contains 2 files related to the 'azure_dns' module in the 'modules' subfolder.
+Besides the default Terraform code snippets the module contains 2 files related to the <i>azure_dns</i> module in the <i>modules</i> subfolder.
 
 ##### resources.tf
 
-The resources.tf file contains...  
-1) ... the declaration of the variable 'azure_dns' and ...
-2) ... the call of the module 'azure_dns' using values of the 'azure_dns' variable.
+The <code>resources.tf</code> file contains...  
+1) ... the declaration of the variable <i>azure_dns</i> and ...
+2) ... the call of the module <i>azure_dns</i> using values of the <i>azure_dns</i> variable.
 
 ##### resources.auto.tfvars
 
-The resources.auto.tfvars file contains all values to use for the 'azure_dns' variable. See file content for exemplary values.
+The <code>resources.auto.tfvars</code> file contains all values to use for the <i>azure_dns</i> variable. See file content for exemplary values.
