@@ -31,7 +31,7 @@ The following resource types cannot be managed:
 
 #### Files
 
-Besides the default Terraform code snippets the module contains 2 files related to the <i>azure_dns</i> module in the <i>modules</i> subfolder.
+Besides the default Terraform code snippets the module contains 2 files related to the <i>azurerm_dns</i> module in the <i>modules</i> subfolder.
 
 ##### resources.tf
 
