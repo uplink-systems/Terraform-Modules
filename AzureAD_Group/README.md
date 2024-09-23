@@ -28,9 +28,9 @@ Besides the default Terraform code snippets the module contains 2 files related 
 ##### resources.tf
 
 The <code>resources.tf</code> file contains...  
-1) ... the declaration of the variable <i>tbd</i> and ...
-2) ... the call of the module <i>tbd</i> using values of the <i>tbd</i> variable.
+1) ... the declaration of the variables <i>azuread_group_security_assigned</i> / <i>azuread_group_security_dynamic</i> and ...
+2) ... the call of the modules <i>modules/azuread_group/security_assigned</i> / <i>modules/azuread_group/security_dynamic</i> using values of the <i>azuread_group_security_assigned</i> / <i>azuread_group_security_dynamic</i> variables.
 
 ##### resources.auto.tfvars
 
-The <code>resources.auto.tfvars</code> file contains all values to use for the <i>tbd</i> variable. See file content for exemplary values.
+The <code>resources.auto.tfvars</code> file contains all values to use for the <i>azuread_group_security_assigned</i> / <i>azuread_group_security_dynamic</i> variables. See file content for exemplary values.
