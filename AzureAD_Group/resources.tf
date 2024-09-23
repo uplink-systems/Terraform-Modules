@@ -17,7 +17,7 @@ variable "azuread_group_security_assigned" {
   }))
 }
 module "azuread_group_security_assigned" {
-  source                    = "./modules/azuread_group/security_assigned"
+  source                    = "./modules/azuread_group_security_assigned"
   for_each                  = var.azuread_group_security_assigned
   display_name              = each.value.display_name
   description               = each.value.description
@@ -48,7 +48,7 @@ variable "azuread_group_security_dynamic" {
   }))
 }
 module "azuread_group_security_dynamic" {
-  source                    = "./modules/azuread_group/security_dynamic"
+  source                    = "./modules/azuread_group_security_dynamic"
   for_each                  = var.azuread_group_security_dynamic
   display_name              = each.value.display_name
   description               = each.value.description
