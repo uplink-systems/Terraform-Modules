@@ -37,7 +37,7 @@ Besides the default Terraform code snippets the module contains 2 files related 
 
 The <code>resources.tf</code> file contains...  
 1) ... the declaration of the variable <i>azurerm_dns</i> and ...
-2) ... the call of the module <i>modules/azurerm_dns</i> using values of the <i>azurerm_dns</i> variable.
+2) ... the call of the module in folder <i>modules/azurerm_dns</i> using values of the <i>azurerm_dns</i> variable.
 
 ##### resources.auto.tfvars
 
