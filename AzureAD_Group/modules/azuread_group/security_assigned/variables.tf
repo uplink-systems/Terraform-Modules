@@ -20,7 +20,7 @@ variable "owners" {
     description = "Users to add as owner to the group"
 }
 variable "prevent_duplicate_names" {
-  description = "Prevent duplicate group names"
+  description = "Prevent duplicate group names?"
 }
 variable "security_enabled" {
   description = "Is the group a security enabled group?"
