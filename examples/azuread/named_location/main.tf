@@ -2,6 +2,7 @@
 #   Variable declaration and Module calls:                                                         #
 #   Azure AD country/geolocation based named locations                                             #
 ####################################################################################################
+
 variable "azuread_named_location_country" {
   description = "Azure AD country/geolocation based named location variables"
   type        = map(object({
@@ -11,6 +12,7 @@ variable "azuread_named_location_country" {
     include_unknown_countries_and_regions   = optional(bool, false)
   }))
 }
+
 module "azuread_named_location_country" {
   source                                  = "./modules/azuread_named_location_country"
   for_each                                = var.azuread_named_location_country
@@ -24,6 +26,7 @@ module "azuread_named_location_country" {
 #   Variable declaration and Module calls:                                                         #
 #   Azure AD ip/range based named locations                                                        #
 ####################################################################################################
+
 variable "azuread_named_location_ip" {
   description = "Azure AD ip/range based named location variables"
   type        = map(object({
@@ -33,6 +36,7 @@ variable "azuread_named_location_ip" {
     trusted                                 = optional(bool, false)
   }))
 }
+
 module "azuread_named_location_ip" {
   source                                  = "./modules/azuread_named_location_ip"
   for_each                                = var.azuread_named_location_ip

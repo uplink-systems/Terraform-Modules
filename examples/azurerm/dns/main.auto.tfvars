@@ -2,6 +2,7 @@
 #   Variable values:                                                                               #
 #   Azure RM DNS zone and record set resources                                                     # 
 ####################################################################################################
+
 azurerm_dns = {
   "example.com" = {
     name                   = "example.com"

@@ -1,6 +1,7 @@
 ####################################################################################################
 #   Variables declaration (Azure RM DNS variables)                                                 #
 ####################################################################################################
+
 variable "azurerm_dns" {
   description = "Azure RM DNS settings for zones and record sets"
   type        = map(object({
@@ -54,6 +55,7 @@ variable "azurerm_dns" {
 #   Resource provisioning/management via 'azurerm_dns' module                                      #
 #   Azure RM DNS zone and record set resources                                                     #
 ####################################################################################################
+
 module "azurerm_dns" {
   source                 = "./modules/azurerm_dns"
   for_each               = var.azurerm_dns

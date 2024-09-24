@@ -2,6 +2,7 @@
 #   Variable values:                                                                               #
 #   Azure AD dynamic membership security groups                                                    # 
 ####################################################################################################
+
 azuread_group_security_dynamic = {
   "AAD-Group-Security_Dynamic-AllUser" = {
     display_name              = "AAD-Group-Security_Dynamic-AllUser"
@@ -22,6 +23,7 @@ azuread_group_security_dynamic = {
 #   Variable values:                                                                               #
 #   Azure AD assigned membership security groups                                                   # 
 ####################################################################################################
+
 azuread_group_security_assigned = {
   "AAD-Group-Security_Assigned-01" = {
     display_name  = "AAD-Group-Security_Assigned-01"

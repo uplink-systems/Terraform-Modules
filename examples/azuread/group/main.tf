@@ -2,6 +2,7 @@
 #   Variable declaration and Module calls:                                                         #
 #   Azure AD assigned membership security groups                                                   #
 ####################################################################################################
+
 variable "azuread_group_security_assigned" {
   description = "Azure AD assigned membership security group variables"
   type        = map(object({
@@ -16,6 +17,7 @@ variable "azuread_group_security_assigned" {
     security_enabled          = optional(bool, true)
   }))
 }
+
 module "azuread_group_security_assigned" {
   source                    = "./modules/azuread_group_security_assigned"
   for_each                  = var.azuread_group_security_assigned
@@ -34,6 +36,7 @@ module "azuread_group_security_assigned" {
 #   Variable declaration and Module calls:                                                         #
 #   Azure AD dynamic membership security groups                                                    #
 ####################################################################################################
+
 variable "azuread_group_security_dynamic" {
   description = "Azure AD dynamic membership security group variables"
   type        = map(object({
@@ -47,6 +50,7 @@ variable "azuread_group_security_dynamic" {
     security_enabled          = optional(bool, true)
   }))
 }
+
 module "azuread_group_security_dynamic" {
   source                    = "./modules/azuread_group_security_dynamic"
   for_each                  = var.azuread_group_security_dynamic

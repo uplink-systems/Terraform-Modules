@@ -2,6 +2,7 @@
 #   Variable values:                                                                               #
 #   Azure AD country/geolocation based named locations                                             # 
 ####################################################################################################
+
 azuread_named_location_country = {
   "Named-Location-Country-01" = {
     display_name                            = "Named-Location-Country-01"
@@ -20,6 +21,7 @@ azuread_named_location_country = {
 #   Variable values:                                                                               #
 #   Azure AD ip/range based named locations                                                        # 
 ####################################################################################################
+
 azuread_named_location_ip = {
   "Named-Location-IP-01" = {
     display_name                            = "Named-Location-IP-01"
