@@ -57,7 +57,7 @@ variable "azurerm_dns" {
 ####################################################################################################
 
 module "azurerm_dns" {
-  source                 = "./modules/azurerm_dns"
+  source                 = "github.com/uplink-systems/Terraform-Modules//modules/azurerm/dns"
   for_each               = var.azurerm_dns
   name                   = each.value.name
   resource_group_name    = each.value.resource_group_name

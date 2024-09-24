@@ -14,7 +14,7 @@ variable "azuread_named_location_country" {
 }
 
 module "azuread_named_location_country" {
-  source                                  = "./modules/azuread_named_location_country"
+  source                                  = "github.com/uplink-systems/Terraform-Modules//modules/azuread/named_location/country"
   for_each                                = var.azuread_named_location_country
   display_name                            = each.value.display_name
   description                             = each.value.description
@@ -38,7 +38,7 @@ variable "azuread_named_location_ip" {
 }
 
 module "azuread_named_location_ip" {
-  source                                  = "./modules/azuread_named_location_ip"
+  source                                  = "github.com/uplink-systems/Terraform-Modules//modules/azuread/named_location/ip"
   for_each                                = var.azuread_named_location_ip
   display_name                            = each.value.display_name
   description                             = each.value.description
