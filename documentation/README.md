@@ -7,7 +7,8 @@ By default, each example the following files:
 
 <pre>
 -> main.tf
--> main.auto.tfvars
+-> main.auto.tfvars (containing example values)
+-> output.tf (containing example outputs)
 -> provider.tf
 -> variables.tf
 -> versions.tf
