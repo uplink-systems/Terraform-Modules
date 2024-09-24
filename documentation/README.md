@@ -27,8 +27,8 @@ Authentication to Azure is done via client ID & client secret in this case but c
 The following resource types can be managed:
 
 <pre>
--> Security groups with assigned membership
--> Security groups with dynamic membership
+-> Security groups with assigned membership (module path: modules/azuread/groups/security_assigned)
+-> Security groups with dynamic membership (module path: modules/azuread/groups/security_dynamic)
 </pre>
 
 The following resource types cannot be managed currently (implementation planned):
@@ -52,8 +52,8 @@ Authentication to Azure is done via client ID & client secret in this case but c
 The following resource types can be managed:
 
 <pre>
--> Country/Geolocation based named locations (module: azuread/named_location/country)
--> IP/Range based named locations (module: azuread/named_location/ip)
+-> Country/Geolocation based named locations (module path: modules/azuread/named_location/country)
+-> IP/Range based named locations (module path: modules/azuread/named_location/ip)
 </pre>
 
 The following resource types cannot be managed currently:
