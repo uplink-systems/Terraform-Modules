@@ -17,9 +17,9 @@ Additional files can exist and are example-specific.
 
 # MODULES
 
-## AzureAD_Group
+## AzureAD Group
 
-The <b>AzureAD_Group</b> modules are intended to manage Azure AD groups via Terraform Code.  
+The <b>AzureAD Group</b> modules are intended to manage Azure AD groups via Terraform Code.  
 Authentication to Azure is done via client ID & client secret in this case but can be changed.
 
 ### Configurable Resources
