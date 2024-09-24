@@ -1,11 +1,18 @@
+####################################################################################################
+#   Azure RM DNS Zones and Record Sets                                                             #
+####################################################################################################
+
 ######################### DNS Zones ################################################################
+
 resource "azurerm_dns_zone" "zone" {
   name                 = var.name
   resource_group_name  = var.resource_group_name
   tags                 = var.tags
   depends_on           = [var.resource_group_name]
 }
+
 ######################### DNS Record Sets: A #######################################################
+
 resource "azurerm_dns_a_record" "recordset" {
   for_each = var.recordset_a
   name                = each.value.name
@@ -15,7 +22,9 @@ resource "azurerm_dns_a_record" "recordset" {
   records             = each.value.records
   depends_on          = [azurerm_dns_zone.zone]
 }
+
 ######################### DNS Record Sets: AAAA ####################################################
+
 resource "azurerm_dns_aaaa_record" "recordset" {
   for_each = var.recordset_aaaa
   name                = each.value.name
@@ -25,7 +34,9 @@ resource "azurerm_dns_aaaa_record" "recordset" {
   records             = each.value.records
   depends_on          = [azurerm_dns_zone.zone]
 }
+
 ######################### DNS Record Sets: CAA #####################################################
+
 resource "azurerm_dns_caa_record" "recordset" {
   for_each = var.recordset_caa
   name                = each.value.name
@@ -42,7 +53,9 @@ resource "azurerm_dns_caa_record" "recordset" {
   }
   depends_on          = [azurerm_dns_zone.zone]
 }
+
 ######################### DNS Record Sets: CNAME ###################################################
+
 resource "azurerm_dns_cname_record" "recordset" {
   for_each = var.recordset_cname
   name                = each.value.name
@@ -52,7 +65,9 @@ resource "azurerm_dns_cname_record" "recordset" {
   record              = each.value.record
   depends_on          = [azurerm_dns_zone.zone]
 }
+
 ######################### DNS Record Sets: MX ######################################################
+
 resource "azurerm_dns_mx_record" "recordset" {
   for_each = var.recordset_mx
   name                = each.value.name
@@ -68,7 +83,9 @@ resource "azurerm_dns_mx_record" "recordset" {
   }
   depends_on          = [azurerm_dns_zone.zone]
 }
+
 ######################### DNS Record Sets: NS ######################################################
+
 resource "azurerm_dns_ns_record" "recordset" {
   for_each = var.recordset_ns
   name                = each.value.name
@@ -85,7 +102,9 @@ resource "azurerm_dns_ns_record" "recordset" {
     }
   }
 }
+
 ######################### DNS Record Sets: SRV #####################################################
+
 resource "azurerm_dns_srv_record" "recordset" {
   for_each = var.recordset_srv
   name                = each.value.name
@@ -103,7 +122,9 @@ resource "azurerm_dns_srv_record" "recordset" {
   }
   depends_on          = [azurerm_dns_zone.zone]
 }
+
 ######################### DNS Record Sets: TXT #####################################################
+
 resource "azurerm_dns_txt_record" "recordset" {
   for_each = var.recordset_txt
   name                = each.value.name
