@@ -18,7 +18,7 @@ variable "azuread_named_location" {
   }))
 }
 module "azuread_named_location" {
-  source                = "../../TF_Modules_DEV/modules/azuread_named_location"
+  source                = "github.com/uplink-systems/Terraform-Modules//modules/azuread/named_location"
   for_each              = var.azuread_named_location
   display_name          = each.value.display_name
   country               = each.value.country
