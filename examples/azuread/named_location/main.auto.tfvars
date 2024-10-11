@@ -12,7 +12,7 @@ azuread_named_location = {
         "RU",
         "BY",
       ]
-      include_unknown_countries_and_regions = false
+      include_unknown_countries_and_regions = true
   }
   "Named-Location-Country-02" = {
     display_name                            = "Named-Location-Country-02"
