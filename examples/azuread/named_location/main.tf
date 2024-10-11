@@ -1,47 +1,26 @@
 ####################################################################################################
 #   Variable declaration and Module calls:                                                         #
-#   Azure AD country/geolocation based named locations                                             #
+#   Azure AD named locations                                                                       #
 ####################################################################################################
 
-variable "azuread_named_location_country" {
-  description = "Azure AD country/geolocation based named location variables"
+variable "azuread_named_location" {
+  description = "Variable definition 'azuread_named_location'"
   type        = map(object({
-    display_name                            = string
-    description                             = optional(string, null)
-    country                                 = set(string)
-    include_unknown_countries_and_regions   = optional(bool, false)
+    display_name                = string
+    country          = optional(object({
+      countries_and_regions = set(string)
+      include_unknown_countries_and_regions = optional(bool, false)
+    }), null)
+    ip          = optional(object({
+      ip_ranges = set(string)
+      trusted = optional(bool, false)
+    }), null)
   }))
 }
-
-module "azuread_named_location_country" {
-  source                                  = "github.com/uplink-systems/Terraform-Modules//modules/azuread/named_location/country"
-  for_each                                = var.azuread_named_location_country
-  display_name                            = each.value.display_name
-  description                             = each.value.description
-  country                                 = each.value.country
-  include_unknown_countries_and_regions   = each.value.include_unknown_countries_and_regions
-}
-
-####################################################################################################
-#   Variable declaration and Module calls:                                                         #
-#   Azure AD ip/range based named locations                                                        #
-####################################################################################################
-
-variable "azuread_named_location_ip" {
-  description = "Azure AD ip/range based named location variables"
-  type        = map(object({
-    display_name                            = string
-    description                             = optional(string, null)
-    ip_ranges                               = set(string)
-    trusted                                 = optional(bool, false)
-  }))
-}
-
-module "azuread_named_location_ip" {
-  source                                  = "github.com/uplink-systems/Terraform-Modules//modules/azuread/named_location/ip"
-  for_each                                = var.azuread_named_location_ip
-  display_name                            = each.value.display_name
-  description                             = each.value.description
-  ip_ranges                               = each.value.ip_ranges
-  trusted                                 = each.value.trusted
+module "azuread_named_location" {
+  source                = "../../TF_Modules_DEV/modules/azuread_named_location"
+  for_each              = var.azuread_named_location
+  display_name          = each.value.display_name
+  country               = each.value.country
+  ip                    = each.value.ip
 }
