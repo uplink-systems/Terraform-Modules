@@ -1,51 +1,71 @@
 ####################################################################################################
-#   Variable values:                                                                               #
-#   Azure AD dynamic membership security groups                                                    # 
+#   Azure AD: Groups                                                                               #
+#   Variable values: Security Assigned, Security Dynamic, Unified Assigned, Unified Dynamic        #
 ####################################################################################################
 
-azuread_group_security_dynamic = {
-  "AAD-Group-Security_Dynamic-AllUser" = {
-    display_name              = "AAD-Group-Security_Dynamic-AllUser"
-    rule                      = "(user.accountEnabled -eq true) and (user.userType -eq \"Member\") and (user.employeeId -ne \"Administrator\") and (user.companyName -eq \"example.onmicrosoft.com\")"
-    description               = "Description for AAD-Group-Security_Dynamic-AllUser"
-    assignable_to_role        = false
-    lifecycle_prevent_destroy = true
-  }
-  "AAD-Group-Security_Dynamic-AllAdmins" = {
-    display_name              = "AAD-Group-Security_Dynamic-AllAdmins"
-    rule                      = "(user.accountEnabled -eq true) and (user.userType -eq \"Member\") and (user.employeeId -eq \"Administrator\") and (user.companyName -eq \"example.onmicrosoft.com\")"
-    description               = "Description for AAD-Group-Security_Dynamic-AllAdmins"
-    assignable_to_role        = false
-  }
-}
-
-####################################################################################################
-#   Variable values:                                                                               #
-#   Azure AD assigned membership security groups                                                   # 
-####################################################################################################
-
-azuread_group_security_assigned = {
-  "AAD-Group-Security_Assigned-01" = {
-    display_name  = "AAD-Group-Security_Assigned-01"
-    description   = "Description for AAD-Group-Security_Assigned-01"
-    member_groups = [
+azuread_group = {
+  "AAD-Terraform-Security_Assigned" = {
+    display_name          = "AAD-Terraform-Security_Assigned"
+    description           = "AAD-Terraform-Security_Assigned"
+    member_groups         = [
     ]
-    member_users  = [
-      "user.01@example.onmicrosoft.com",
-      "user.02@example.onmicrosoft.com",
-    ]
-    owners  = [
-      "admin@example.onmicrosoft.com",
+    member_users          = [
+      "user.01@company.onmicrosoft.com",
+      "user.02@company.onmicrosoft.com",
     ]
   }
-  "AAD-Group-Security_Assigned-02" = {
-    display_name  = "AAD-Group-Security_Assigned-02"
-    description   = "Description for AAD-Group-Security_Assigned-02"
-    member_groups = [
+  "AAD-Terraform-Security_Dynamic" = {
+    display_name          = "AAD-Terraform-Security_Dynamic"
+    description           = "AAD-Terraform-Security_Dynamic"
+    assignable_to_role    = false
+    dynamic_membership = {
+      enabled             = true
+      rule                = "(user.accountEnabled -eq true) and (user.companyName -eq \"company.onmicrosoft.com\")"
+    }
+    types                 = [
+      "DynamicMembership",
     ]
-    member_users  = [
-      "user.03@example.onmicrosoft.com",
-      "user.04@example.onmicrosoft.com",
+  }
+  "AAD-Terraform-Unified_Assigned" = {
+    display_name          = AAD-Terraform-Unified_Assigned"
+    description           = "AAD-Terraform-Unified_Assigned group"
+    behaviors             = [
+      "HideGroupInOutlook",
+      "SubscribeNewGroupMembers",
+      "WelcomeEmailDisabled",
+    ]
+    mail_enabled          = true
+    mail_nickname         = "AAD-Terraform-Unified_Assigned"
+    member_groups         = [
+    ]
+    member_users          = [
+      "user.01@company.onmicrosoft.com",
+    ]
+    types                 = [
+      "Unified",
+    ]
+  }
+  "AAD-Terraform-Unified_Dynamic" = {
+    display_name          = "AAD-Terraform-Unified_Dynamic"
+    description           = "AAD-Terraform-Unified_Dynamic group"
+    behaviors             = [
+      "HideGroupInOutlook",
+      "SubscribeNewGroupMembers",
+      "WelcomeEmailDisabled",
+    ]
+    mail_nickname         = "ZZ-TEST-AAD-Terraform-Unified_Dynamic"
+    dynamic_membership = {
+      enabled             = true
+      rule                = "(user.accountEnabled -eq true) and (user.companyName -eq \"company.onmicrosoft.com\")"
+    }
+    mail_enabled          = true
+    owners                = [
+      "administrator@company.onmicrosoft.com",
+    ]
+    provisioning_options  = ["Team"]
+    types                 = [
+      "DynamicMembership",
+      "Unified",
     ]
   }
 }
