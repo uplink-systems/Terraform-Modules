@@ -1,5 +1,23 @@
 ## Module Description
 
+### Versions
+
+This module was tested with the following Terraform and provider versions before release:
+
+<pre>
+terraform {
+  required_version = "= 1.9.6"
+  required_providers {
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "= 3.0.2"
+    }
+  }
+}
+</pre>
+
+Other version might work but are not tested by the developer of the module.
+
 ### Files
 
 #### main.tf: property 'lifecycle'
