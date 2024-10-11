@@ -6,14 +6,14 @@
 variable "azuread_named_location" {
   description = "Variable definition 'azuread_named_location'"
   type        = map(object({
-    display_name                = string
+    display_name     = string
     country          = optional(object({
-      countries_and_regions = set(string)
+      countries_and_regions                 = set(string)
       include_unknown_countries_and_regions = optional(bool, false)
     }), null)
-    ip          = optional(object({
+    ip               = optional(object({
       ip_ranges = set(string)
-      trusted = optional(bool, false)
+      trusted   = optional(bool, false)
     }), null)
   }))
 }
