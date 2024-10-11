@@ -72,7 +72,7 @@ variable "types" {
   description = "Type(s) of the group"
 }
 variable "visibility" {
-  description = "Visibility of the group (Private/Public)"
+  description = "Visibility of the group (Private/Public/Hiddenmembership)"
   validation {
     condition     = (
       var.visibility == null ? true : contains(["Private", "Public", "Hiddenmembership"], var.visibility)
