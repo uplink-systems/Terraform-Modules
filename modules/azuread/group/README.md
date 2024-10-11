@@ -1,5 +1,9 @@
 ## Module Description
 
+### Purpose
+
+This module is intended to create groups in Azure AD. The module scopes all types/combination of groups (Security/Unified, Assigned/Dynamic) in one resource depending on the variable values provided.
+
 ### Versions
 
 This module was tested with the following Terraform and provider versions before release:
