@@ -41,6 +41,9 @@ variable "mail_nickname" {
 variable "member_groups" {
   description = "Group display name(s) to add as member to the group"
 }
+variable "member_service_principals" {
+    description = "Service principal display name(s) to add as member to the group"
+}
 variable "member_users" {
     description = "User principal name(s) to add as member to the group"
 }
