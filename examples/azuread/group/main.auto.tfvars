@@ -27,7 +27,7 @@ azuread_group = {
     ]
   }
   "AAD-Terraform-Unified_Assigned" = {
-    display_name          = AAD-Terraform-Unified_Assigned"
+    display_name          = "AAD-Terraform-Unified_Assigned"
     description           = "AAD-Terraform-Unified_Assigned group"
     behaviors             = [
       "HideGroupInOutlook",
