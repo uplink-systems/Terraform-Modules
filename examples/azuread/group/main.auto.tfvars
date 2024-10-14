@@ -6,7 +6,7 @@
 azuread_group = {
   "AAD-Terraform-Security_Assigned" = {
     display_name          = "AAD-Terraform-Security_Assigned"
-    description           = "AAD-Terraform-Security_Assigned"
+    description           = "AAD-Terraform-Security_Assigned group"
     member_groups         = [
     ]
     member_users          = [
@@ -16,7 +16,7 @@ azuread_group = {
   }
   "AAD-Terraform-Security_Dynamic" = {
     display_name          = "AAD-Terraform-Security_Dynamic"
-    description           = "AAD-Terraform-Security_Dynamic"
+    description           = "AAD-Terraform-Security_Dynamic group"
     assignable_to_role    = false
     dynamic_membership = {
       enabled             = true
@@ -53,7 +53,7 @@ azuread_group = {
       "SubscribeNewGroupMembers",
       "WelcomeEmailDisabled",
     ]
-    mail_nickname         = "ZZ-TEST-AAD-Terraform-Unified_Dynamic"
+    mail_nickname         = "AAD-Terraform-Unified_Dynamic"
     dynamic_membership = {
       enabled             = true
       rule                = "(user.accountEnabled -eq true) and (user.companyName -eq \"company.onmicrosoft.com\")"
