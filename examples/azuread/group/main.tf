@@ -21,6 +21,7 @@ variable "azuread_group" {
     mail_enabled                = optional(bool, false)
     mail_nickname               = optional(string, null)
     member_groups               = optional(set(string), [])
+    member_service_principals   = optional(set(string), [])
     member_users                = optional(set(string), [])
     onpremises_group_type       = optional(string, "UniversalSecurityGroup")
     owners                      = optional(set(string), [])
@@ -49,6 +50,7 @@ module "azuread_group" {
   mail_enabled                = each.value.mail_enabled
   mail_nickname               = each.value.mail_nickname
   member_groups               = each.value.member_groups
+  member_service_principals   = each.value.member_service_principals
   member_users                = each.value.member_users
   onpremises_group_type       = each.value.onpremises_group_type
   owners                      = each.value.owners
