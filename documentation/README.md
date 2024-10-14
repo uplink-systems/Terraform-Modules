@@ -3,7 +3,7 @@
 
 #### Files
 
-By default, each example the following files:
+By default, each example contains the following files:
 
 <pre>
 -> main.tf
@@ -18,7 +18,7 @@ Additional files can exist and are example-specific.
 
 # MODULES
 
-## AzureAD Group
+## Azure AD Group
 
 The <b>AzureAD Group</b> modules are intended to manage Azure AD groups via Terraform Code.  
 Authentication to Azure is done via client ID & client secret in this case but can be changed.
@@ -44,7 +44,7 @@ n/a
 
 #### Files
 
-## AzureAD Named Location
+## Azure AD Named Location
 
 The <b>AzureAD Named Location</b> modules are intended to manage Azure AD named locations via Terraform Code.  
 Authentication to Azure is done via client ID & client secret in this case but can be changed.
@@ -68,7 +68,7 @@ The following resource types cannot be managed currently:
 
 #### Files
 
-## AzureRM DNS
+## Azure RM DNS
 
 The <b>AzureRM DNS</b> module is intended to manage a DNS zone and its records via Terraform Code.  
 Authentication to Azure is done via client ID & client secret in this case but can be changed.
