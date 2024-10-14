@@ -32,6 +32,6 @@ resource "azuread_group" "group" {
     }
   }
   lifecycle {
-    ignore_changes  = [ behaviors ]
+    ignore_changes  = [ administrative_unit_ids, behaviors ]
   }
 }
