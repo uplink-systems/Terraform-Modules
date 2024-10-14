@@ -26,8 +26,9 @@ Other version might work but are not tested by the developer of the module.
 
 #### main.tf: property 'lifecycle'
 
-Accidentially changing the attribute 'behaviors' forces resource re-creation and therefore a change in code is ignored.  
-If attribute shall be changed, delete the old resource and create a new resource explicitly via code.
+Changes to the 'administrative_unit_ids' attribute is ignored via lifecycle parameters to avoid conflicts when administrative unit memberships are also managed via 'azuread_administrative_unit' and/or 'azuread_administrative_unit_member' resource types. The lifecycle parameter can be customized if membership is only managed via 'azuread_group' resources.  
+  
+Accidentially changing the attribute 'behaviors' forces resource re-creation and therefore a change in code is ignored. If attribute shall be changed, delete the old resource and create a new resource explicitly via code.  
 
 ### Variables
 
