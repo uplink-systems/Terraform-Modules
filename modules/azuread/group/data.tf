@@ -15,6 +15,11 @@ data "azuread_users" "members" {
   user_principal_names      = var.member_users
 }
 
+# This is used to get service principal object ids for each member by service principal display name list from variable...
+data "azuread_service_principals" "members" {
+  display_names             = var.member_service_principals
+}
+
 # This is used to get group object ids for each member by group name list from variable...
 data "azuread_groups" "members" {
   display_names             = var.member_groups
