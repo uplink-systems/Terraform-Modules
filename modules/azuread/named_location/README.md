@@ -4,6 +4,10 @@
 
 This module is intended to create named locations in Azure AD. The module scopes all types of location (Country-based/IP-based) in one resource depending on the variable values provided.
 
+### Example
+
+For an example how to use this module please navigate to: https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuread/named_location  
+
 ### Versions
 
 This module was tested with the following Terraform and provider versions before release:
@@ -24,23 +28,21 @@ Other version might work but are not tested by the developer of the module.
 
 ### Files
 
-#### none
-
-none
+n/a
 
 ### Variables
 
 #### 'country.countries_and_regions'
 
-The variable <i>country.countries_and_regions</i> represents a list of one or more countries specified by 2-digit country codes.
+The variable <i>country.countries_and_regions</i> represents a list of one or more countries specified by 2-digit country codes.  
 
 #### 'ip.ip_ranges'
 
-The variable <i>ip.ip_ranges</i> represents a list of one or more IPv4 and/or IPv6 IP-address ranges.
+The variable <i>ip.ip_ranges</i> represents a list of one or more IPv4 and/or IPv6 IP-address ranges.  
 
 ### Outputs
 
-The module currently generates 3 outputs:  
+The module currently generates the following outputs:  
 1) <b>azuread_named_location</b> => list of all exported attributes values from all named locations  
 2) <b>azuread_named_location_ids</b> => list of exported id attribute values from all named locations  
 
@@ -48,7 +50,7 @@ The module currently generates 3 outputs:
 
 ##### Examples
 
-Output - IDs of all named location ids using 'azuread_named_location_ids' output:
+Output - IDs of all named location ids using 'azuread_named_location_ids' output:  
 
 <pre>
 output "azuread_named_location_id_all_locations" {
@@ -60,8 +62,6 @@ output "azuread_named_location_id_all_locations" {
 
 ### Known Issues
 
-The module is affected by the following known issues:
+The module is affected by the following known issues:  
 
-#### None
-
-Currently there are no known issues.
+n/a
