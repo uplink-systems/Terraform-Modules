@@ -4,6 +4,10 @@
 
 This module is intended to create groups in Azure AD. The module scopes all types/combination of groups (Security/Unified, Assigned/Dynamic) in one resource depending on the variable values provided.
 
+### Example
+
+For an example how to use this module please navigate to: https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuread/group
+
 ### Versions
 
 This module was tested with the following Terraform and provider versions before release:
