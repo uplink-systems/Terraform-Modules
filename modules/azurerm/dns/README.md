@@ -72,7 +72,7 @@ The module is planned to generate the following outputs for the DNS recordsets (
 
 ##### Examples
 
-Output - IDs of all groups using 'azurerm_dns_zone_id' output:
+Output - IDs of all groups using 'azurerm_dns_zone' output:
 
 <pre>
 output "azurerm_dns_zone_id_all_groups" {
@@ -80,6 +80,15 @@ output "azurerm_dns_zone_id_all_groups" {
         for object_id in module.azurerm_dns : object_id.azurerm_dns_zone_id
     ])
 }
+</pre>
+
+...or directly via 'azurerm_dns_zone_id' output:
+
+<pre>
+output "azurerm_dns_zone_id_all_groups" {
+    value = values(module.azurerm_dns).*.azurerm_dns_zone_id
+}
+
 </pre>
 
 Output - ID of a single specified group using 'azurerm_dns_zone_id' output:
