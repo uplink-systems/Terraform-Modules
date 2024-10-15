@@ -2,19 +2,23 @@
 
 ### Purpose
 
-This module is intended to create guest accounts (invitations) in Azure AD.
+This module is intended to create invitations for guest accounts in Azure AD.
+
+### Example
+
+For an example how to use this module please navigate to: https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuread/invitation
 
 ### Files
 
-### Variables
+n/a
 
-#### n/a
+### Variables
 
 n/a
 
 ### Outputs
 
-The module currently generates 3 outputs:  
+The module currently generates the following outputs:  
 1) <b>azuread_invitations</b> => list of all exported attributes values from all invitations
 2) <b>azuread_invitation_user_id</b> => list of exported user_id attribute values from all invitations  
 
@@ -42,8 +46,6 @@ output "azuread_invitation_user_id_1" {
 
 ### Known Issues
 
-The module is affected by the following known issues:
+The module is affected by the following known issues:  
 
-#### n/a
-
-n/a
+n/a  
