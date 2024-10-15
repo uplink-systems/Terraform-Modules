@@ -44,7 +44,7 @@ The variable <i>ip.ip_ranges</i> represents a list of one or more IPv4 and/or IP
 
 The module currently generates the following outputs:  
 1) <b>azuread_named_location</b> => list of all exported attributes values from all named locations  
-2) <b>azuread_named_location_ids</b> => list of exported id attribute values from all named locations  
+2) <b>azuread_named_location_id</b> => list of exported id attribute values from all named locations  
 
 #### Using module output in root module
 
