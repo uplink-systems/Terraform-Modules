@@ -46,7 +46,7 @@ The variables <i>member_users</i>, <i>member_service_principals</i> and <i>membe
 
 ### Outputs
 
-The module currently generates 3 outputs:  
+The module currently generates the following outputs:  
 1) <b>azuread_group</b> => list of all exported attributes values from all groups  
 2) <b>azuread_group_display_names</b> => list of exported display_name attribute values from all groups  
 3) <b>azuread_group_object_ids</b> => list of exported object_id attribute values from all groups  
