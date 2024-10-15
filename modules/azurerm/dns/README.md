@@ -48,7 +48,7 @@ The module currently generates the following outputs for the DNS zones:
 3) <b>azurerm_dns_zone_name_servers</b> => list of exported name_servers attribute values from all DNS zones  
 4) <b>azurerm_dns_zone_number_of_record_sets</b> => list of exported number_of_record_sets attribute values from all DNS zones  
   
-The module currently generates the following outputs for the DNS recordsets:  
+The module is planned to generate the following outputs for the DNS recordsets (development in progress):  
 1) <b>azurerm_dns_a_record</b>          => list of all exported attributes values from all DNS A record sets  
 2) <b>azurerm_dns_aaaa_record</b>       => list of all exported attributes values from all DNS AAA record sets  
 3) <b>azurerm_dns_caa_record</b>        => list of all exported attributes values from all DNS CAA record sets  
