@@ -48,28 +48,28 @@ The variables <i>member_users</i>, <i>member_service_principals</i> and <i>membe
 
 The module currently generates the following outputs:   
 1) <b>azuread_group</b> => list of all exported attributes values from all groups  
-2) <b>azuread_group_display_names</b> => list of exported display_name attribute values from all groups  
-3) <b>azuread_group_object_ids</b> => list of exported object_id attribute values from all groups  
+2) <b>azuread_group_display_name</b> => list of exported display_name attribute values from all groups  
+3) <b>azuread_group_object_id</b> => list of exported object_id attribute values from all groups  
 
 #### Using module output in root module
 
 ##### Examples
 
-Output - IDs of all groups using 'azuread_group_object_ids' output:
+Output - IDs of all groups using 'azuread_group_object_id' output:
 
 <pre>
 output "azuread_group_id_all_groups" {
     value = toset([
-        for object_id in module.azuread_group : object_id.azuread_group_object_ids
+        for object_id in module.azuread_group : object_id.azuread_group_object_id
     ])
 }
 </pre>
 
-Output - ID of a single specified group using 'azuread_group_object_ids' output:
+Output - ID of a single specified group using 'azuread_group_object_id' output:
 
 <pre>
 output "azuread_group_id_group_1" {
-    value = module.azuread_group["<i>&lt;Terraform-Resource-Name&gt;</i>"].azuread_group_object_ids
+    value = module.azuread_group["<i>&lt;Terraform-Resource-Name&gt;</i>"].azuread_group_object_id
 }
 </pre>
 
