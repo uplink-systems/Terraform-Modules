@@ -37,7 +37,7 @@ azuread_named_location = {
     display_name                            = "Named-Location-IP-02"
     ip = {
       ip_ranges = [
-        "01.202.102.203/32",
+        "101.202.102.203/32",
       ]
       trusted = true
     }
