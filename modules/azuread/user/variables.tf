@@ -16,9 +16,17 @@ variable "display_name" {
   default     = null
 }
 variable "user_principal_name" {
-  description = "(Optional) user's login name; if null: build by module from surname/given_name"
+  description = "(Optional) user's RFC 822 based user principal name; if null: build by module from surname/given_name"
   type        = string
   default     = null
+  validation {
+    condition     = var.user_principal_name == null ? true : can(length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.user_principal_name)) > 0)
+    error_message = <<-EOF
+      Variable 'user_principal_name' has an invalid value: ${var.user_principal_name == null ? 0 : var.user_principal_name}
+      Value must be one of:
+        RFC 822 based login UPN or null
+    EOF
+  }
 }
 variable "account_enabled" {
   description = "(Optional) is user's account enabled or disabled?"
@@ -31,7 +39,7 @@ variable "force_password_change" {
   default     = true
 }
 variable "disable_password_expiration" {
-  description = "(Optional) choose if user' password is set to \"never expire\""
+  description = "(Optional) choose if user' password is set to 'never expire'"
   type        = bool
   default     = false
 }
@@ -50,8 +58,12 @@ variable "preferred_language" {
   type        = string
   default     = "en-US"
   validation {
-    condition     = var.preferred_language == null ? true : length(var.preferred_language) == 5
-    error_message = "Error: Variable 'preferred_language' has an invalid value length. Value must be one of: \"2-2\"-formatted 5-character regional code or null."
+    condition     = var.preferred_language == null ? true : can(regex("[a-z][a-z]-[A-Z][A-Z]", var.preferred_language))
+    error_message = <<-EOF
+      Variable 'preferred_language' has an invalid value format: ${var.preferred_language == null ? 0 : var.preferred_language}
+      Value must be one of:
+        regional code "2-2" in format ([a-z][a-z]-[A-Z][A-Z]) or null
+    EOF
   }
 }
 variable "usage_location" {
@@ -59,12 +71,12 @@ variable "usage_location" {
   type        = string
   default     = null
   validation {
-    condition     = var.usage_location == null ? true : length(var.usage_location) == 2
-    error_message = "Error: Variable 'usage_location' has an invalid value length. Value must be one of: 2-character country ISO-code or null."
-  }
-  validation {
-    condition     = var.usage_location == null ? true : contains(["DE","AT"], var.usage_location)
-    error_message = "Error: Variable 'usage_location' has an invalid value. Value must be one of: \"DE\", \"AT\" or null."
+    condition     = var.usage_location == null ? true : can(regex("[A-Z][A-Z]", var.usage_location))
+    error_message = <<-EOF
+      Variable 'usage_location' has an invalid value: ${var.usage_location == null ? 0 : var.usage_location}
+      Value must be one of:
+        2-character ISO 3166-1 country code or null
+    EOF
   }
 }
 variable "mail_nickname" {
@@ -73,9 +85,17 @@ variable "mail_nickname" {
   default     = null
 }
 variable "mail" {
-  description = "(Optional) user's primary mail address; if null: build by module from surname/given_name"
+  description = "(Optional) user's RFC 5322 compliant primary mail address; if null: build by module from surname/given_name"
   type        = string
   default     = null
+  validation {
+    condition     = var.mail == null ? true : can(length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.mail)) > 0)
+    error_message = <<-EOF
+      Variable 'mail' has an invalid value: ${var.mail == null ? 0 : var.mail}
+      Value must be one of:
+        RFC 5322 compliant email address or null
+    EOF
+  }
 }
 variable "other_mails" {
   description = "(Optional) user's list of other (external) mail addresses"
@@ -96,6 +116,14 @@ variable "employee_type" {
   description = "(Optional) user's employee type"
   type        = string
   default     = null
+  validation {
+    condition     = var.employee_type == null ? true : can(contains(["Administrator", "Employee", "Contractor"], var.employee_type))
+    error_message = <<-EOF
+      Variable 'employee_type' has an invalid value value: ${var.employee_type == null ? 0 : var.employee_type}
+      Value must be one of:
+        "Administrator", "Employee", "Contractor" or null
+    EOF
+  } 
 }
 variable "job_title" {
   description = "(Optional) user's job title"
@@ -123,9 +151,17 @@ variable "cost_center" {
   default     = null  
 }
 variable "manager_id" {
-  description = "(Optional) user's manager id as user principal name"
+  description = "(Optional) user's manager id as RFC 822 based user principal name"
   type        = string
   default     = null
+  validation {
+    condition     = var.manager_id == null ? true : can(length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.manager_id)) > 0)
+    error_message = <<-EOF
+      Variable 'manager_id' has an invalid value: ${var.manager_id == null ? 0 : var.manager_id}
+      Value must be one of:
+        RFC 822 based login UPN or null
+    EOF
+  }
 }
 variable "sponsors" {
   description = "(Optional) list of user's sponsor(s) as user principal name(s)"
@@ -137,8 +173,12 @@ variable "country" {
   type        = string
   default     = null
   validation {
-    condition     = var.country == null ? true : length(var.country) == 2
-    error_message = "Error: Variable 'country' has an invalid value length. Value must be one of: 2-character country ISO-code or null."
+    condition     = var.country == null ? true : can(regex("[A-Z][A-Z]", var.country))
+    error_message = <<-EOF
+      Variable 'country' has an invalid value: ${var.country == null ? 0 : var.country}
+      Value must be one of:
+        2-character ISO 3166-1 country code or null
+    EOF
   }
 }
 variable "state" {
@@ -152,7 +192,11 @@ variable "postal_code" {
   default     = null
   validation {
     condition     = var.postal_code == null ? true : can(tonumber(var.postal_code))
-    error_message = "Error: Variable 'postal_code' has an invalid value type. Value must be one of: digits-only or null."
+    error_message = <<-EOF
+      Variable 'postal_code' has an invalid value: ${var.postal_code == null ? 0 : var.postal_code}
+      Value must be one of:
+        numerical data or null
+    EOF
   }
 }
 variable "city" {
@@ -190,8 +234,12 @@ variable "age_group" {
   type        = string
   default     = null
   validation {
-    condition     = var.age_group == null ? true : contains(["Adult", "NotAdult", "Minor"], var.age_group)
-    error_message = "Error: Variable 'age_group' has an invalid value. Value must be one of: \"Adult\", \"NotAdult\", \"Minor\"  or null."
+    condition     = var.age_group == null ? true : can(contains(["Adult", "NotAdult", "Minor"], var.age_group))
+    error_message = <<-EOF
+      Variable 'age_group' has an invalid value value: ${var.age_group == null ? 0 : var.age_group}
+      Value must be one of:
+        "Adult", "NotAdult", "Minor" or null
+    EOF
   } 
 }
 variable "consent_provided_for_minor" {
@@ -199,8 +247,12 @@ variable "consent_provided_for_minor" {
   type        = string
   default     = null
   validation {
-    condition     = var.consent_provided_for_minor == null ? true : contains(["Granted", "Denied", "NotRequired"], var.consent_provided_for_minor)
-    error_message = "Error: Variable 'consent_provided_for_minor' has an invalid value. Value must be one of: \"Granted\", \"Denied\", \"NotRequired\"  or null."
+    condition     = var.consent_provided_for_minor == null ? true : can(contains(["Granted", "Denied", "NotRequired"], var.consent_provided_for_minor))
+    error_message = <<-EOF
+      Variable 'consent_provided_for_minor' has an invalid value: ${var.consent_provided_for_minor == null ? 0 : var.consent_provided_for_minor}
+      Value must be one of:
+        "Granted", "Denied", "NotRequired" or null
+    EOF
   } 
 }
 variable "export_enabled" {

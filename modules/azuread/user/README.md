@@ -40,7 +40,7 @@ Other version might work but are not tested by the module developer.
 
 #### Credential files
 
-The module exports each user's username and passwort as text file by default using 'local_file' resources (export can be prevented by setting <i>var.credential_export</i> value to 'false'). Path and filename have defaule values but can be modified by configuring <i>var.credential_file_path</i> and <i>var.credential_file_name</i> (see section \"Variables / Locals\").  
+The module exports each user's username and passwort as text file by default using 'local_file' resources (export can be prevented by setting <i>var.export_enabled</i> value to 'false'). Path and filename have defaule values but can be modified by configuring <i>var.export_path</i> and <i>var.export_file</i> (see section \"Variables / Locals\").  
 
 ### Variables / Locals
 
@@ -95,10 +95,21 @@ The value for <i>var.is_admin</i> (true/false) is used to force the use of admin
 * 'local.domain_name' --> force 'initial' domain as domain suffix  
 * ... and more ...  
 
-#### 'var.credential_export', 'var.credential_file_path' and 'var.credential_file_name'
+#### 'var.export_enabled', 'var.export_path' and 'var.export_file'
 
-The value of <i>var.credential_export</i> specifies if the module exports the user's credentials to an output file (true) or not (false). The default value is 'true'. The values for <i>var.credential_file_path</i> and <i>var.credential_file_name</i> represent the path and name of the credential export file to create. The module has a default value \"${path.root}/files/export/azuread/user\" for <i>var.credential_file_path</i> and an auto-build rule for <i>var.credential_file_name</i> using the created <i>local.given_names</i>, <i>local.surname</i> values.
-Therefore, <i>var.credential_file_path</i> and/or <i>var.credential_file_name</i> must be specified only if the value/rule shall not apply.   
+The value of <i>var.export_enabled</i> specifies if the module exports the user's credentials to an output file (true) or not (false). The default value is 'true' if no other value is provided. The values for <i>var.export_path</i> and <i>var.export_file</i> represent the path and name of the credential export file to create. The module has a default value \"${path.root}/files/export/azuread/user\" for <i>var.export_path</i> and an auto-build rule for <i>var.export_file</i> using the created <i>local.given_names</i>, <i>local.surname</i> values.
+Therefore, <i>var.export_enabled</i> must be specified only if credentials shall not be exported and <i>var.export_path</i> and/or <i>var.export_file</i> only if the value/rule shall not apply.  
+  
+<b>'var.export_path'</b>   
+The value for <i>var.export_path</i> must be in Unix style (using forward slashes) even if Terraform is running on Windows.  
+Examples for valid paths:  
+
+<pre>
+/terraform/files/output
+./terraform/files/output
+../terraform/files/output
+C:/terraform/files/output
+</pre>
 
 ### Outputs
 
