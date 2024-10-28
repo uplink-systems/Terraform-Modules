@@ -58,6 +58,16 @@ variable "prevent_duplicate_names" {
 }
 variable "provisioning_options" {
   description = "Provisioning options: 'Team' or default value 'null'"
+  validation {
+    condition     = (
+      var.provisioning_options == null ? true : can(contains(["Team"], var.provisioning_options))
+    )
+    error_message = <<-EOF
+      Variable 'provisioning_options' has an invalid value: ${var.provisioning_options == null ? 0 : var.provisioning_options}
+      Value must be one of:
+        "Team" or null
+    EOF
+  }
 }
 variable "security_enabled" {
   description = "Is the group a security enabled group?"
@@ -66,10 +76,14 @@ variable "theme" {
   description = "Color theme of the group"
   validation {
     condition     = (
-      var.theme == null ? true : contains(["Blue", "Green", "Orange", "Pink", "Purple", "Red", "Teal"], var.theme)
+      var.theme == null ? true : can(contains(["Blue", "Green", "Orange", "Pink", "Purple", "Red", "Teal"], var.theme))
     )
-    error_message = "Error: Variable 'theme' has an invalid value. Value must be one of: 'Blue', 'Green', 'Orange', 'Pink', 'Purple', 'Red', 'Teal' or null."
-  } 
+    error_message = <<-EOF
+      Variable 'theme' has an invalid value: ${var.theme == null ? 0 : var.theme}
+      Value must be one of:
+        "Blue", "Green", "Orange", "Pink", "Purple", "Red", "Teal" or null
+    EOF
+  }
 }
 variable "types" {
   description = "Type(s) of the group"
@@ -78,13 +92,15 @@ variable "visibility" {
   description = "Visibility of the group (Private/Public/Hiddenmembership)"
   validation {
     condition     = (
-      var.visibility == null ? true : contains(["Private", "Public", "Hiddenmembership"], var.visibility)
+      var.visibility == null ? true : can(contains(["Private", "Public", "Hiddenmembership"], var.visibility))
     )
-    error_message = "Error: Variable 'visibility' has an invalid value. Value must be one of: 'Private', 'Public', 'Hiddenmembership' (Unified groups only!) or null."
-  } 
+    error_message = <<-EOF
+      Variable 'visibility' has an invalid value: ${var.visibility == null ? 0 : var.visibility}
+      Value must be one of:
+        "Private", "Public", "Hiddenmembership" (Unified groups only!) or null
+    EOF
+  }
 }
 variable "writeback_enabled" {
   description = "Is the group writeback enabled if Azure AD Connect is used to sync local AD?"
 }
-
-  
