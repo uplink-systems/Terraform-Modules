@@ -13,6 +13,6 @@ resource "azuread_invitation" "invitation" {
   redirect_url        = var.redirect_url
   user_type           = var.user_type
   lifecycle {
-    ignore_changes    = [ message ]
+    ignore_changes    = [ var.message ]
   }
 }
