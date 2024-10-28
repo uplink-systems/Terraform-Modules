@@ -12,7 +12,7 @@ output "azuread_user_credential" {
   value       = tomap({
     "username"          = azuread_user.user.user_principal_name
     "password"          = random_string.password.result
-    "credential_file"   = length(local_file.credential) > 0 ? "${local.credential_file_path}/${local.credential_file_name}" : null
+    "credential_file"   = length(local_file.credential) > 0 ? local.export : null
   })
 }
 

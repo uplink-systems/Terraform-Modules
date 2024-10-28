@@ -203,18 +203,18 @@ variable "consent_provided_for_minor" {
     error_message = "Error: Variable 'consent_provided_for_minor' has an invalid value. Value must be one of: \"Granted\", \"Denied\", \"NotRequired\"  or null."
   } 
 }
-variable "credential_export" {
+variable "export_enabled" {
   description = "(Optional) choose to export user's credentials to file or not"
   type        = bool
   default     = true
 }
-variable "credential_file_path" {
-  description = "(Optional) physical output path for credential file exports"
+variable "export_file" {
+  description = "(Optional) physical output file for credential file exports"
   type        = string
   default     = null
 }
-variable "credential_file_name" {
-  description = "(Optional) physical output file name for credential file exports"
+variable "export_path" {
+  description = "(Optional) physical output path for credential file exports"
   type        = string
   default     = null
 }

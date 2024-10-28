@@ -57,11 +57,11 @@ resource "azuread_user" "user" {
 
 # create credential output file
 resource "local_file" "credential" {
-  count       = var.credential_export == true ? 1 : 0
+  count       = var.export_enabled == true ? 1 : 0
   content     = <<-EOT
     ${azuread_user.user.user_principal_name}
     ${random_string.password.result}
   EOT
-  filename    = "${local.credential_file_path}/${local.credential_file_name}"
+  filename    = local.export
   depends_on  = [ azuread_user.user ]
 }
