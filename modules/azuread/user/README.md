@@ -147,7 +147,7 @@ The module is affected by the following known issues:
 The module uses 'random_string' resources to generate the users' passwords instead of 'random_password'. Using 'random_string' is "easier" for a user mass deployment as this lets Terraform output the password in plain text instead of sensitive values like 'random_password' does.  
 This should be changed for security reasons!  
 
-##### Parental contol attributes
+#### Parental control attributes
 
 The attributes 'age_group' and 'consent_provided_for_minor' can't be configured in one apply run. This is by design. The attribute 'age_group' must be configured prior to 'consent_provided_for_minor'.  
 
