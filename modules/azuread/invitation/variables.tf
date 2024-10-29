@@ -20,6 +20,10 @@ variable "user_type" {
     condition     = (
       var.user_type == null ? true : contains(["Guest", "Member"], var.user_type)
     )
-    error_message = "Error: Variable 'user_type' has an invalid value. Value must be one of: 'Guest', 'Member' or null."
+    error_message = <<-EOF
+      Variable 'user_type' has an invalid value: ${var.user_type == null ? 0 : var.user_type}
+      Value must be one of:
+        "Guest", "Member" or null
+    EOF
   } 
 }
