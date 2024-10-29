@@ -63,7 +63,7 @@ variable "provisioning_options" {
       var.provisioning_options == null ? true : can(contains(["Team"], var.provisioning_options))
     )
     error_message = <<-EOF
-      Variable 'provisioning_options' has an invalid value: ${var.provisioning_options == null ? 0 : var.provisioning_options}
+      Variable 'provisioning_options' has an invalid value: ${var.provisioning_options == null ? 0 : (join(",", var.provisioning_options))}
       Value must be one of:
         "Team" or null
     EOF
