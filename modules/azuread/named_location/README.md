@@ -32,13 +32,13 @@ n/a
 
 ### Variables
 
-#### 'country.countries_and_regions'
+#### 'var.country.countries_and_regions'
 
-The variable <i>country.countries_and_regions</i> represents a list of one or more countries specified by 2-digit country codes.  
+The variable <i>var.country.countries_and_regions</i> represents a list of one or more countries specified by 2-digit country codes.  
 
-#### 'ip.ip_ranges'
+#### 'var.ip.ip_ranges'
 
-The variable <i>ip.ip_ranges</i> represents a list of one or more IPv4 and/or IPv6 IP-address ranges.  
+The variable <i>var.ip.ip_ranges</i> represents a list of one or more IPv4 and/or IPv6 IP-address ranges.  
 
 ### Outputs
 

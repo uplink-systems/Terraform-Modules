@@ -34,15 +34,15 @@ Changes to the 'administrative_unit_ids' attribute is ignored via lifecycle para
   
 Accidentially changing the attribute 'behaviors' forces resource re-creation and therefore a change in code is ignored. If attribute shall be changed, delete the old resource and create a new resource explicitly via code.  
 
-### Variables
+### Variables / Locals
 
-#### 'administrative_units'
+#### 'var.administrative_units'
 
-The variable <i>administrative_units</i> represents a list of one or more administrative unit display names. The module translates the names to its corresponding object IDs via data query and merges the results to a list of IDs.
+The variable <i>var.administrative_units</i> represents a list of one or more administrative unit display names. The module translates the names to its corresponding object IDs to <i>local.administrative_units</i> via data query and merges the results to a list of IDs.
 
-#### 'member_users', 'member_service_principals' &amp; 'member_groups'
+#### 'var.member_users', 'var.member_service_principals' &amp; 'var.member_groups'
 
-The variables <i>member_users</i>, <i>member_service_principals</i> and <i>member_groups</i> represent a list of one or more user principal names and/or service principal display names and/or group display names. The module translates the user principal names and/or the service principal display names and/or group display names to their corresponding object IDs via data queries and merges the results to a list of IDs.
+The variables <i>var.member_users</i>, <i>var.member_service_principals</i> and <i>var.member_groups</i> represent a list of one or more user principal names and/or service principal display names and/or group display names. The module translates the user principal names and/or the service principal display names and/or group display names to their corresponding object IDs to <i>local.members</i> via data queries and merges the results to a list of IDs.
 
 ### Outputs
 

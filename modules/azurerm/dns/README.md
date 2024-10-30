@@ -32,13 +32,13 @@ n/a
 
 ### Variables
 
-#### 'name'
+#### 'var.name'
 
-The variable <i>name</i> represents the DNS zone's name.
+The variable <i>var.name</i> represents the DNS zone's name.
 
-#### 'recordset_XXX'
+#### 'var.recordset_XXX'
 
-The variables <i>recordset_XXX</i> (where 'XXX' is a placeholder for the recordset type) represent the recordsets for the corresponding DNS zone.  
+The variables <i>var.recordset_XXX</i> (where 'XXX' is a placeholder for the recordset type) represent the recordsets for the corresponding DNS zone.  
 
 ### Outputs
 
