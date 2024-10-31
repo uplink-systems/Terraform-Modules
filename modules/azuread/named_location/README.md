@@ -1,4 +1,4 @@
-## Module Description
+## README
 
 ### Purpose
 
@@ -32,13 +32,13 @@ n/a
 
 ### Variables
 
-#### 'var.country.countries_and_regions'
+#### 'var.named_location.country.countries_and_regions'
 
-The variable <i>var.country.countries_and_regions</i> represents a list of one or more countries specified by 2-digit country codes.  
+The variable <i>var.named_location.country.countries_and_regions</i> represents a list of one or more countries specified by 2-digit country codes.  
 
-#### 'var.ip.ip_ranges'
+#### 'var.named_location.ip.ip_ranges'
 
-The variable <i>var.ip.ip_ranges</i> represents a list of one or more IPv4 and/or IPv6 IP-address ranges.  
+The variable <i>var.named_location.ip.ip_ranges</i> represents a list of one or more IPv4 and/or IPv6 IP-address ranges.  
 
 ### Outputs
 
