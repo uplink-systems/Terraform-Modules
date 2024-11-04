@@ -50,7 +50,7 @@ variable "user" {
   })
   # Validate variable attributes
   validation {
-    condition     = var.user.user_principal_name == null ? true : can(length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.user.user_principal_name)) > 0)
+    condition     = var.user.user_principal_name == null ? true : length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.user.user_principal_name) > 0)
     error_message = <<-EOF
       Variable attribute 'user_principal_name' has an invalid value: ${var.user.user_principal_name == null ? 0 : var.user.user_principal_name}
       Value must be one of:
@@ -58,7 +58,7 @@ variable "user" {
     EOF
   }
   validation {
-    condition     = var.user.mail == null ? true : can(length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.user.mail)) > 0)
+    condition     = var.user.mail == null ? true : length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.user.mail) > 0)
     error_message = <<-EOF
       Variable attribute 'mail' has an invalid value: ${var.user.mail == null ? 0 : var.user.mail}
       Value must be one of:
@@ -66,7 +66,7 @@ variable "user" {
     EOF
   }
   validation {
-    condition     = var.user.preferred_language == null ? true : can(regex("[a-z][a-z]-[A-Z][A-Z]", var.user.preferred_language))
+    condition     = var.user.preferred_language == null ? true : regex("[a-z][a-z]-[A-Z][A-Z]", var.user.preferred_language)
     error_message = <<-EOF
       Variable attribute 'preferred_language' has an invalid value format: ${var.user.preferred_language == null ? 0 : var.user.preferred_language}
       Value must be one of:
@@ -74,7 +74,7 @@ variable "user" {
     EOF
   }
   validation {
-    condition     = var.user.usage_location == null ? true : can(regex("[A-Z][A-Z]", var.user.usage_location))
+    condition     = var.user.usage_location == null ? true : regex("[A-Z][A-Z]", var.user.usage_location)
     error_message = <<-EOF
       Variable attribute 'usage_location' has an invalid value: ${var.user.usage_location == null ? 0 : var.user.usage_location}
       Value must be one of:
@@ -82,7 +82,7 @@ variable "user" {
     EOF
   }
   validation {
-    condition     = var.user.employee_type == null ? true : can(contains(["Administrator", "Employee", "Contractor"], var.user.employee_type))
+    condition     = var.user.employee_type == null ? true : contains(["Administrator", "Employee", "Contractor"], var.user.employee_type)
     error_message = <<-EOF
       Variable attribute 'employee_type' has an invalid value value: ${var.user.employee_type == null ? 0 : var.user.employee_type}
       Value must be one of:
@@ -90,7 +90,7 @@ variable "user" {
     EOF
   }
   validation {
-    condition     = var.user.country == null ? true : can(regex("[A-Z][A-Z]", var.user.country))
+    condition     = var.user.country == null ? true : regex("[A-Z][A-Z]", var.user.country)
     error_message = <<-EOF
       Variable attribute 'country' has an invalid value: ${var.user.country == null ? 0 : var.user.country}
       Value must be one of:
@@ -98,7 +98,7 @@ variable "user" {
     EOF
   }
   validation {
-    condition     = var.user.postal_code == null ? true : can(tonumber(var.user.postal_code))
+    condition     = var.user.postal_code == null ? true : tonumber(var.user.postal_code)
     error_message = <<-EOF
       Variable attribute 'postal_code' has an invalid value: ${var.user.postal_code == null ? 0 : var.user.postal_code}
       Value must be one of:
@@ -106,7 +106,7 @@ variable "user" {
     EOF
   }
   validation {
-    condition     = var.user.manager_id == null ? true : can(length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.user.manager_id)) > 0)
+    condition     = var.user.manager_id == null ? true : length(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.user.manager_id) > 0)
     error_message = <<-EOF
       Variable attribute 'manager_id' has an invalid value: ${var.user.manager_id == null ? 0 : var.user.manager_id}
       Value must be one of:
@@ -114,7 +114,7 @@ variable "user" {
     EOF
   }
   validation {
-    condition     = var.user.parental_control.age_group == null ? true : can(contains(["Adult", "NotAdult", "Minor"], var.user.parental_control.age_group))
+    condition     = var.user.parental_control.age_group == null ? true : contains(["Adult", "NotAdult", "Minor"], var.user.parental_control.age_group)
     error_message = <<-EOF
       Variable attribute 'parental_control.age_group' has an invalid value value: ${var.user.parental_control.age_group == null ? 0 : var.user.parental_control.age_group}
       Value must be one of:
@@ -122,7 +122,7 @@ variable "user" {
     EOF
   } 
   validation {
-    condition     = var.user.parental_control.consent_provided_for_minor == null ? true : can(contains(["Granted", "Denied", "NotRequired"], var.user.parental_control.consent_provided_for_minor))
+    condition     = var.user.parental_control.consent_provided_for_minor == null ? true : contains(["Granted", "Denied", "NotRequired"], var.user.parental_control.consent_provided_for_minor)
     error_message = <<-EOF
       Variable attribute 'parental_control.consent_provided_for_minor' has an invalid value: ${var.user.parental_control.consent_provided_for_minor == null ? 0 : var.user.parental_control.consent_provided_for_minor}
       Value must be one of:
