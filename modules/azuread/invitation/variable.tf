@@ -27,9 +27,7 @@ variable "invitation" {
     EOF
   }
   validation {
-    condition     = (
-      var.invitation.user_type == null ? true : contains(["Guest", "Member"], var.invitation.user_type)
-    )
+    condition     = var.invitation.user_type == null ? true : contains(["Guest", "Member"], var.invitation.user_type)
     error_message = <<-EOF
       Value for 'var.invitation.user_type' is invalid: ${var.invitation.user_type == null ? 0 : var.invitation.user_type}
       Must be one of:
