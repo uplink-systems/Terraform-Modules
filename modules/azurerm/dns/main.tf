@@ -1,20 +1,20 @@
 ####################################################################################################
-#   Azure RM DNS Zones and Record Sets                                                             #
+#   main.tf                                                                                        #
 ####################################################################################################
 
-######################### DNS Zones ################################################################
+######################### DNS Zone #################################################################
 
 resource "azurerm_dns_zone" "zone" {
-  name                 = var.name
-  resource_group_name  = var.resource_group_name
-  tags                 = var.tags
-  depends_on           = [var.resource_group_name]
-}
+  name                = var.zone.name
+  resource_group_name = var.zone.resource_group_name
+  tags                = var.zone.tags
+  depends_on          = [local.resource_group_name]
+} 
 
 ######################### DNS Record Sets: A #######################################################
 
 resource "azurerm_dns_a_record" "recordset" {
-  for_each = var.recordset_a
+  for_each            = var.recordset.a
   name                = each.value.name
   zone_name           = azurerm_dns_zone.zone.name
   resource_group_name = azurerm_dns_zone.zone.resource_group_name
@@ -26,7 +26,7 @@ resource "azurerm_dns_a_record" "recordset" {
 ######################### DNS Record Sets: AAAA ####################################################
 
 resource "azurerm_dns_aaaa_record" "recordset" {
-  for_each = var.recordset_aaaa
+  for_each            = var.recordset.aaaa
   name                = each.value.name
   zone_name           = azurerm_dns_zone.zone.name
   resource_group_name = azurerm_dns_zone.zone.resource_group_name
@@ -38,7 +38,7 @@ resource "azurerm_dns_aaaa_record" "recordset" {
 ######################### DNS Record Sets: CAA #####################################################
 
 resource "azurerm_dns_caa_record" "recordset" {
-  for_each = var.recordset_caa
+  for_each            = var.recordset.caa
   name                = each.value.name
   zone_name           = azurerm_dns_zone.zone.name
   resource_group_name = azurerm_dns_zone.zone.resource_group_name
@@ -57,7 +57,7 @@ resource "azurerm_dns_caa_record" "recordset" {
 ######################### DNS Record Sets: CNAME ###################################################
 
 resource "azurerm_dns_cname_record" "recordset" {
-  for_each = var.recordset_cname
+  for_each            = var.recordset.cname
   name                = each.value.name
   zone_name           = azurerm_dns_zone.zone.name
   resource_group_name = azurerm_dns_zone.zone.resource_group_name
@@ -69,7 +69,7 @@ resource "azurerm_dns_cname_record" "recordset" {
 ######################### DNS Record Sets: MX ######################################################
 
 resource "azurerm_dns_mx_record" "recordset" {
-  for_each = var.recordset_mx
+  for_each            = var.recordset.mx
   name                = each.value.name
   zone_name           = azurerm_dns_zone.zone.name
   resource_group_name = azurerm_dns_zone.zone.resource_group_name
@@ -87,7 +87,7 @@ resource "azurerm_dns_mx_record" "recordset" {
 ######################### DNS Record Sets: NS ######################################################
 
 resource "azurerm_dns_ns_record" "recordset" {
-  for_each = var.recordset_ns
+  for_each            = var.recordset.ns
   name                = each.value.name
   zone_name           = azurerm_dns_zone.zone.name
   resource_group_name = azurerm_dns_zone.zone.resource_group_name
@@ -106,7 +106,7 @@ resource "azurerm_dns_ns_record" "recordset" {
 ######################### DNS Record Sets: SRV #####################################################
 
 resource "azurerm_dns_srv_record" "recordset" {
-  for_each = var.recordset_srv
+  for_each            = var.recordset.srv
   name                = each.value.name
   zone_name           = azurerm_dns_zone.zone.name
   resource_group_name = azurerm_dns_zone.zone.resource_group_name
@@ -126,7 +126,7 @@ resource "azurerm_dns_srv_record" "recordset" {
 ######################### DNS Record Sets: TXT #####################################################
 
 resource "azurerm_dns_txt_record" "recordset" {
-  for_each = var.recordset_txt
+  for_each            = var.recordset.txt
   name                = each.value.name
   zone_name           = azurerm_dns_zone.zone.name
   resource_group_name = azurerm_dns_zone.zone.resource_group_name

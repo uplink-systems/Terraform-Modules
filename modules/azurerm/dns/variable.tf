@@ -2,36 +2,63 @@
 #   variables.tf                                                                                   #
 ####################################################################################################
 
-variable "name" {
-  description = "DNS zone's name in FQDN format"
+variable "zone" {
+  description = <<-EOF
+    'var.zone' is the main variable for azurerm_dns zone resource settings.
+  EOF
+  type = object({
+    name                = string
+    resource_group_name = string
+    tags                = optional(map(string))
+  })
 }
-variable "resource_group_name" {
-  description = "DNS zone's resource group name to assign to"
-}
-variable "tags" {
-  description = "DNS zone's tags to apply"
-}
-variable "recordset_a" {
-  description = "DNS zone's record set resources of record type 'A'"
-}
-variable "recordset_aaaa" {
-  description = "DNS zone's record set resources of record type 'AAA'"
-}
-variable "recordset_caa" {
-  description = "DNS zone's record set resources of record type 'CAA'"
-}
-variable "recordset_cname" {
-  description = "DNS zone's record set resources of record type 'CNAME'"
-}
-variable "recordset_mx" {
-  description = "DNS zone's record set resources of record type 'MX'"
-}
-variable "recordset_ns" {
-  description = "DNS zone's record set resources of record type 'NS'"
-}
-variable "recordset_srv" {
-  description = "DNS zone's record set resources of record type 'SRV'"
-}
-variable "recordset_txt" {
-  description = "DNS zone's record set resources of record type 'TXT'"
+
+variable "recordset" {
+  description = <<-EOF
+    'var.recordset' is the main variable for azurerm_dns recordset resource settings.
+    It can contain all types of recordsets that can be managed via Terraform.
+  EOF
+  type        = object({
+    a           = optional(map(object({
+      name        = string
+      records     = list(string)
+      ttl         = optional(number, 3600)
+    })), {})
+    aaaa        = optional(map(object({
+      name        = string
+      records     = list(string)
+      ttl         = optional(number, 3600)
+    })), {})
+    caa         = optional(map(object({
+      name        = string
+      record      = list(string)
+      ttl         = optional(number, 3600)
+    })), {})
+    cname       = optional(map(object({
+      name        = string
+      record      = string
+      ttl         = optional(number, 3600)
+    })), {})
+    mx          = optional(map(object({
+      name        = string
+      record      = list(string)
+      ttl         = optional(number, 3600)
+    })), {})
+    ns          = optional(map(object({
+      name        = string
+      records     = list(string)
+      ttl         = optional(number, 172800)
+    })), {})
+    srv         = optional(map(object({
+      name        = string
+      record      = list(string)
+      ttl         = optional(number, 3600)
+    })), {})
+    txt         = optional(map(object({
+      name        = string
+      record      = list(string)
+      ttl         = optional(number, 3600)
+    })), {})
+  })
+  default     = {}
 }

@@ -18,7 +18,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "= 3.116.0"
+      version = "= 4.8.0"
     }
   }
 }
@@ -32,21 +32,41 @@ n/a
 
 ### Variables
 
-#### 'var.name'
+#### 'var.zone'
 
-The variable <i>var.name</i> represents the DNS zone's name.
+The variable attribute <i>var.zone</i> represents the DNS zone's settings. Configuring the variable is mandatory.
 
-#### 'var.recordset_XXX'
+#### 'var.recordset'
 
-The variables <i>var.recordset_XXX</i> (where 'XXX' is a placeholder for the recordset type) represent the recordsets for the corresponding DNS zone.  
+The variable <i>var.recordset</i> and its attributes represent the record sets for the corresponding DNS zone.  
+Configuring the variable is optional, so that the module is able to create the zone even without record sets.  
+
+#### 'var.zone' & 'var.recordset' --> using in root's main variable
+
+The following lines explain how the main variable in the root module has to be defined with minimum required settings if the module is used with a for_each loop and shall create multiple resources:  
+
+<pre>
+variable "azurerm_dns" {
+  type  = map(object({
+    zone      = any
+    recordset = optional(any, {})
+  }))
+}
+module "azurerm_dns" {
+  source                = "github.com/uplink-systems/Terraform-Modules//modules/azurerm/dns"
+  for_each              = var.azurerm_dns
+  zone                  = each.value.zone
+  recordset             = each.value.recordset
+}
+</pre>
 
 ### Outputs
 
-The module currently generates the following outputs for the DNS zones:  
-1) <b>azurerm_dns_zone</b> => list of all exported attributes values from all DNS zones  
-2) <b>azurerm_dns_zone_id</b> => list of exported id attribute values from all DNS zones   
-3) <b>azurerm_dns_zone_name_servers</b> => list of exported name_servers attribute values from all DNS zones  
-4) <b>azurerm_dns_zone_number_of_record_sets</b> => list of exported number_of_record_sets attribute values from all DNS zones  
+The module currently generates the following outputs for the DNS zone:  
+1) <b>azurerm_dns_zone</b> => list of all exported attributes values from the DNS zone  
+2) <b>azurerm_dns_zone_id</b> => list of exported id attribute values from the DNS zone  
+3) <b>azurerm_dns_zone_name_servers</b> => list of exported name_servers attribute values from the DNS zone  
+4) <b>azurerm_dns_zone_number_of_record_sets</b> => list of exported number_of_record_sets attribute values from the DNS zone  
   
 The module is planned to generate the following outputs for the DNS recordsets (development in progress):  
 1) <b>azurerm_dns_a_record</b>          => list of all exported attributes values from all DNS A record sets  
