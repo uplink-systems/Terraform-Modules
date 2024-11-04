@@ -40,53 +40,53 @@ Other version might work but are not tested by the module developer.
 
 #### Credential files
 
-The module exports each user's username and passwort as text file by default using 'local_file' resources (export can be prevented by setting <i>var.export_enabled</i> value to 'false'). Path and filename have defaule values but can be modified by configuring <i>var.export_path</i> and <i>var.export_file</i> (see section \"Variables / Locals\").  
+The module exports each user's username and passwort as text file by default using 'local_file' resources (export can be prevented by setting <i>var.user.export.enabled</i> value to 'false'). Path and filename have defaule values but can be modified by configuring <i>var.user.export.path</i> and <i>var.user.export.file</i> (see section \"Variables / Locals\").  
 
 ### Variables / Locals
 
-#### 'var.given_name'
+#### 'var.user.given_name'
 
-The value for <i>var.given_name</i> is mandatory. Besides setting the value as user's 'given_name' attribute it is used in auto-build rules for 'display_name', 'user_principal_name', 'mail' and 'mail_nickname' attributes. <i>local.given_name</i> transforms German special characters like 'ä', 'ö', 'ü' and 'ß' to common non-special characters and replaces spaces with a dot.   
+The value for <i>var.user.given_name</i> is mandatory. Besides setting the value as user's 'given_name' attribute it is used in auto-build rules for 'display_name', 'user_principal_name', 'mail' and 'mail_nickname' attributes. <i>local.given_name</i> transforms German special characters like 'ä', 'ö', 'ü' and 'ß' to common non-special characters and replaces spaces with a dot.   
 
-#### 'var.surname'
+#### 'var.user.surname'
 
-The value for <i>var.surname</i> is mandatory. Besides setting the value as user's 'given_name' attribute it is used in auto-build rules for 'displayal_name'_name', 'user_princip, 'mail' and 'mail_nickname' attributes. <i>local.surname</i> transforms German special characters like 'ä', 'ö', 'ü' and 'ß' to common non-special characters and replaces spaces with a dot.   
+The value for <i>var.user.surname</i> is mandatory. Besides setting the value as user's 'given_name' attribute it is used in auto-build rules for 'displayal_name'_name', 'user_princip, 'mail' and 'mail_nickname' attributes. <i>local.surname</i> transforms German special characters like 'ä', 'ö', 'ü' and 'ß' to common non-special characters and replaces spaces with a dot.   
 
-#### 'var.display_name'
+#### 'var.user.display_name'
 
-The value for <i>var.display_name</i> is optional. The module has auto-build rules for default users' and admin users' <i>var.display_name</i> as <i>local.display_name</i> using the provided <i>var.surname</i>/<i>var.given_name</i> values (and appends a markup string for admins). 
-Therefore, <i>var.display_name</i> must be specified only if the rule shall not apply.  
+The value for <i>var.user.display_name</i> is optional. The module has auto-build rules for default users' and admin users' <i>var.user.display_name</i> as <i>local.display_name</i> using the provided <i>var.user.surname</i>/<i>var.user.given_name</i> values (and appends a markup string for admins). 
+Therefore, <i>var.user.display_name</i> must be specified only if the rule shall not apply.  
 
-#### 'var.user_principal_name'
+#### 'var.user.user_principal_name'
 
-The value for <i>var.user_principal_name</i> is optional. The module has auto-build rules for default users' and admin users' <i>var.user_principal_name</i> as <i>local.user_principal_name</i> using the created <i>local.given_names</i>, <i>local.surname</i> and <i>local.domain_name</i> values (and prepends a markup string for admins). 
-Therefore, <i>var.user_principal_name</i> must be specified only if the rule shall not apply.  
+The value for <i>var.user.user_principal_name</i> is optional. The module has auto-build rules for default users' and admin users' <i>var.user.user_principal_name</i> as <i>local.user_principal_name</i> using the created <i>local.given_names</i>, <i>local.surname</i> and <i>local.domain_name</i> values (and prepends a markup string for admins). 
+Therefore, <i>var.user.user_principal_name</i> must be specified only if the rule shall not apply.  
 
-#### 'var.mail'
+#### 'var.user.mail'
 
-The value for <i>var.mail</i> is optional. The module has auto-build rules for default users' and admin users' <i>var.mail</i> as <i>local.mail</i> using the created <i>local.given_names</i>, <i>local.surname</i> and <i>local.domain_name</i> values (and prepends a markup string for admins). 
-Therefore, <i>var.mail</i> must be specified only if the rule shall not apply.    
+The value for <i>var.user.mail</i> is optional. The module has auto-build rules for default users' and admin users' <i>var.user.mail</i> as <i>local.mail</i> using the created <i>local.given_names</i>, <i>local.surname</i> and <i>local.domain_name</i> values (and prepends a markup string for admins). 
+Therefore, <i>var.user.mail</i> must be specified only if the rule shall not apply.    
 
-#### 'var.mail_nickname'
+#### 'var.user.mail_nickname'
 
-The value for <i>var.mail_nickname</i> is optional. The module has auto-build rules for default users' and admin users' <i>var.mail_nickname</i> as <i>local.mail_nickname</i> using the created <i>local.given_names</i>, <i>local.surname</i> and <i>local.domain_name</i> values (and prepends a markup string for admins). 
-Therefore, <i>var.mail_nickname</i> must be specified only if the rule shall not apply.  
+The value for <i>var.user.mail_nickname</i> is optional. The module has auto-build rules for default users' and admin users' <i>var.user.mail_nickname</i> as <i>local.mail_nickname</i> using the created <i>local.given_names</i>, <i>local.surname</i> and <i>local.domain_name</i> values (and prepends a markup string for admins). 
+Therefore, <i>var.user.mail_nickname</i> must be specified only if the rule shall not apply.  
 
-#### 'var.manager_id'
+#### 'var.user.manager_id'
 
-The value for <i>var.member_id</i> is optional and represents a user principal names for the user's manager. The module translates the user principal name to its corresponding object ID via data query.
+The value for <i>var.user.member_id</i> is optional and represents a user principal names for the user's manager. The module translates the user principal name to its corresponding object ID via data query.
 
-#### 'var.sponsors'
+#### 'var.user.sponsors'
 
-The value for <i>var.sponsors</i> is optional and represents one or more user principal names for the account's sponsorship. Sponsorship is required only for admin accounts. The module translates the user principal names to their corresponding object ID via data query.  
+The value for <i>var.user.sponsors</i> is optional and represents one or more user principal names for the account's sponsorship. Sponsorship is required only for admin accounts. The module translates the user principal names to their corresponding object ID via data query.  
 
 ###### NOTE
 
 Setting/managing the sponsors attribute is not yet implemented in Terraform. Therefore, this option is for future releases (see 'Future implementations' below).
 
-#### 'var.is_admin'
+#### 'var.user.is_admin'
 
-The value for <i>var.is_admin</i> (true/false) is used to force the use of admin-related values for some attributes:  
+The value for <i>var.user.is_admin</i> (true/false) is used to force the use of admin-related values for some attributes:  
 
 * 'random_string.password.length' --> force value '16' instead of default value '12'  
 * 'azuread_user.user.disable_strong_password' -> force value 'false'  
@@ -95,13 +95,13 @@ The value for <i>var.is_admin</i> (true/false) is used to force the use of admin
 * 'local.domain_name' --> force 'initial' domain as domain suffix  
 * ... and more ...  
 
-#### 'var.export_enabled', 'var.export_path' and 'var.export_file'
+#### 'var.user.export.enabled', 'var.user.export.path' and 'var.user.export.file'
 
-The value of <i>var.export_enabled</i> specifies if the module exports the user's credentials to an output file (true) or not (false). The default value is 'true' if no other value is provided. The values for <i>var.export_path</i> and <i>var.export_file</i> represent the path and name of the credential export file to create. The module has a default value \"${path.root}/files/export/azuread/user\" for <i>var.export_path</i> and an auto-build rule for <i>var.export_file</i> using the created <i>local.given_names</i>, <i>local.surname</i> values.
-Therefore, <i>var.export_enabled</i> must be specified only if credentials shall not be exported and <i>var.export_path</i> and/or <i>var.export_file</i> only if the value/rule shall not apply.  
+The value of <i>var.user.export.enabled</i> specifies if the module exports the user's credentials to an output file (true) or not (false). The default value is 'true' if no other value is provided. The values for <i>var.user.export.path</i> and <i>var.user.export.file</i> represent the path and name of the credential export file to create. The module has a default value \"${path.root}/files/export/azuread/user\" for <i>var.user.export.path</i> and an auto-build rule for <i>var.user.export.file</i> using the created <i>local.given_names</i>, <i>local.surname</i> values.
+Therefore, <i>var.user.export.enabled</i> must be specified only if credentials shall not be exported and <i>var.user.export.path</i> and/or <i>var.user.export.file</i> only if the value/rule shall not apply.  
   
-<b>'var.export_path'</b>   
-The value for <i>var.export_path</i> must be in Unix style (using forward slashes) even if Terraform is running on Windows.  
+<b>'var.user.export.path'</b>   
+The value for <i>var.user.export.path</i> must be in Unix style (using forward slashes) even if Terraform is running on Windows.  
 Examples for valid paths:  
 
 <pre>
@@ -149,19 +149,19 @@ This should be changed for security reasons!
 
 #### Parental control attributes
 
-The attributes 'age_group' and 'consent_provided_for_minor' can't be configured in one apply run. This is by design. The attribute 'age_group' must be configured prior to 'consent_provided_for_minor'.  
+The attributes 'parental_control.age_group' and 'parental_control.consent_provided_for_minor' can't be configured in one apply run. This is by design. The attribute 'parental_control.age_group' must be configured prior to 'parental_control.consent_provided_for_minor'.  
 
 ### Future implementations
 
 #### 'sponsors'
 
-The Azure AD attribute 'sponsors' is already available in Azure AD and can be set via Entra ID admin portal. The implementation in the Azure AD provider is currently still missing at the time of writing but may probably be available in a future version. <i>var.sponsors</i> and <i>data.azuread_user.sponsors</i> is already made available in the module but is not yet making any changes to resources.  
+The Azure AD attribute 'sponsors' is already available in Azure AD and can be set via Entra ID admin portal. The implementation in the Azure AD provider is currently still missing at the time of writing but may probably be available in a future version. <i>var.user.sponsors</i> and <i>data.azuread_user.sponsors</i> is already made available in the module but is not yet having any impacts.  
 
 <pre>
 #####  main.tf
 resource "azuread_user" "user" {
   # sponsors - used for admins only
-  sponsors              = var.is_admin == false ? null : (var.sponsors == null ? null : data.azuread_users.sponsors.object_ids)
+  sponsors              = var.user.is_admin == false ? null : (var.user.sponsors == null ? null : data.azuread_users.sponsors.object_ids)
 }
 </pre>
 
@@ -171,10 +171,12 @@ The Azure AD attribute 'certificateUserIds' is already available in Azure AD and
 
 <pre>
 #####  variables.tf
-  variable "certificate_user_ids" {
-    description = "(Optional) user's authorization info -> certificate user Ids"
-    type        = list(string)
-    default     = [ ]
+  variable "user" {
+    type = object({
+      ...
+      certificate_user_ids    = optional(list(string, []))
+      ...
+    })
   }
 #####  local.tf
   locals {
@@ -182,6 +184,6 @@ The Azure AD attribute 'certificateUserIds' is already available in Azure AD and
   }
 #####  main.tf
   resource "azuread_user" "user" {
-    certificate_user_ids  = var.certificate_user_ids == null ? locals.certificate_user_ids : var.certificate_user_ids
+    certificate_user_ids  = var.user.certificate_user_ids == null ? locals.certificate_user_ids : var.user.certificate_user_ids
   }
 </pre>
