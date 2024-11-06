@@ -6,7 +6,7 @@ These modules are intended to create and manage Azure DevOps resources related t
 
 ### Example
 
-For an example how to use the modules please navigate to: https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azureadevops  
+For an example how to use the modules please navigate to: https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevops  
 
 ### Modules
 
