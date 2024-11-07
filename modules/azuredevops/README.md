@@ -53,14 +53,17 @@ The module currently generates the following outputs:
 #### Module 'team'
 
 > [!NOTE]
-> The <b>'team'</b> module is not released/available yet.  
+> The <b>team</b> module is released but development is not completed yet.  
 
 The module <i>team</i> manages Azure DevOps project teams.  
 This includes the team itself as well as dependant repository resources (e.g. team administrators or team members).  
 
 ##### Open issues
 
-Two data sources are currently required to differentiate between members and administrators. The goal is to only need one data source and to differentiate between the resources using a filtering method.  
+1) Only one group each can be configured as members or administrators, even though the attributes are lists and therefore support multiple groups.  
+2) Two different data sources are necessary to differentiate between members and administrators.  
+
+The reason for both issues is that currently <b>azuredevops_group</b> data source must be used, even though <b>azuredevops_groups</b> data source is available for handling lists. Unfortunately the data source has no option to further restrict the output, except for the project itself. Instead, all groups or all project groups are always put out.   
 
 <pre>
 data "azuredevops_groups" "project_groups" {
@@ -75,6 +78,46 @@ The module currently generates the following outputs:
 
 1) <b>team</b> => list of all exported attributes values from the team resource  
 
+#### Module 'repository_policy'
+
+> [!NOTE]
+> The <b>repository_policy</b> module is under development but not released yet.  
+
+The module <i>repository_policy</i> manages Azure DevOps project and/or repository policies.   
+
+##### Open issues
+
+n/a  
+
+##### Outputs
+
+The module currently generates the following outputs:  
+
+1) <b>repository_policy_author_email_pattern</b> => list of all exported attributes values from the repository_policy_author_email_pattern resource  
+2) <b>repository_policy_case_enforcement</b> => list of all exported attributes values from the repository_policy_case_enforcement resource  
+3) <b>repository_policy_file_path_pattern</b> => list of all exported attributes values from the repository_policy_file_path_pattern resource  
+4) <b>repository_policy_max_file_size</b> => list of all exported attributes values from the repository_policy_max_file_size resource  
+5) <b>repository_policy_max_path_length</b> => list of all exported attributes values from the repository_policy_max_path_length resource  
+6) <b>repository_policy_reserved_names</b> => list of all exported attributes values from the repository_policy_reserved_names resource  
+
+#### Module 'wiki'
+
+> [!NOTE]
+> The <b>wiki</b> module is under development but not released yet.  
+
+The module <i>wiki</i> manages Azure DevOps wikis.  
+This includes project wikis as well as code wikis.  
+
+##### Open issues
+
+n/a  
+
+##### Outputs
+
+The module currently generates the following outputs:  
+
+1) <b>wiki</b> => list of all exported attributes values from the wiki resource  
+
 ### Variables
 
 n/a
@@ -85,12 +128,12 @@ The modules are affected by the following known issues:
  
 #### AzDO resources created with a project by default
  
-A new created project in Azure Devops automatically generates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled) and a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.
-
-> [!NOTE]
-> It is best practice not to use these default resources and therefore, it is not necessary to import these resources to Terraform state. Instead, it is recommended to deactivate the repository and not use the team.  
-
-If these resources should or need to be used anyway, they can only be managed if they are imported. The 'project' module provides explicit outputs to use as import sources.  
+A new created project in Azure Devops automatically generates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled) and a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.  
+  
+If these resources should or need to be used, they can only be managed if they are imported. The 'project' module provides explicit outputs to use as import sources.  
+  
+> [!TIP]
+> It is best practice not to use the default resources and therefore, it is not necessary to import these resources to Terraform state. Instead, it is recommended to disable the repository manually and not use the team.  
 
 ##### Import: Team & Git Repository
 
@@ -108,7 +151,7 @@ import {
 }
 </pre>
 
-> [!NOTE]
+> [!IMPORTANT]
 > Remove the 'import' blocks from code after importing the resources to Terraform state!
 
 #### Destroy deployment (terraform destroy)
