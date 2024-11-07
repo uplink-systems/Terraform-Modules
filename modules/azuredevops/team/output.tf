@@ -3,6 +3,6 @@
 ####################################################################################################
 
 output "team" {
-    description   = "team attributes"
-    value         = azuredevops_team.team
+  description   = "team attributes"
+  value         = azuredevops_team.team
 }

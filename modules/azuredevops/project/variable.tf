@@ -23,19 +23,19 @@ variable "project" {
 variable "project_pipeline_settings" {
   description = "Project pipeline settings attributes"
   type        = object({
-    enforce_job_scope                     = optional(bool, true)
-    enforce_job_scope_for_release         = optional(bool, true)
-    enforce_referenced_repo_scoped_token  = optional(bool, true)
-    enforce_settable_var                  = optional(bool, true)
-    publish_pipeline_metadata             = optional(bool, true)
-    status_badges_are_private             = optional(bool, true)
+    enforce_job_scope                     = optional(bool, true)    # Limit job authorization scope to current project for non-release pipelines
+    enforce_job_scope_for_release         = optional(bool, true)    # Limit job authorization scope to current project for release pipelines
+    enforce_referenced_repo_scoped_token  = optional(bool, true)    # Protect access to repositories in YAML pipelines
+    enforce_settable_var                  = optional(bool, true)    # Limit variables that can be set at queue time
+    publish_pipeline_metadata             = optional(bool, false)   # Publish metadata from pipelines
+    status_badges_are_private             = optional(bool, true)    # Disable anonymous access to badges
   })
   default = {
     enforce_job_scope                     = true
     enforce_job_scope_for_release         = true
     enforce_referenced_repo_scoped_token  = true
     enforce_settable_var                  = true
-    publish_pipeline_metadata             = true
+    publish_pipeline_metadata             = false
     status_badges_are_private             = true
   }
 }

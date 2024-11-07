@@ -15,6 +15,11 @@ For an example how to use the modules please navigate to: https://github.com/upl
 The module <i>project</i> manages Azure DevOps projects.  
 This includes the project itself as well as dependant project resources (e.g. project pipeline settings).  
 
+> [!NOTE]
+> A default team and a default repository are automatically generated when the project itself is created.  
+> The module contains two data sources to output their attributes from the module as well as two formatted outputs to use as import Ids.  
+> For further info and why/how to make use of the output: see "Known Issues".  
+
 ##### Open issues
 
 n/a  
@@ -25,6 +30,11 @@ The module currently generates the following outputs:
 
 1) <b>project</b> => list of all exported attributes values from the project resource  
 2) <b>project_pipeline_settings</b> => list of all exported attributes values from the project_pipeline_settings resource  
+3) <b>team</b> => list of all exported attributes values from the team data source  
+4) <b>git_repository</b> => list of all exported attributes values from the git_repository data source  
+5) <b>import_id_team</b> => output of a formatted id needed to import the team resource to Terraform state  
+6) <b>import_id_git_repository</b> => output of a formatted id needed to import the git_resource resource to Terraform state  
+
 
 #### Module 'git_repository'
 
@@ -69,47 +79,43 @@ The module currently generates the following outputs:
 
 n/a
 
-> [!IMPORTANT]
-> ### Known Issues
-> 
-> The modules are affected by the following known issues:  
-> 
-> #### AzDO resources created with a project by default
-> 
-> A new created project in Azure Devops automatically creates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled) and a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed. Therefore, these two resources can only be managed if they are imported.  
-> 
-> ##### Team
-> 
-> <pre>
-> data "azuredevops_team" "default" {
->   project_id = module.<i>&lt;project module name&gt;</i>.project.id
->   name       = "${module.<i>&lt;project module name&gt;</i>.project.name} Team"
->   depends_on = [ module.<i>&lt;project module name&gt;</i> ]
-> }
-> import {
->   id = "${module.<i>&lt;project module name&gt;</i>.project.id}/${data.azuredevops_team.default.id}"
->     to = module.<i>&lt;team module name&gt;</i>.azuredevops_team.team
-> }
-> </pre>
-> 
-> ##### Git Repository
-> 
-> <pre>
-> data "azuredevops_git_repository" "default" {
->   project_id = module.<i>&lt;project module name&gt;</i>.project.id
->   name       = "${module.<i>&lt;project module name&gt;</i>.project.name} Team"
->   depends_on = [ module.<i>&lt;project module name&gt;</i> ]
-> }
-> import {
->   id = "${module.<i>&lt;project module name&gt;</i>.project.id}/${data.azuredevops_git_repository.default.id}"
->   to = module.<i>&lt;git repository module name&gt;</i>.azuredevops_git_repository.git_repository
-> }
-> </pre>
->
-> #### Destroy deployment (terraform destroy)
->
-> Deleting a project via <i>terraform destroy</i> command fails if the default repository and the default team have been imported to the Terraform state file. This is by design because the default repository/team resources cannot be deleted on their own but have to be deleted with the project resource. To workaround this either do not import the default repository/team to state or remove the imported resources from the state before executing the destroy-command:  
-> <pre>
-> terraform state rm module.<i>&lt;team module name&gt;</i>.azuredevops_team.team
-> terraform state rm module.<i>&lt;git repository module name&gt;</i>.azuredevops_git_repository.git_repository
-> </pre>
+### Known Issues
+ 
+The modules are affected by the following known issues:  
+ 
+#### AzDO resources created with a project by default
+ 
+A new created project in Azure Devops automatically generates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled) and a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.
+
+> [!NOTE]
+> It is best practice not to use these default resources and therefore, it is not necessary to import these resources to Terraform state. Instead, it is recommended to deactivate the repository and not use the team.  
+
+If these resources should or need to be used anyway, they can only be managed if they are imported. The 'project' module provides explicit outputs to use as import sources.  
+
+##### Import: Team & Git Repository
+
+<pre>
+import {
+  id = "${module.<i>&lt;project module name&gt;</i>.import_id_team}"
+  to = module.<i>&lt;team module name&gt;</i>.azuredevops_team.team
+}
+</pre>
+
+<pre>
+import {
+  id = "${module.<i>&lt;project module name&gt;</i>.import_id_git_repository}"
+  to = module.<i>&lt;git repository module name&gt;</i>.azuredevops_git_repository.git_repository
+}
+</pre>
+
+> [!NOTE]
+> Remove the 'import' blocks from code after importing the resources to Terraform state!
+
+#### Destroy deployment (terraform destroy)
+
+If the default repository and team have been imported to Terraform state, deleting a project via <i>terraform destroy</i> command will fail. This is also by design because the default repository/team resources cannot be deleted on their own but have to be deleted via the project resource. Remove the imported resources manually from Terraform state before executing the destroy-command to workaroung this:  
+
+<pre>
+terraform state rm module.<i>&lt;team module name&gt;</i>.azuredevops_team.team
+terraform state rm module.<i>&lt;git repository module name&gt;</i>.azuredevops_git_repository.git_repository
+</pre>

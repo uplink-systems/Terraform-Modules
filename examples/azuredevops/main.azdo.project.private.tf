@@ -9,12 +9,7 @@ module "project_private" {
   }
 }
 
-# project's default team (auto-created with project) -> read and import to module resource after project creation
-data "azuredevops_team" "team_private" {
-  project_id = module.project_private.project.id
-  name       = "${module.project_private.project.name} Team"
-  depends_on = [ module.project_private ]
-}
+# project's default team (auto-created with project) -> import to state -> remove 'import' block after import
 import {
     id = "${module.project_private.project.id}/${data.azuredevops_team.team_private.id}"
     to = module.team_private.azuredevops_team.team
@@ -28,14 +23,9 @@ module "team_private" {
   depends_on        = [ data.azuredevops_team.team_private ]
 }
 
-# project's default repository (auto-created with project) -> read and import to module resource after project creation
-data "azuredevops_git_repository" "repository_private" {
-  project_id = module.project_private.project.id
-  name       = "${module.project_private.project.name}"
-  depends_on = [ module.project_private ]
-}
+# project's default repository (auto-created with project) -> import to state -> remove 'import' block after import
 import {
-    id = "${module.project_private.project.id}/${data.azuredevops_git_repository.repository_private.id}"
+    id = module.project_private.import_id_team
     to = module.repository_private.azuredevops_git_repository.git_repository
 }
 module "repository_private" {
