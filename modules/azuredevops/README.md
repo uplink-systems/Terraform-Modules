@@ -138,6 +138,10 @@ Scrum -> "Bug", "Epic", "Feature", "Impediment", "Product backlog item", "Task"
 CMMI  -> "Bug", "Change Request", "Epic", "Feature", "Issue", "Requirment", "Review", "Risk", "Task"
 </pre>
   
+<i>Variable attribute 'state'</i>  
+  
+The module configures the 'state' attribute during initial apply. Then the attribute is ignored to avoid that state changes made by users are overwritten or reset by Terraform.  
+  
 <i>Variable attribute 'custom_fields'</i>  
   
 The module supports setting custom fields. The custom field definitions must be created in the project before using them in the module:  
