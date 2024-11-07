@@ -29,5 +29,5 @@ output "import_id_team" {
 
 output "import_id_git_repository" {
   description   = "formatted import id for automatically created git_repository"
-  value         = "${azuredevops_project.project.id}/${data.azuredevops_git_repository.repository.id}"
+  value         = "${azuredevops_project.project.id}/${data.azuredevops_git_repository.git_repository.id}"
 }

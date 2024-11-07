@@ -1,16 +1,16 @@
-## README
+# README
 
-### Purpose
+## Purpose
 
 These modules are intended to create and manage Azure DevOps resources related to projects following my business needs standards. Resources related to Azure DevOps organisation settings are out ouf scope.  
 
-### Example
+## Example
 
 For an example how to use the modules please navigate to: https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevops  
 
-### Modules
+## Modules
 
-#### Module 'project'
+### Module 'project'
 
 The module <i>project</i> manages Azure DevOps projects.  
 This includes the project itself as well as dependant project resources (e.g. project pipeline settings).  
@@ -20,11 +20,11 @@ This includes the project itself as well as dependant project resources (e.g. pr
 > The module contains two data sources to output their attributes from the module as well as two formatted outputs to use as import Ids.  
 > For further info and why/how to make use of the output: see "Known Issues".  
 
-##### Open issues
+#### Open issues
 
 n/a  
 
-##### Outputs
+#### Outputs
 
 The module currently generates the following outputs:  
 
@@ -36,29 +36,29 @@ The module currently generates the following outputs:
 6) <b>import_id_git_repository</b> => output of a formatted id needed to import the git_resource resource to Terraform state  
 
 
-#### Module 'git_repository'
+### Module 'git_repository'
 
 The module <i>git_repository</i> manages Azure DevOps project Git repositories.  
 
-##### Open issues
+#### Open issues
 
 n/a  
 
-##### Outputs
+#### Outputs
 
 The module currently generates the following outputs:  
 
 1) <b>git_repository</b> => list of all exported attributes values from the git_repository resource  
 
-#### Module 'team'
+### Module 'team'
 
 > [!NOTE]
-> The <b>team</b> module is released but development is not completed yet.  
+> The <b>team</b> module is released but has open issues.  
 
 The module <i>team</i> manages Azure DevOps project teams.  
 This includes the team itself as well as dependant repository resources (e.g. team administrators or team members).  
 
-##### Open issues
+#### Open issues
 
 1) Only one group each can be configured as members or administrators, even though the attributes are lists and therefore support multiple groups.  
 2) Two different data sources are necessary to differentiate between members and administrators.  
@@ -72,24 +72,20 @@ data "azuredevops_groups" "project_groups" {
 }
 </pre>
 
-##### Outputs
+#### Outputs
 
 The module currently generates the following outputs:  
 
 1) <b>team</b> => list of all exported attributes values from the team resource  
 
-#### Module 'repository_policy'
+### Module 'repository_policy'
 
 > [!NOTE]
 > The <b>repository_policy</b> module is under development but not released yet.  
 
 The module <i>repository_policy</i> manages Azure DevOps project and/or repository policies.   
 
-##### Open issues
-
-n/a  
-
-##### Outputs
+#### Outputs
 
 The module currently generates the following outputs:  
 
@@ -100,33 +96,75 @@ The module currently generates the following outputs:
 5) <b>repository_policy_max_path_length</b> => list of all exported attributes values from the repository_policy_max_path_length resource  
 6) <b>repository_policy_reserved_names</b> => list of all exported attributes values from the repository_policy_reserved_names resource  
 
-#### Module 'wiki'
+### Module 'wiki'
 
 > [!NOTE]
-> The <b>wiki</b> module is under development but not released yet.  
+> The <b>wiki</b> module is under development but not released yet and has open issues.  
 
 The module <i>wiki</i> manages Azure DevOps wikis.  
 This includes project wikis as well as code wikis.  
 
-##### Open issues
+#### Open issues
 
-n/a  
+1) The module is not tested yet.
 
-##### Outputs
+#### Outputs
 
 The module currently generates the following outputs:  
 
 1) <b>wiki</b> => list of all exported attributes values from the wiki resource  
 
-### Variables
+### Module 'workitem'
+
+The module <i>workitems</i> manages Azure DevOps project work items.  
+This includes all types of work items for projects with all kinds of work item templates.  
+
+#### Outputs
+
+The module currently generates the following outputs:  
+
+1) <b>workitem</b> => list of all exported attributes values from the workitem resource  
+
+#### Notes
+
+<i>Variable attribute 'type'</i>  
+  
+The valid and available values for the 'type' attribute depends on project's used work_item_template, e.g.:  
+  
+<pre>
+Agile -> "Bug", "Epic", "Feature", "Issue", "Task", "Test Case", "User Story"
+Basic -> "Epic", "Issue", "Task"
+Scrum -> "Bug", "Epic", "Feature", "Impediment", "Product backlog item", "Task"
+CMMI  -> "Bug", "Change Request", "Epic", "Feature", "Issue", "Requirment", "Review", "Risk", "Task"
+</pre>
+  
+<i>Variable attribute 'custom_fields'</i>  
+  
+The module supports setting custom fields. The custom field definitions must be created in the project before using them in the module:  
+https://learn.microsoft.com/en-us/azure/devops/organizations/settings/work/add-custom-field  
+  
+Use of custom fields:  
+  
+<pre>
+...
+custom_field = {
+  "&lt;custom_field_name_1&gt;" : "&lt;value&gt;"
+  "&lt;custom_field_name_2&gt;" : "&lt;value&gt;"
+  "&lt;custom_field_name_3&gt;" : "&lt;value&gt;"
+  "..." : "..."
+}
+...
+</pre>
+
+## Variables
 
 n/a
 
-### Known Issues
+## Known Issues
  
 The modules are affected by the following known issues:  
  
-#### AzDO resources created with a project by default
+### AzDO resources created with a project by default
  
 A new created project in Azure Devops automatically generates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled) and a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.  
   
@@ -135,19 +173,19 @@ If these resources should or need to be used, they can only be managed if they a
 > [!TIP]
 > It is best practice not to use the default resources and therefore, it is not necessary to import these resources to Terraform state. Instead, it is recommended to disable the repository manually and not use the team.  
 
-##### Import: Team & Git Repository
+#### Import: Team & Git Repository
 
 <pre>
 import {
-  id = "${module.<i>&lt;project module name&gt;</i>.import_id_team}"
-  to = module.<i>&lt;team module name&gt;</i>.azuredevops_team.team
+  id = module.<i>&lt;project-module-name&gt;</i>.import_id_team
+  to = module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
 }
 </pre>
 
 <pre>
 import {
-  id = "${module.<i>&lt;project module name&gt;</i>.import_id_git_repository}"
-  to = module.<i>&lt;git repository module name&gt;</i>.azuredevops_git_repository.git_repository
+  id = module.<i>&lt;project-module-name&gt;</i>.import_id_git_repository
+  to = module.<i>&lt;git-repository-module-name&gt;</i>.azuredevops_git_repository.git_repository
 }
 </pre>
 
@@ -159,6 +197,6 @@ import {
 If the default repository and team have been imported to Terraform state, deleting a project via <i>terraform destroy</i> command will fail. This is also by design because the default repository/team resources cannot be deleted on their own but have to be deleted via the project resource. Remove the imported resources manually from Terraform state before executing the destroy-command to workaroung this:  
 
 <pre>
-terraform state rm module.<i>&lt;team module name&gt;</i>.azuredevops_team.team
-terraform state rm module.<i>&lt;git repository module name&gt;</i>.azuredevops_git_repository.git_repository
+terraform state rm module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
+terraform state rm module.<i>&lt;git-repository-module-name&gt;</i>.azuredevops_git_repository.git_repository
 </pre>

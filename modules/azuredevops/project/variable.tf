@@ -18,6 +18,30 @@ variable "project" {
     version_control     = optional(string, "Git")
     work_item_template  = optional(string, "Agile")
   })
+  validation {
+    condition     = var.project.visibility == null ? true : contains(["private", "public"], var.project.visibility)
+    error_message = <<-EOF
+      Variable attribute 'visibility' has an invalid value.
+      Value must be one of:
+        "private", "public" or null
+    EOF
+  }
+  validation {
+    condition     = var.project.version_control == null ? true : contains(["Git", "Tfvc"], var.project.version_control)
+    error_message = <<-EOF
+      Variable attribute 'version_control' has an invalid value.
+      Value must be one of:
+        "Git", "Tfvc" or null
+    EOF
+  }
+  validation {
+    condition     = var.project.work_item_template == null ? true : contains(["Agile", "Basic", "CMMI", "Scrum"], var.project.work_item_template)
+    error_message = <<-EOF
+      Variable attribute 'work_item_template' has an invalid value.
+      Value must be one of:
+        "Agile", "Basic", "CMMI", "Scrum" or null
+    EOF
+  }
 }
 
 variable "project_pipeline_settings" {
