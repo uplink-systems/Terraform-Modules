@@ -7,7 +7,7 @@ variable "git_repository" {
   type        = object({
     name                  = string
     project_id            = string
-    default_branch        = optional(string, null)
+    default_branch        = optional(string, "refs/heads/main")
     disabled              = optional(bool, false)
     initialization        = optional(object({
       init_type             = optional(string, "Clean")
