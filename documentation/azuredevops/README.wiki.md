@@ -16,7 +16,7 @@ Changing the Wiki type from codeWiki to projectWiki and vice versa is not suppor
 
 #### Destroying a Wiki
 
-Destroying a Wiki of type codeWiki is supported and working. Destroying a Wiki of type projectWiki is not supported and not working. This by design and cannot be worked around.  
+Destroying a Wiki of type codeWiki is supported and working. Destroying a Wiki of type projectWiki is not supported and not working. This is by design and cannot be worked around.  
   
 > [!CAUTION]
 > Destroying the whole project via <i>terraform destroy</i> or by removing the resources from code is no longer working as soon as a Wiki of type projectWiki is created. This is caused by the known issue mentioned above. Therefore, use projectWiki with care!  
