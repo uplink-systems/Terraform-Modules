@@ -17,7 +17,7 @@ variable "azurerm_dns" {
 
 module "azurerm_dns" {
   source                = "github.com/uplink-systems/Terraform-Modules//modules/azurerm/dns"
-  for_each              = {for k, v in var.azurerm_dns : k => v if var.execute.azurerm_dns} #var.azurerm_dns
+  for_each              = var.azurerm_dns
   zone                  = each.value.zone
   recordset             = each.value.recordset
 }
