@@ -5,6 +5,10 @@
 The module <i>workitems</i> manages Azure DevOps project work items.  
 This includes all types of work items for projects with all kinds of work item templates.  
 
+### Known Issues / Open Issues
+
+n/a
+
 ### Outputs
 
 The module currently generates the following outputs:  

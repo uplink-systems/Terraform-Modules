@@ -4,7 +4,7 @@
 
 The module <i>git_repository</i> manages Azure DevOps project Git repositories.  
 
-### Known Issues Open Issues
+### Known Issues / Open Issues
 
 n/a  
 

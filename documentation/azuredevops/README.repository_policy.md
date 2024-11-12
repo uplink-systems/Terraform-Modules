@@ -7,6 +7,10 @@
 
 The module <i>repository_policy</i> manages Azure DevOps project and/or repository policies.   
 
+### Known Issues / Open Issues
+
+n/a
+
 ### Outputs
 
 The module currently generates the following outputs:  
