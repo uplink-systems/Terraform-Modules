@@ -227,4 +227,4 @@ n/a
  
 ### Azure DevOps users
 
-As of 2024/11/12 the AzDO terraform provider has only a data source to get users' attribute values but no resource to create one. Therefore, to ensure that all modules are working as expected, all users that are used in the code must be created manually in the AzDO organisation. Otherwise the modules fail.  
+As of 2024/11/12 the AzDO terraform provider has only a data source to get users' attribute values but no resource to create one without using entitlement resources. Therefore, to ensure that all modules are working as expected, all users that are used in the code must exist in the AzDO organisation before applying the modules' code. Otherwise the deployment fails.  
