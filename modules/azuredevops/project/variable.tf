@@ -5,19 +5,71 @@
 variable "project" {
   description = "Project attributes"
   type        = object({
-    name                = string
-    description         = optional(string, null)
-    features            = optional(object({
-      artifacts           = optional(string, "disabled")
-      boards              = optional(string, "enabled")
-      repositories        = optional(string, "enabled")
-      pipelines           = optional(string, "disabled")
-      testplans           = optional(string, "disabled")
+    name                    = string
+    description             = optional(string, null)
+    features                = optional(object({
+      artifacts               = optional(string, "disabled")
+      boards                  = optional(string, "enabled")
+      repositories            = optional(string, "enabled")
+      pipelines               = optional(string, "disabled")
+      testplans               = optional(string, "disabled")
     }), {})
-    visibility          = optional(string, "private")
-    version_control     = optional(string, "Git")
-    work_item_template  = optional(string, "Agile")
+    visibility              = optional(string, "private")
+    version_control         = optional(string, "Git")
+    work_item_template      = optional(string, "Agile")
+    project_administrators  = optional(object({
+      users                   = optional(list(string), null)
+      mode                    = optional(string, "overwrite")
+    }), {})
   })
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9.-]+$", var.project.name))
+    error_message = <<-EOF
+      Variable attribute 'name' has an invalid value.
+      Value must only contain the following characters:
+        "0-9", "a-z", "A-Z" and "-"
+    EOF
+  }
+  validation {
+    condition     = var.project.features.artifacts == null ? true : contains(["enabled", "disabled"], var.project.features.artifacts)
+    error_message = <<-EOF
+      Variable attribute 'features.artifacts' has an invalid value.
+      Value must be one of:
+        "enabled", "disabled" or null
+    EOF
+  }
+  validation {
+    condition     = var.project.features.boards == null ? true : contains(["enabled", "disabled"], var.project.features.boards)
+    error_message = <<-EOF
+      Variable attribute 'features.boards' has an invalid value.
+      Value must be one of:
+        "enabled", "disabled" or null
+    EOF
+  }
+  validation {
+    condition     = var.project.features.repositories == null ? true : contains(["enabled", "disabled"], var.project.features.repositories)
+    error_message = <<-EOF
+      Variable attribute 'features.repositories' has an invalid value.
+      Value must be one of:
+        "enabled", "disabled" or null
+    EOF
+  }
+  validation {
+    condition     = var.project.features.pipelines == null ? true : contains(["enabled", "disabled"], var.project.features.pipelines)
+    error_message = <<-EOF
+      Variable attribute 'features.pipelines' has an invalid value.
+      Value must be one of:
+        "enabled", "disabled" or null
+    EOF
+  }
+  validation {
+    condition     = var.project.features.testplans == null ? true : contains(["enabled", "disabled"], var.project.features.testplans)
+    error_message = <<-EOF
+      Variable attribute 'features.testplans' has an invalid value.
+      Value must be one of:
+        "enabled", "disabled" or null
+    EOF
+  }
   validation {
     condition     = var.project.visibility == null ? true : contains(["private", "public"], var.project.visibility)
     error_message = <<-EOF
@@ -40,6 +92,34 @@ variable "project" {
       Variable attribute 'work_item_template' has an invalid value.
       Value must be one of:
         "Agile", "Basic", "CMMI", "Scrum" or null
+    EOF
+  }
+  validation {
+    condition     = var.project.project_administrators.mode == null ? true : contains(["add", "overwrite"], var.project.project_administrators.mode)
+    error_message = <<-EOF
+      Variable attribute 'project_administrators.mode' has an invalid value.
+      Value must be one of:
+        "add", "overwrite" or null
+    EOF
+  }
+}
+
+variable "team_administrators" {
+  description = "Project's default team administrators"
+  type        = object({
+    name        = optional(list(string), ["Project Administrators"])
+    mode        = optional(string, "overwrite")
+  })
+  default = {
+    name        = ["Project Administrators"]
+    mode        = "overwrite"
+  }
+  validation {
+    condition     = var.team_administrators.mode == null ? true : contains(["add", "overwrite"], var.team_administrators.mode)
+    error_message = <<-EOF
+      Variable attribute 'mode' has an invalid value.
+      Value must be one of:
+        "add", "overwrite" or null
     EOF
   }
 }
