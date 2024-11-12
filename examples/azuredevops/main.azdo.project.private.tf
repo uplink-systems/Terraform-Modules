@@ -3,9 +3,14 @@
 ####################################################################################################
 
 module "project_private" {
-  source          = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/project"
-  project         = {
-    name            = "Private-Project"
+  source              = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/project"
+  project             = {
+    name                    = "Private-Project"
+    project_administrators  = {
+      users                   = [
+        "admin.azdo@tenantname.onmicrosoft.com",
+      ]
+    }
   }
 }
 

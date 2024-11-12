@@ -3,12 +3,17 @@
 ####################################################################################################
 
 module "project_public" {
-  source          = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/project"
-  project         = {
-    name            = "Public-Project"
-    visibility      = "public"
-    features        = {
-      boards          = "disabled"
+  source              = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/project"
+  project             = {
+    name                    = "Public-Project"
+    visibility              = "public"
+    features                = {
+      boards                    = "disabled"
+    }
+    project_administrators  = {
+      users                     = [
+        "admin.azdo@tenantname.onmicrosoft.com",
+      ]
     }
   }
 }
@@ -19,7 +24,7 @@ module "team_public_team_01" {
     name                = "${module.project_public.project.name} Team 01"
     project_id          = module.project_public.project.id
   }
-  depends_on        = [ module.project_public ]
+  depends_on          = [ module.project_public ]
 }
 
 module "repository_public_repository_01" {
