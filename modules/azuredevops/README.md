@@ -225,4 +225,6 @@ n/a
 
 ## Known Issues
  
-The modules are affected by the following known issues: see modules' description.  
+### Azure DevOps users
+
+As of 2024/11/12 the AzDO terraform provider has only a data source to get users' attribute values but no resource to create one. Therefore, to ensure that all modules are working as expected, all users that are used in the code must be created manually in the AzDO organisation. Otherwise the modules fail.  
