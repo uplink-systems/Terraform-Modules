@@ -4,6 +4,8 @@
 
 These modules are intended to create and manage Azure DevOps resources related to projects following my business needs standards.  
 This includes the following guidelines:  
+* User Entitlements
+  * Names of Azure DevOps related groups from connected Microsoft Entra directory used to onboard ADO users must start with "ADO-" to be processed.  
 * Projects
   * Project names can only contain the following characters: 0-9, a-z, A-Z and -
   * Project are always named as one of (depending in which of Uplink Systems' AzDO organisation the project is created):
@@ -27,7 +29,7 @@ This includes the following guidelines:
   
 If you make use of the modules please either use the same guidelines or download and customize the modules to your needs.  
   
-Resources related to Azure DevOps organisation settings are out ouf scope.  
+Resources related to Azure DevOps organisation settings are out ouf scope, except user onboarding.  
 
 ### Example
 
@@ -36,32 +38,34 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 
 ### Modules
 
+#### Module 'organisation_user_entitlement'
+
+[Module README](organisation_user_entitlement/README.md)
+
 #### Module 'project'
 
-[Module Documentation README](project/README.md)
+[Module README](project/README.md)
 
-#### Module 'git_repository'
+#### Module 'project_git_repository'
 
-[Module Documentation README](git_repository/README.md)
+[Module README](project_git_repository/README.md)
 
-#### Module 'repository_policy'
+#### Module 'project_repository_policy'
 
-[Module Documentation README](repository_policy/README.md)
+[Module README](project_repository_policy/README.md)
 
-#### Module 'team'
+#### Module 'project_team'
 
-[Module Documentation README](team/README.md)
+[Module README](project_team/README.md)
 
-#### Module 'wiki'
+#### Module 'project_wiki'
 
-[Module Documentation README](wiki/README.md)
+[Module README](project_wiki/README.md)
 
-#### Module 'workitem'
+#### Module 'project_workitem'
 
-[Module Documentation README](workitem/README.md)
+[Module README](project_workitem/README.md)
 
 ### Known Issues
 
-#### Azure DevOps users
-
-As of 2024/11/12 the AzDO terraform provider has only a data source to get users' attribute values but no resource to create one without using entitlement resources. Therefore, to ensure that all modules are working as expected, all users that are used in the code must exist in the AzDO organisation before applying the modules' code. Otherwise the deployment fails.  
+n/a  

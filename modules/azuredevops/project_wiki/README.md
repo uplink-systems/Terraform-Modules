@@ -1,11 +1,11 @@
-## Module 'wiki'
+## Module 'project_wiki'
 
 > [!CAUTION]
-> The <b>wiki</b> module has known issues that can have impact to module's functionality in some cases. Please read carefully!  
+> The <b>project_wiki</b> module has known issues that can have impact to module's functionality in some cases. Please read carefully!  
 
 ### Description and purpuse
 
-The module <i>wiki</i> manages Azure DevOps wikis.  
+The module <i>poroject_wiki</i> manages Azure DevOps wikis.  
 This includes project wikis as well as code wikis. Because of the known issues mentioned below, 'codeWiki' is the module's default wiki type and creating a projectWiki must be specified explicitely.  
 
 ### Known Issues / Open Issues

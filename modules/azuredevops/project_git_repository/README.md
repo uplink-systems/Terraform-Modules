@@ -1,8 +1,8 @@
-## Module 'git_repository'
+## Module 'project_git_repository'
 
 ### Description and purpose
 
-The module <i>git_repository</i> manages Azure DevOps project Git repositories.  
+The module <i>project_git_repository</i> manages Azure DevOps project Git repositories.  
 
 ### Known Issues / Open Issues
 

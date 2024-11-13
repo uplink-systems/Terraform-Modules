@@ -1,11 +1,11 @@
-## Module 'repository_policy'
+## Module 'project_repository_policy'
 
 ### Description and purpose
 
 > [!NOTE]
-> The <b>repository_policy</b> module is under development and not yet released to public.  
+> The <b>project_repository_policy</b> module is under development and not yet released to public.  
 
-The module <i>repository_policy</i> manages Azure DevOps project and/or repository policies.   
+The module <i>project_repository_policy</i> manages Azure DevOps project and/or repository policies.   
 
 ### Known Issues / Open Issues
 

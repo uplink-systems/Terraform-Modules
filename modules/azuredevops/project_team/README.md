@@ -1,11 +1,11 @@
-## Module 'team'
+## Module 'project_team'
 
 > [!NOTE]
-> The <b>team</b> module has known issues without impact on the module's functionality.
+> The <b>project_team</b> module has known issues **without** impact on the module's functionality.
 
 ### Description and purpose
 
-The module <i>team</i> manages Azure DevOps project teams.  
+The module <i>project_team</i> manages Azure DevOps project teams.  
 This includes the team itself as well as dependant repository resources (e.g. team administrators or team members).  
 
 ### Known Issues / Open Issues
