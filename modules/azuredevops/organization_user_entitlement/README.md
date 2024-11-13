@@ -1,16 +1,16 @@
-## Module 'organisation_user_entitlement'
+## Module 'organization_user_entitlement'
 
 ### Description
 
-The module **organisation_user_entitlement** manages Azure DevOps user entitlements for the organisation.  
+The module **organization_user_entitlement** manages Azure DevOps user entitlements for the organization.  
 It's purpose is:
-* **user_entitlement**: add users from the connected Azure AD tenant to the organistation's users via user entitlement
+* **user_entitlement**: add users from the connected Azure AD tenant to the organization's users via user entitlement
 
 #### How does it work?
 
-Using *azuread_group* data source the module initially gets the attributes for the groups from Azure AD to process. The data source *azuread_user* gets all users attributes for each groups' members. Finally, *azuredevops_user_entitlement* enrolls each Azure AD user into the AzDO organisation with at least the default *basic*-license (if not other license is specified).  
+Using *azuread_group* data source the module initially gets the attributes for the groups from Azure AD to process. The data source *azuread_user* gets all users attributes for each groups' members. Finally, *azuredevops_user_entitlement* enrolls each Azure AD user into the AzDO organization with at least the default *basic*-license (if not other license is specified).  
 Why does the module not make use of AzDO's *Group Rules* feature to enroll users in a smoother and cleaner way? The provider simply does not support this feaure, at least not at the time this module was written.  
-Why does the module not make use of *azuredevops_group_entitlement* resources to onboard users? The resource type simply does **not** create/onboard users in the AzDO organisation. It only manage licensing on a per-group basis.  
+Why does the module not make use of *azuredevops_group_entitlement* resources to onboard users? The resource type simply does **not** create/onboard users in the AzDO organization. It only manage licensing on a per-group basis.  
   
 Needless to say, but of course the Azure AD **groups** that shall be processed **must already exist** in the connected Microsoft Entra directory.
 

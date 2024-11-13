@@ -8,9 +8,9 @@ This includes the following guidelines:
   * Names of Azure DevOps related groups from connected Microsoft Entra directory used to onboard ADO users must start with "ADO-" to be processed.  
 * Projects
   * Project names can only contain the following characters: 0-9, a-z, A-Z and -
-  * Project are always named as one of (depending in which of Uplink Systems' AzDO organisation the project is created):
-    * EXT organisation: Customer Number to which the repositories will be created for  
-    * INT organisation: <i>&lt;Project-Type&gt;</i>-<i>&lt;Project-Scope/Project-Purpose&gt;</i>, examples:  
+  * Project are always named as one of (depending in which of Uplink Systems' AzDO organization the project is created):
+    * EXT organization: Customer Number to which the repositories will be created for  
+    * INT organization: <i>&lt;Project-Type&gt;</i>-<i>&lt;Project-Scope/Project-Purpose&gt;</i>, examples:  
       * Docu-Infrastruture --> Project to document infrastructure(s)  
       * DEV-Staging-INT --> Project for internal developments in staging phase ("playground" repository)  
       * IaC-Terraform --> Project for Infrastructure(s)-as-Code using Terraform  
@@ -29,7 +29,7 @@ This includes the following guidelines:
   
 If you make use of the modules please either use the same guidelines or download and customize the modules to your needs.  
   
-Resources related to Azure DevOps organisation settings are out ouf scope, except user onboarding.  
+Resources related to Azure DevOps organization settings are out ouf scope, except user onboarding.  
 
 ### Example
 
@@ -38,9 +38,9 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 
 ### Modules
 
-#### Module 'organisation_user_entitlement'
+#### Module 'organization_user_entitlement'
 
-[Module README](organisation_user_entitlement/README.md)
+[Module README](organization_user_entitlement/README.md)
 
 #### Module 'project'
 
