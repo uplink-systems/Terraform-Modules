@@ -38,27 +38,27 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 
 #### Module 'project'
 
-[Module Documentation README](../../documentation/azuredevops/README.project.md)
+[Module Documentation README](project/README.md)
 
 #### Module 'git_repository'
 
-[Module Documentation README](../../documentation/azuredevops/README.git_repository.md)
+[Module Documentation README](git_repository/README.md)
 
 #### Module 'repository_policy'
 
-[Module Documentation README](../../documentation/azuredevops/README.repository_policy.md)
+[Module Documentation README](repository_policy/README.md)
 
 #### Module 'team'
 
-[Module Documentation README](../../documentation/azuredevops/README.team.md)
+[Module Documentation README](team/README.md)
 
 #### Module 'wiki'
 
-[Module Documentation README](../../documentation/azuredevops/README.wiki.md)
+[Module Documentation README](wiki/README.md)
 
 #### Module 'workitem'
 
-[Module Documentation README](../../documentation/azuredevops/README.workitem.md)
+[Module Documentation README](workitem/README.md)
 
 ### Known Issues
 

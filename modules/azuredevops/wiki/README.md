@@ -1,6 +1,6 @@
 ## Module 'wiki'
 
-> [!NOTE]
+> [!CAUTION]
 > The <b>wiki</b> module has known issues that can have impact to module's functionality in some cases. Please read carefully!  
 
 ### Description and purpuse
@@ -18,7 +18,7 @@ Changing the Wiki type from codeWiki to projectWiki and vice versa is not suppor
 
 Destroying a Wiki of type codeWiki is supported and working. Destroying a Wiki of type projectWiki is not supported and not working. This is by design and cannot be worked around.  
   
-> [!CAUTION]
+> [!WARNING]
 > Destroying the whole project via <i>terraform destroy</i> or by removing the resources from code is no longer working as soon as a Wiki of type projectWiki is created. This is caused by the known issue mentioned above. Therefore, use projectWiki with care!  
 
 ### Outputs
@@ -28,4 +28,4 @@ The module currently generates the following outputs:
 1) <b>wiki</b> => list of all exported attributes values from the wiki resource  
   
   
-[Back to README.md](../../modules/azuredevops/README.md)  
+[Back to README.md](../README.md)  

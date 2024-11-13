@@ -15,4 +15,4 @@ The module currently generates the following outputs:
 1) <b>git_repository</b> => list of all exported attributes values from the git_repository resource  
   
   
-[Back to README.md](../../modules/azuredevops/README.md)  
+[Back to README.md](../README.md)  

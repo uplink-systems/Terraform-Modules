@@ -23,4 +23,4 @@ The module currently generates the following outputs:
 6) <b>repository_policy_reserved_names</b> => list of all exported attributes values from the repository_policy_reserved_names resource  
   
   
-[Back to README.md](../../modules/azuredevops/README.md)  
+[Back to README.md](../README.md)  

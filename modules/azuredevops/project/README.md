@@ -1,5 +1,8 @@
 ## Module 'project'
 
+> [!NOTE]
+> The <b>project</b> module has known issues without impact on the module's functionality. 
+
 ### Description and purpose
 
 The module <i>project</i> manages Azure DevOps projects.  
@@ -67,4 +70,4 @@ The module currently generates the following outputs:
 7) <b>import_id_git_repository</b> => output of a formatted id needed to import the git_resource resource to Terraform state  
   
   
-[Back to README.md](../../modules/azuredevops/README.md)  
+[Back to README.md](../README.md)  
