@@ -13,4 +13,5 @@ This repository is intended as a collection of simple Terraform modules.
 
 #### Module structure
 
-The module structure tries to follow the recommended structure (https://developer.hashicorp.com/terraform/language/modules/develop/structure) with one additional folder layer for the type of infrastructure.
+The module structure tries to follow the recommended structure with one additional folder layer for the type of infrastructure.  
+For more information: https://developer.hashicorp.com/terraform/language/modules/develop/structure  
