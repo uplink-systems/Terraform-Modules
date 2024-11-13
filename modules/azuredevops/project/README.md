@@ -1,7 +1,7 @@
 ## Module 'project'
 
 > [!NOTE]
-> The <b>project</b> module has known issues without impact on the module's functionality. 
+> The <b>project</b> module has known issues **without** impact on the module's functionality. 
 
 ### Description and purpose
 
@@ -17,7 +17,7 @@ This includes the project itself as well as some dependant project resources. E.
 
 ### Known Issues / Open Issues
 
-#### <i>git_repository</i> and <i>team</i> resources created with a project by default
+#### Known: <i>git_repository</i> and <i>team</i> resources created with a project by default
  
 A new created project in Azure Devops automatically generates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled) and a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.  
   
