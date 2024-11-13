@@ -1,7 +1,7 @@
 ## Module 'project_wiki'
 
 > [!CAUTION]
-> The <b>project_wiki</b> module has known issues that can have impact to module's functionality in some cases. Please read carefully!  
+> The <b>project_wiki</b> module has known issues that **can have** impact to module's functionality in some cases. Please read carefully!  
 
 ### Description and purpuse
 
@@ -10,11 +10,11 @@ This includes project wikis as well as code wikis. Because of the known issues m
 
 ### Known Issues / Open Issues
 
-#### Changing Wiki type
+#### Known: changing Wiki type
 
 Changing the Wiki type from codeWiki to projectWiki and vice versa is not supported. While changing from codeWiki to projectWiki is working, the other way round is not.  
 
-#### Destroying a Wiki
+#### Known: destroying a Wiki
 
 Destroying a Wiki of type codeWiki is supported and working. Destroying a Wiki of type projectWiki is not supported and not working. This is by design and cannot be worked around.  
   
