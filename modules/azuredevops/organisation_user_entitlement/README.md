@@ -44,6 +44,8 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 
 ### Known Issues / Open Issues
 
+n/a  
+
 ### Sources
 
 This module was thankfully kind of \"forked\", inspired by and customized to my business needs from:  
