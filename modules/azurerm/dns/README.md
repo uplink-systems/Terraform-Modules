@@ -28,7 +28,8 @@ For an example how to use this module please navigate to: https://github.com/upl
   
 <details>
 <summary><b>Using the variables in the root module</b></summary>
-  
+
+######
 The following lines explain how the main variable in the root module has to be defined with minimum required settings if the module is used with a for_each loop and shall create multiple resources:  
 
 <pre>
@@ -118,7 +119,12 @@ output "azurerm_dns_zone_id_group_1" {
 
 ### Known Issues
 
-n/a
+<details>
+<summary><b>n/a</b></summary>
+
+######
+  
+</details>
   
 ---
   
