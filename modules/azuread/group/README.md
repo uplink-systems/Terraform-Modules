@@ -77,36 +77,48 @@ output "azuread_group_id_group_1" {
 
 <details>
 <summary><b>azuread_group attribute 'var.group.auto_subscribe_new_members'</b></summary>
-  
+
+####
 The variable attribute <i>var.group.auto_subscribe_new_members</i> can only be set when authenticating as a Member user of the tenant and not when authenticating as a Guest user or as a service principal. Please see the <a href="https://docs.microsoft.com/en-us/graph/known-issues#groups">Microsoft Graph Known Issues</a> documentation.  
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/group  
 </details>
 
 <details>
 <summary><b>azuread_group attribute 'var.group.mail.external_senders_allowed'</b></summary>
-  
+
+####
 The variable attribute <i>var.group.mail.external_senders_allowed</i> can only be set when authenticating as a Member user of the tenant and not when authenticating as a Guest user or as a service principal. Please see the <a href="https://docs.microsoft.com/en-us/graph/known-issues#groups">Microsoft Graph Known Issues</a> documentation.  
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/group  
 </details>
 
 <details>
 <summary><b>azuread_group attribute 'var.group.mail.hide_from_address_lists'</b></summary>
-  
+
+#### azuread_group attribute 'var.group.mail.hide_from_address_lists'
+
 The variable attribute <i>var.group.mail.hide_from_address_lists</i> can only be set when authenticating as a Member user of the tenant and not when authenticating as a Guest user or as a service principal. Please see the <a href="https://docs.microsoft.com/en-us/graph/known-issues#groups">Microsoft Graph Known Issues</a> documentation.  
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/group 
 </details>
 
 <details>
 <summary><b>azuread_group attribute 'var.group.mail.hide_from_outlook_clients'</b></summary>
-  
+
+#### azuread_group attribute 'var.group.mail.hide_from_outlook_clients'
+
 The variable attribute <i>var.group.mail.hide_from_outlook_clients</i> can only be set when authenticating as a Member user of the tenant and not when authenticating as a Guest user or as a service principal. Please see the <a href="https://docs.microsoft.com/en-us/graph/known-issues#groups">Microsoft Graph Known Issues</a> documentation.  
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/group  
 </details>
 
 <details>
 <summary><b>azuread_group attribute 'var.group.owners'</b></summary>
+
+#### azuread_group attribute 'var.group.owners'
   
 If the group is initially owned by a service principal and you add a user to the owners, you are not able to remove the user from the owners again. At least one user has to stay owner.  
 https://github.com/hashicorp/terraform-provider-azuread/issues/464  
 https://github.com/microsoftgraph/msgraph-metadata/issues/92  
 </details>
+  
+---
+  
+[Back to README.md](../README.md)  
