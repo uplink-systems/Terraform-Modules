@@ -4,7 +4,7 @@
 
 variable "role_definition" {
   description = <<-EOF
-    'var.role_definition' is the main variable for azurerm_role_definition resource settings.
+    'var.role_definition' is the main variable for azurerm_role_definition resource settings
   EOF
   type        = object({
     name                = string
