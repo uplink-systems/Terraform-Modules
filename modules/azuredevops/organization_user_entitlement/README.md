@@ -44,7 +44,7 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 
 ### Known Issues / Open Issues
 
-n/a  
+- [ ] \(Optional) Review code for optional improvements
 
 ### Sources
 

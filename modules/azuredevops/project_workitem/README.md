@@ -2,8 +2,7 @@
 
 ### Description and purpose  
 
-The module <i>project_workitem</i> manages Azure DevOps project work items.  
-This includes all types of work items for projects with all kinds of work item templates.  
+The module **project_workitem** manages Azure DevOps project work items. This includes all types of work items for projects with all kinds of work item templates.  
 
 ### Known Issues / Open Issues
 

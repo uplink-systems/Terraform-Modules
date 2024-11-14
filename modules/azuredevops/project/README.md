@@ -60,8 +60,8 @@ A new created project in Azure Devops automatically generates a repository label
   
 If the default resources should or need to be used, they can only be managed if they are imported. The 'project' module provides explicit outputs to use as import sources.  
 
-> Default repository: It is best practice not to use the default repository and therefore, it is not necessary to import this resource to Terraform state. Instead, it is recommended to disable the repository manually.  
-> Default team: The <i>azuredevops_team</i> resource can only manage the team's name, description, administrators and members. Name and description should not be changed for the defaul team. Administrators and members can be managed using <i>azuredevops_team_administrators</i> and <i>azuredevops_team_members</i> resources. Therefore, it is not necessary to import the team to Terraform state.  
+*Default repository*: It is best practice not to use the default repository and therefore, it is not necessary to import this resource to Terraform state. Instead, it is recommended to disable the repository manually.  
+*Default team*: The *azuredevops_team* resource can only manage the team's name, description, administrators and members. Name and description should not be changed for the defaul team. Administrators and members can be managed using *azuredevops_team_administrators* and *azuredevops_team_members* resources. Therefore, it is not necessary to import the team to Terraform state.  
 
 **Import: Team & Git Repository**
 
