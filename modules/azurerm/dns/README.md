@@ -25,6 +25,9 @@ For an example how to use this module please navigate to: https://github.com/upl
 |------|-------------|------|---------|:--------:|
 | <a name="input_zone"></a> [zone](#input\_zone) | 'var.zone' is the main variable for azurerm_dns zone resource attributes | <pre>type = object({<br>  name                = string<br>  resource_group_name = string<br>  tags                = optional(map(string))<br>})<br></pre> | none | yes |
 | <a name="input_recordset"></a> [recordset](#input\_recordset) | 'var.recordset' is the main variable for azurerm_dns recordset resource attributes and can contain all types of recordsets that can be managed via Terraform | <pre>type        = object({<br>  a           = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  aaaa        = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  caa         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  cname       = optional(map(object({<br>    name        = string<br>    record      = string<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  mx          = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  ns          = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 172800)<br>  })), {})<br>  srv         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  txt         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>})<br></pre> | {} | no |
+  
+<details>
+<summary><b>Using the variables in the root module</b></summary>
 
 #### Using the variables in the root module
 
@@ -45,6 +48,8 @@ module "azurerm_dns" {
 }
 </pre>
 
+</details>
+  
 ### Outputs
 
 | Name | Description |
@@ -77,14 +82,12 @@ The module is planned to generate the following outputs for the DNS recordsets (
 | <a name="output_azurerm_dns_soa_record_id"></a> [azurerm\_dns\_soa\_record\_id](#output\_azurerm\_dns\_soa\_record\_id) | list of exported id attribute values from the DNS SOA record sets |
 | <a name="output_azurerm_dns_srv_record_id"></a> [azurerm\_dns\_srv\_record\_id](#output\_azurerm\_dns\_srv\_record\_id) | list of exported id attribute values from the DNS SRV record sets |
 | <a name="output_azurerm_dns_txt_record_id"></a> [azurerm\_dns\_txt\_record\_id](#output\_azurerm\_dns\_txt\_record\_id) | list of exported id attribute values from the DNS TXT record sets |
-
+  
 <details>
 
-<summary>###Using the outputs in the root module</summary>
+<summary>Using the outputs in the root module</summary>
 
-#### Using the outputs in the root module
-
-##### Examples
+#### Examples
 
 Output - IDs of all groups using 'azurerm_dns_zone' output:
 
