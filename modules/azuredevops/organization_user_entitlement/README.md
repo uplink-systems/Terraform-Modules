@@ -32,7 +32,7 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_user_entitlement"></a> [user\_entitlement](#input\_user\_entitlement) | user_entitlement main variable with resource attributes | <pre>object({<br>  account_license_type = string<br>})</pre> | <pre>object({<br>  account_license_type = "basic"<br>})</pre> | no |
+| <a name="input_user_entitlement"></a> [user\_entitlement](#input\_user\_entitlement) | user_entitlement main variable with resource attributes | <pre>object({<br>  account_license_type = optional(string, "basic")<br>  licensing_source = optional(string, null)<br>})</pre> | <pre>object({<br>  account_license_type = "basic"<br>})</pre> | no |
 | <a name="input_azuread_groups"></a> [azuread\_groups](#input\_azuread\_groups) | groups from connected Azure AD to process | `list(string)` | n/a | yes |
 
 ### Outputs
@@ -42,9 +42,9 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 | <a name="ouput_user_entitlement"></a> [user\_entitlement](#output\_user\_entitlement) | list of all exported attributes values from the user_entitlement resource |
 | <a name="ouput_user_entitlement_user"></a> [user\_entitlement\_user](#output\_user\_entitlement\_user) | list of user_entitlement resource entitled users' display names |
 
-### Known Issues / Open Issues
+### Known Issues
 
-- [ ] \(Optional) Review code for optional improvements
+n/a
 
 ### Sources
 
