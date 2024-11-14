@@ -19,19 +19,14 @@ For an example how to use this module please navigate to: https://github.com/upl
 |------|------|
 | [azurerm_dns_zone.zone](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_zone) | resource |
 
+### Inputs
 
-## Variables
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_zone"></a> [zone](#input\_zone) | 'var.zone' is the main variable for azurerm_dns zone resource attributes | <pre>type = object({<br>  name                = string<br>  resource_group_name = string<br>  tags                = optional(map(string))<br>})<br></pre> | none | yes |
+| <a name="input_recordset"></a> [recordset](#input\_recordset) | 'var.recordset' is the main variable for azurerm_dns recordset resource attributes and can contain all types of recordsets that can be managed via Terraform | <pre>type        = object({<br>  a           = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  aaaa        = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  caa         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  cname       = optional(map(object({<br>    name        = string<br>    record      = string<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  mx          = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  ns          = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 172800)<br>  })), {})<br>  srv         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  txt         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>})<br></pre> | {} | no |
 
-#### 'var.zone'
-
-The variable attribute <i>var.zone</i> represents the DNS zone's settings. Configuring the variable is mandatory.
-
-#### 'var.recordset'
-
-The variable <i>var.recordset</i> and its attributes represent the record sets for the corresponding DNS zone.  
-Configuring the variable is optional, so that the module is able to create the zone even without record sets.  
-
-#### 'var.zone' & 'var.recordset' --> using in root's main variable
+#### Using the variables in the root module
 
 The following lines explain how the main variable in the root module has to be defined with minimum required settings if the module is used with a for_each loop and shall create multiple resources:  
 
@@ -49,13 +44,6 @@ module "azurerm_dns" {
   recordset             = each.value.recordset
 }
 </pre>
-
-### Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_zone"></a> [zone](#input\_zone) | 'var.zone' is the main variable for azurerm_dns zone resource attributes | <pre>type = object({<br>  name                = string<br>  resource_group_name = string<br>  tags                = optional(map(string))<br>})<br></pre> | none | yes |
-| <a name="input_recordset"></a> [recordset](#input\_recordset) | 'var.recordset' is the main variable for azurerm_dns recordset resource attributes and can contain all types of recordsets that can be managed via Terraform | <pre> tbd </pre> | {} | no |
 
 ### Outputs
 
@@ -123,30 +111,6 @@ output "azurerm_dns_zone_id_group_1" {
 The module is affected by the following known issues:
 
 n/a
- 
-A new created project in Azure Devops automatically generates a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.  
-  
-If the default resource should or need to be used, it can only be managed if it is imported. The *project* module provides explicit output to use as import sources.  
-
-*Best Practice*/*Recommendation*: The *azuredevops_team* resource can only manage the team's name, description, administrators and members. Name and description should not be changed for the defaul team. Administrators and members can be managed using *azuredevops_team_administrators* and *azuredevops_team_members* resources. Therefore, it is not necessary to import the team into Terraform state.  
-
-If an import is necessary one can use the following code snippet:
-
-<pre>
-import {
-  id = module.<i>&lt;project-module-name&gt;</i>.import_id_team
-  to = module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
-}
-</pre>
-
-> [!IMPORTANT]  
-> Remove the 'import' block from code after importing the resource into Terraform state!
-
-If the default team has been imported into Terraform state, deleting a project via *terraform destroy* command will fail. This is also by design because the default team resource cannot be deleted on their own but has to be deleted via the project resource. Remove the imported resource manually from Terraform state before executing the destroy-command to workaround this:  
-
-<pre>
-terraform state rm module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
-</pre>
   
 ---
   
