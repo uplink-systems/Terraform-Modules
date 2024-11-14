@@ -33,7 +33,7 @@ This module is intended to create public DNS zones and resource record sets in A
 | <a name="input_recordset"></a> [recordset](#input\_recordset) | 'var.recordset' is the main variable for azurerm_dns recordset resource attributes and can contain all types of recordsets that can be managed via Terraform | <pre>type        = object({<br>  a           = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  aaaa        = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  caa         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  cname       = optional(map(object({<br>    name        = string<br>    record      = string<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  mx          = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  ns          = optional(map(object({<br>    name        = string<br>    records     = list(string)<br>    ttl         = optional(number, 172800)<br>  })), {})<br>  srv         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>  txt         = optional(map(object({<br>    name        = string<br>    record      = list(string)<br>    ttl         = optional(number, 3600)<br>  })), {})<br>})<br></pre> | {} | no |
   
 <details>
-<summary><b>Using the variables in the root module</b></summary>
+<summary><b>Example: using the variables in the root module</b></summary>
 
 ######
 The following lines explain how the main variable in the root module has to be defined with minimum required settings if the module is used with a for_each loop and shall create multiple resources:  
@@ -52,7 +52,6 @@ module "azurerm_dns" {
   recordset             = each.value.recordset
 }
 </pre>
-
 </details>
   
 ### Outputs
@@ -88,15 +87,16 @@ The module is planned to generate the following outputs for the DNS recordsets (
 | <a name="output_azurerm_dns_txt_record_id"></a> [azurerm\_dns\_txt\_record\_id](#output\_azurerm\_dns\_txt\_record\_id) | list of exported id attribute values from the DNS TXT record sets |
   
 <details>
-<summary><b>Using the outputs in the root module</b</summary>
+<summary><b>Example: using the outputs in the root module</b></summary>
 
+######
 Output - IDs of all groups using 'azurerm_dns_zone' output:
 
 ```
 output "azurerm_dns_zone_id_all_groups" {
-    value = toset([
-        for object_id in module.azurerm_dns : object_id.azurerm_dns_zone_id
-    ])
+  value = toset([
+    for object_id in module.azurerm_dns : object_id.azurerm_dns_zone_id
+  ])
 }
 ```
 
@@ -104,18 +104,17 @@ output "azurerm_dns_zone_id_all_groups" {
 
 ```
 output "azurerm_dns_zone_id_all_groups" {
-    value = values(module.azurerm_dns).*.azurerm_dns_zone_id
+  value = values(module.azurerm_dns).*.azurerm_dns_zone_id
 }
 ```
 
 Output - ID of a single specified group using 'azurerm_dns_zone_id' output:
 
-<pre>
+```
 output "azurerm_dns_zone_id_group_1" {
-    value = module.azurerm_dns["<i>&lt;Terraform-Resource-Name&gt;</i>"].azurerm_dns_zone_id
+  value = module.azurerm_dns["<i>&lt;Terraform-Resource-Name&gt;</i>"].azurerm_dns_zone_id
 }
-</pre>
-
+```
 </details>
 
 ### Known Issues
