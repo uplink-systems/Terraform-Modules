@@ -45,8 +45,7 @@ It configures the following:
 | <a name="ouput_project_pipeline_settings"></a> [project_pipeline_settings](#output\_project\_pipeline\_settings) | list of all exported attributes values from the project_pipeline_settings resource |
 | <a name="ouput_team"></a> [team](#output\_team) | list of all exported attributes values from the (project's default) team resource |
 | <a name="ouput_git_repository"></a> [git_repository](#output\_git\_repository) | list of all exported attributes values from the (project's default) git_repository resource |
-
-| <a name="ouput_import_id_team"></a> [import_id_team](#output\_import\_id\_team) | output of a formatted id needed to import the team resource to Terraform state   |
+| <a name="ouput_import_id_team"></a> [import_id_team](#output\_import\_id\_team) | output of a formatted id needed to import the team resource to Terraform state |
 | <a name="ouput_import_id_git_repository"></a> [import_id_git_repository](#output\_import\_id\_git\_repository) | output of a formatted id needed to import the git_resource resource to Terraform state |
 
 ### Known Issues / Open Issues
@@ -88,7 +87,7 @@ If the default repository and team have been imported to Terraform state, deleti
 
 <pre>
 terraform state rm module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
-terraform state rm module.*&lt;git-repository-module-name&gt;*.azuredevops_git_repository.git_repository
+terraform state rm module.<i>&lt;git-repository-module-name&gt;</i>.azuredevops_git_repository.git_repository
 </pre>
   
 ---
