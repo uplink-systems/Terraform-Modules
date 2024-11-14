@@ -64,6 +64,8 @@ If the default resources should or need to be used, they can only be managed if 
 > Default repository: It is best practice not to use the default repository and therefore, it is not necessary to import this resource to Terraform state. Instead, it is recommended to disable the repository manually.  
 > Default team: The <i>azuredevops_team</i> resource can only manage the team's name, description, administrators and members. Name and description should not be changed for the defaul team. Administrators and members can be managed using <i>azuredevops_team_administrators</i> and <i>azuredevops_team_members</i> resources. Therefore, it is not necessary to import the team to Terraform state.  
 
+: Default team: The <i>azuredevops_team</i> resource can only manage the team's name, description, administrators and members. Name and description should not be changed for the defaul team. Administrators and members can be managed using <i>azuredevops_team_administrators</i> and <i>azuredevops_team_members</i> resources. Therefore, it is not necessary to import the team to Terraform state.  
+
 **Import: Team & Git Repository**
 
 If an import is necessary one can use the following code snippets:
