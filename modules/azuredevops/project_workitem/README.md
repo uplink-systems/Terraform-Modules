@@ -33,7 +33,7 @@ The module **project_workitem** manages Azure DevOps project work items. This in
 
 n/a
 
-### Other Notes
+### Misc. Notes
 
 #### Variable attribute 'type'  
   

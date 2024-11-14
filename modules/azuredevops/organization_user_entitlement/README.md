@@ -3,8 +3,6 @@
 ### Description
 
 The module **organization_user_entitlement** manages Azure DevOps user entitlements for the organization.  
-It configures the following:  
-* **user_entitlement**: add users from the connected Azure AD tenant to the organization's users via user entitlement
 
 #### How does it work?
 

@@ -5,8 +5,7 @@
 
 ### Description
 
-The module **project_team** manages Azure DevOps project teams.  
-This includes the team itself as well as dependant repository resources (e.g. team administrators or team members).  
+The module **project_team** manages Azure DevOps project teams. This includes the team itself as well as dependant repository resources (e.g. team administrators or team members).  
 
 ### Requirements
 
@@ -20,6 +19,8 @@ This includes the team itself as well as dependant repository resources (e.g. te
 | Name | Type |
 |------|------|
 | [azuredevops_team.team](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/team) | resource |
+| [azuredevops_team_administrators.team_administrators](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/team_administrators) | resource |
+| [azuredevops_team_members.team_members](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/team_members) | resource |
 
 ### Inputs
 

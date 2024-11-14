@@ -6,11 +6,6 @@
 ### Description
 
 The module <i>project</i> manages Azure DevOps projects. This includes the project itself as well as some dependant project resources.  
-It configures the following:  
-* **project**: create an Azure DevOps project with it's additional default components like common groups, a team and a git_repository
-* **project_administrators**: configure the members (users) of the *Project Administrators* group
-* **team_administrators**: configure the administrators of the project default team (*Project Administrators* group by default)
-* **project_pipeline_settings**: configure the pipeline settings applied to the project
 
 > [!NOTE]  
 > A default repository and a default team are automatically generated when the project itself is created. The module contains two data sources to output the team- and repository-attributes from the module as well as two formatted outputs to use as import Ids. Furthermore, the module manages the administrators of the default team. If no administrator config is passed to the module, a default configuration applies adding the "Contributors" group as administrators.  
