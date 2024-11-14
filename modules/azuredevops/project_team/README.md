@@ -19,7 +19,7 @@ This includes the team itself as well as dependant repository resources (e.g. te
 
 | Name | Type |
 |------|------|
-| [azuredevops_team](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/team) | resource |
+| [azuredevops_team.team](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/team) | resource |
 
 ### Inputs
 

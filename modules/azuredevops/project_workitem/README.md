@@ -1,20 +1,39 @@
 ## Module 'project_workitem'
 
-### Description and purpose  
+### Description  
 
 The module **project_workitem** manages Azure DevOps project work items. This includes all types of work items for projects with all kinds of work item templates.  
 
-### Known Issues / Open Issues
+### Requirements
 
-n/a
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
+| <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) | ~> 1.4 |
+
+### Resources
+
+| Name | Type |
+|------|------|
+| [azuredevops_workitem.workitem](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/workitem) | resource |
+
+### Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_workitem"></a> [workitem](#input\_workitem) | workitem main variable with resource attributes | <pre>type = object({<br>  title = string<br>  project_id = string<br>  type = string<br>  area_path = optional(string, null)<br>  custom_fields = optional(any)<br>  iteration_path = optional(string, null)<br>  state = optional(string, null)<br>  tags = optional(list(string), null)<br>})<br></pre> | none | yes |
 
 ### Outputs
 
-The module currently generates the following outputs:  
+| Name | Description |
+|------|-------------|
+| <a name="output_workitem"></a> [workitem](#output\_workitem) | list of all exported attributes values from the workitem resource |
 
-1) <b>workitem</b> => list of all exported attributes values from the workitem resource  
+### Known Issues
 
-### Remarkable notes
+n/a
+
+### Other Notes
 
 #### Variable attribute 'type'  
   
@@ -49,5 +68,6 @@ custom_field = {
 ...
 </pre>
   
+---
   
 [Back to README.md](../README.md)  

@@ -1,31 +1,50 @@
 ## Module 'project_wiki'
 
 > [!CAUTION]
-> The <b>project_wiki</b> module has known issues that **can have** impact to module's functionality in some cases. Please read carefully!  
+> The **project_wiki** module has known issues that **can have** impact to module's functionality in some cases. Please read carefully!  
 
-### Description and purpuse
+### Description
 
-The module <i>poroject_wiki</i> manages Azure DevOps wikis.  
-This includes project wikis as well as code wikis. Because of the known issues mentioned below, 'codeWiki' is the module's default wiki type and creating a projectWiki must be specified explicitely.  
+The module **poroject_wiki** manages Azure DevOps wikis. This includes project wikis as well as code wikis. Because of the known issues mentioned below, 'codeWiki' is the module's default wiki type and creating a projectWiki must be specified explicitely.  
 
-### Known Issues / Open Issues
+### Requirements
 
-#### Known: changing Wiki type
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
+| <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) | ~> 1.4 |
 
-Changing the Wiki type from codeWiki to projectWiki and vice versa is not supported. While changing from codeWiki to projectWiki is working, the other way round is not.  
+### Resources
 
-#### Known: destroying a Wiki
+| Name | Type |
+|------|------|
+| [azuredevops_wiki.wiki](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/wiki) | resource |
 
-Destroying a Wiki of type codeWiki is supported and working. Destroying a Wiki of type projectWiki is not supported and not working. This is by design and cannot be worked around.  
-  
-> [!WARNING]
-> Destroying the whole project via <i>terraform destroy</i> or by removing the resources from code is no longer working as soon as a Wiki of type projectWiki is created. This is caused by the known issue mentioned above. Therefore, use projectWiki with care!  
+### Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_wiki"></a> [wiki](#input\_wiki) | wiki main variable with resource attributes | <pre>type = object({<br>  name = string<br>  project_id = string<br>  mapped_path = optional(string, "/")<br>  repository_id = optional(string, null)<br>  type = optional(string, "codeWiki")<br>  version = optional(string, "main")<br>})<br></pre> | none | yes |
 
 ### Outputs
 
-The module currently generates the following outputs:  
+| Name | Description |
+|------|-------------|
+| <a name="output_wiki"></a> [wiki](#output\_wiki) | list of all exported attributes values from the wiki resource |
 
-1) <b>wiki</b> => list of all exported attributes values from the wiki resource  
+### Known Issues
+
+#### Changing Wiki type
+
+Changing the Wiki type from codeWiki to projectWiki and vice versa is not supported. While changing from codeWiki to projectWiki is working, the other way round is not.  
+
+#### Destroying a Wiki
+
+Destroying a Wiki of type codeWiki is supported and working. Destroying a Wiki of type projectWiki is not supported and not working. This is by design and cannot be worked around.  
   
+> [!WARNING]  
+> Destroying the whole project via <i>terraform destroy</i> or by removing the resources from code is no longer working as soon as a Wiki of type projectWiki is created. This is caused by the known issue mentioned above. Therefore, use projectWiki with care!  
+  
+---
   
 [Back to README.md](../README.md)  
