@@ -16,6 +16,14 @@ This module is intended to create public DNS zones and resource record sets in A
 | Name | Type |
 |------|------|
 | [azurerm_dns_zone.zone](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_zone) | resource |
+| [azurerm_dns_a_record.recordset](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_a_record) | resource |
+| [azurerm_dns_aaaa_record.recordset](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_aaaa_record) | resource |
+| [azurerm_dns_caa_record.recordset](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_caa_record) | resource |
+| [azurerm_dns_cname_record.recordset](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_cname_record) | resource |
+| [azurerm_dns_mx_record.recordset](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_mx_record) | resource |
+| [azurerm_dns_ns_record.recordset](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_ns_record) | resource |
+| [azurerm_dns_srv_record.recordset](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_srv_record) | resource |
+| [azurerm_dns_txt_record.recordset](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_txt_record) | resource |
 
 ### Inputs
 
@@ -80,29 +88,25 @@ The module is planned to generate the following outputs for the DNS recordsets (
 | <a name="output_azurerm_dns_txt_record_id"></a> [azurerm\_dns\_txt\_record\_id](#output\_azurerm\_dns\_txt\_record\_id) | list of exported id attribute values from the DNS TXT record sets |
   
 <details>
-
 <summary><b>Using the outputs in the root module</b</summary>
-
-#### Examples
 
 Output - IDs of all groups using 'azurerm_dns_zone' output:
 
-<pre>
+```
 output "azurerm_dns_zone_id_all_groups" {
     value = toset([
         for object_id in module.azurerm_dns : object_id.azurerm_dns_zone_id
     ])
 }
-</pre>
+```
 
 ...or directly via 'azurerm_dns_zone_id' output:
 
-<pre>
+```
 output "azurerm_dns_zone_id_all_groups" {
     value = values(module.azurerm_dns).*.azurerm_dns_zone_id
 }
-
-</pre>
+```
 
 Output - ID of a single specified group using 'azurerm_dns_zone_id' output:
 
