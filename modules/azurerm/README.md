@@ -30,7 +30,8 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azurerm
 - [x] Create and manage public DNS recordsets for all available record types in the DNS zone
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [ ] \(Optional) Apply input variable validation rules if necessary to match business standards
-- [ ] Create and manage modules outputs
+- [x] Create and manage modules outputs for DNS zones
+- [ ] Create and manage modules outputs for DNS recordsets
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
 
@@ -43,6 +44,6 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azurerm
 - [x] Create and manage a custom Azure role
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [ ] \(Optional) Apply input variable validation rules if necessary to match business standards
-- [ ] Create and manage modules outputs
-- [ ] Document module with README.md
+- [x] Create and manage modules outputs
+- [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
