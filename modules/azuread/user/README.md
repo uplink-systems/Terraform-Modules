@@ -36,7 +36,7 @@ This module is intended to create Cloud-only user accounts in Azure AD with 'use
 | <a name="output_azuread_user_credential_csv"></a> [azuread\_user\_credential\_csv](#output\_azuread\_user\_credential\_csv) | list of exported azruead_user.user_principal_name and random_string.password.result attribute values as comma-separated values from all users |
 
 >[!IMPORTANT]
->Apart from that the module exports each user's username and passwort physically as text file by default using 'local_file' resources (export can be prevented by setting *var.user.export.enabled* value to 'false'). Path and filename have defaule values but can be modified by configuring *var.user.export.path* and *var.user.export.file* (see section \"Variables / Locals\"). |
+>Apart from that the module exports each user's username and passwort physically as text file by default using 'local_file' resources (export can be prevented by setting *var.user.export.enabled* value to 'false'). Path and filename have default values but can be modified by configuring *var.user.export.path* and *var.user.export.file* (see section \"Variables / Locals\"). |
 
 <details>
 <summary><b>Using module output in root module</b></summary>
