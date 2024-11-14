@@ -46,6 +46,12 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 
 [Module README](project/README.md)
 
+- [x] Create and manage basic project with default team and git repository
+- [x] Add and manage project pipeline settings to the project
+- [x] Manage default team's administrators with groups
+- [x] Manage "Project Administrators" group membership
+- [ ] \(Optional) Review code for optional improvements
+
 #### Module 'project_git_repository'
 
 [Module README](project_git_repository/README.md)
@@ -65,7 +71,3 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 #### Module 'project_workitem'
 
 [Module README](project_workitem/README.md)
-
-### Known Issues
-
-n/a  
