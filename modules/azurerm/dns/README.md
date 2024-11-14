@@ -80,7 +80,7 @@ The module is planned to generate the following outputs for the DNS recordsets (
 
 <details>
 
-<summar>Using the outputs in the root module</summary>
+<summary>###Using the outputs in the root module</summary>
 
 #### Using the outputs in the root module
 
