@@ -2,7 +2,7 @@
 
 ### Description
 
-This module is intended to create Cloud-only user accounts in Azure AD with 'user_type' **Member*. The module manages user accounts and admin accounts and scopes all attributes available in the provider. It is designed to handle multiple users or even all users using for_each loop in the root module.  
+This module is intended to create Cloud-only user accounts in Azure AD with 'user_type' *Member*. The module manages user accounts and admin accounts and scopes all attributes available in the provider. It is designed to handle multiple users or even all users using for_each loop in the root module.  
 
 ### Requirements
 
