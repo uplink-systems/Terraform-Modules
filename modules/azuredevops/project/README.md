@@ -51,7 +51,8 @@ The module **project** manages Azure DevOps projects. This includes the project 
 
 <details>
 <summary><b>Default <i>git_repository</i> resource automatically created with a project</b></summary>
-  
+
+######
 A new created project in Azure Devops automatically generates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled). This is by design and can't be suppressed.  
   
 If the default resource should or need to be used, it can only be managed if it is imported. The *project* module provides explicit output to use as import sources.  
@@ -60,27 +61,28 @@ If the default resource should or need to be used, it can only be managed if it 
 
 If an import is necessary one can use the following code snippet:
 
-<pre>
+```
 import {
   id = module.<i>&lt;project-module-name&gt;</i>.import_id_git_repository
   to = module.<i>&lt;git-repository-module-name&gt;</i>.azuredevops_git_repository.git_repository
 }
-</pre>
+```
 
 > **[IMPORTANT]**  
 > Remove the 'import' block from code after importing the resource into Terraform state!
 
 If the default repository has been imported into Terraform state, deleting a project via *terraform destroy* command will fail. This is also by design because the default repository resource cannot be deleted on its own but has to be deleted via the project resource. Remove the imported resource manually from Terraform state before executing the destroy-command to workaround this:  
 
-<pre>
+```
 terraform state rm module.<i>&lt;git-repository-module-name&gt;</i>.azuredevops_git_repository.git_repository
-</pre>
+```
 
 </details>
 
 <details>
 <summary><b>Default <i>team</i> resource automatically created with a project</b></summary>
 
+######
 A new created project in Azure Devops automatically generates a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.  
   
 If the default resource should or need to be used, it can only be managed if it is imported. The *project* module provides explicit output to use as import sources.  
@@ -89,21 +91,21 @@ If the default resource should or need to be used, it can only be managed if it 
 
 If an import is necessary one can use the following code snippet:
 
-<pre>
+```
 import {
   id = module.<i>&lt;project-module-name&gt;</i>.import_id_team
   to = module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
 }
-</pre>
+```
 
 > **[IMPORTANT]**  
 > Remove the 'import' block from code after importing the resource into Terraform state!
 
 If the default team has been imported into Terraform state, deleting a project via *terraform destroy* command will fail. This is also by design because the default team resource cannot be deleted on their own but has to be deleted via the project resource. Remove the imported resource manually from Terraform state before executing the destroy-command to workaround this:  
 
-<pre>
+```
 terraform state rm module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
-</pre>
+```
 
 </details>
   

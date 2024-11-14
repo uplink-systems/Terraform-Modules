@@ -31,7 +31,12 @@ The module **project_workitem** manages Azure DevOps project work items. This in
 
 ### Known Issues
 
-n/a
+<details>
+<summary><b>n/a</b></summary>
+
+######
+  
+</details>
 
 ### Misc. Notes
 

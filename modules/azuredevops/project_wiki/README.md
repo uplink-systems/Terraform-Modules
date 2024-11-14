@@ -5,7 +5,7 @@
 
 ### Description
 
-The module **poroject_wiki** manages Azure DevOps wikis. This includes project wikis as well as code wikis. Because of the known issues mentioned below, 'codeWiki' is the module's default wiki type and creating a projectWiki must be specified explicitely.  
+The module **poroject_wiki** manages Azure DevOps wikis. This includes project wikis as well as code wikis. Because of the known issues mentioned below, *codeWiki* is the module's default wiki type and creating a *projectWiki* must be specified explicitely.  
 
 ### Requirements
 
@@ -34,16 +34,22 @@ The module **poroject_wiki** manages Azure DevOps wikis. This includes project w
 
 ### Known Issues
 
-#### Changing Wiki type
+<details>
+<summary><b>Changing Wiki type</b></summary>
 
+######
 Changing the Wiki type from codeWiki to projectWiki and vice versa is not supported. While changing from codeWiki to projectWiki is working, the other way round is not.  
+######
+</details>
 
-#### Destroying a Wiki
+<details>
+<summary><b>Removing a Wiki</b></summary>
 
-Destroying a Wiki of type codeWiki is supported and working. Destroying a Wiki of type projectWiki is not supported and not working. This is by design and cannot be worked around.  
-  
-> [!WARNING]  
-> Destroying the whole project via <i>terraform destroy</i> or by removing the resources from code is no longer working as soon as a Wiki of type projectWiki is created. This is caused by the known issue mentioned above. Therefore, use projectWiki with care!  
+######
+Removing/destroying a Wiki of type *codeWiki* is supported and working. Removing/destroying a Wiki of type *projectWiki* is not supported and not working. This is by design and cannot be worked around.  
+Removing/destroying the whole project via *terraform destroy* or by removing the resources from code is no longer working as soon as a Wiki of type *projectWiki* is created. This is caused by the known issue mentioned above. Therefore, use *projectWiki* with care!  
+######
+</details>
   
 ---
   

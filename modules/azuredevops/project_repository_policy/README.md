@@ -30,9 +30,14 @@ The module **project_repository_policy** manages Azure DevOps project and/or rep
 | <a name="output_repository_policy_max_path_length"></a> [repository\_policy\_max\_path\_length](#output\_repository\_policy\_max\_path\_length) | list of all exported attributes values from the repository_policy_max_path_length resource |
 | <a name="output_repository_policy_reserved_names"></a> [repository\_policy\_reserved\_names](#output\_repository\_policy\_reserved\_names) | list of all exported attributes values from the repository_policy_reserved_names resource |
 
-### Known Issues / Open Issues
+### Known Issues
 
-n/a
+<details>
+<summary><b>n/a</b></summary>
+
+######
+  
+</details>
 
 ---  
   
