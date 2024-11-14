@@ -49,6 +49,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Create and manage a user entitlement for all affected users.
 - [x] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [x] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [x] Create and manage modules outputs
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
 
@@ -64,6 +65,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Manage "Project Administrators" group membership
 - [x] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [x] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [x] Create and manage modules outputs
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
 
@@ -76,6 +78,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Create and manage a project git repository
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [x] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [x] Create and manage modules outputs
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
 
@@ -94,6 +97,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [ ] Create and manage a project repository reserved names policy
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [ ] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [ ] Create and manage modules outputs
 - [ ] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
 
@@ -108,6 +112,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Manage a project team's members using groups
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [X] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [x] Create and manage modules outputs
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
 
@@ -121,6 +126,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Create and manage a code wikis
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [ ] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [x] Create and manage modules outputs
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
 
@@ -133,5 +139,6 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Create and manage a project workitems
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [ ] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [x] Create and manage modules outputs
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates

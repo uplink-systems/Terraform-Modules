@@ -56,26 +56,29 @@ module "azurerm_dns" {
 
   
 The module is planned to generate the following outputs for the DNS recordsets (development in progress):  
-1) <b>azurerm_dns_a_record</b>          => list of all exported attributes values from all DNS A record sets  
-2) <b>azurerm_dns_aaaa_record</b>       => list of all exported attributes values from all DNS AAA record sets  
-3) <b>azurerm_dns_caa_record</b>        => list of all exported attributes values from all DNS CAA record sets  
-4) <b>azurerm_dns_cname_record</b>      => list of all exported attributes values from all DNS CNAME record sets  
-5) <b>azurerm_dns_mx_record</b>         => list of all exported attributes values from all DNS MX record sets  
-6) <b>azurerm_dns_ns_record</b>         => list of all exported attributes values from all DNS NS record sets  
-7) <b>azurerm_dns_soa_record</b>        => list of all exported attributes values from all DNS SOA record sets  
-8) <b>azurerm_dns_srv_record</b>        => list of all exported attributes values from all DNS SRV record sets  
-9) <b>azurerm_dns_txt_record</b>       => list of all exported attributes values from all DNS TXT record sets  
-10) <b>azurerm_dns_a_record_id</b>      => list of exported id attribute values from all DNS A record sets  
-11) <b>azurerm_dns_aaaa_record_id</b>   => list of exported id attribute values from all DNS AAA record sets  
-12) <b>azurerm_dns_caa_record_id</b>    => list of exported id attribute values from all DNS CAA record sets  
-13) <b>azurerm_dns_cname_record_id</b>  => list of exported id attribute values from all NS CNAME record sets  
-14) <b>azurerm_dns_mx_record_id</b>     => list of exported id attribute values from all DNS MX record sets  
-15) <b>azurerm_dns_ns_record_id</b>     => list of exported id attribute values from all DNS NS record sets  
-16) <b>azurerm_dns_soa_record_id</b>    => list of exported id attribute values from all DNS SOA record sets  
-17) <b>azurerm_dns_srv_record_id</b>    => list of exported id attribute values from all DNS SRV record sets  
-18) <b>azurerm_dns_txt_record_id</b>    => list of exported id attribute values from all DNS TXT record sets  
   
-#### Using module output in root module
+| Name | Description |
+|------|-------------|
+| <a name="output_azurerm_dns_a_record"></a> [azurerm\_dns\_a\_record](#output\_azurerm\_dns\_a\_record) | list of all exported attributes values from the DNS A record sets  |
+| <a name="output_azurerm_dns_aaaa_record"></a> [azurerm\_dns\_aaaa\_record](#output\_azurerm\_dns\_aaaa\_record) | list of all exported attributes values from the DNS AAAA record sets  |
+| <a name="output_azurerm_dns_caa_record"></a> [azurerm\_dns\_caa\_record](#output\_azurerm\_dns\_caa\_record) | list of all exported attributes values from the DNS CAA record sets  |
+| <a name="output_azurerm_dns_cname_record"></a> [azurerm\_dns\_cname\_record](#output\_azurerm\_dns\_cname\_record) | list of all exported attributes values from the DNS CNAME record sets  |
+| <a name="output_azurerm_dns_mx_record"></a> [azurerm\_dns\_mx\_record](#output\_azurerm\_dns\_mx\_record) | list of all exported attributes values from the DNS MX record sets  |
+| <a name="output_azurerm_dns_ns_record"></a> [azurerm\_dns\_ns\_record](#output\_azurerm\_dns\_ns\_record) | list of all exported attributes values from the DNS NS record sets  |
+| <a name="output_azurerm_dns_soa_record"></a> [azurerm\_dns\_soa\_record](#output\_azurerm\_dns\_soa\_record) | list of all exported attributes values from the DNS SOA record sets  |
+| <a name="output_azurerm_dns_srv_record"></a> [azurerm\_dns\_srv\_record](#output\_azurerm\_dns\_srv\_record) | list of all exported attributes values from the DNS SRV record sets  |
+| <a name="output_azurerm_dns_txt_record"></a> [azurerm\_dns\_txt\_record](#output\_azurerm\_dns\_txt\_record) | list of all exported attributes values from the DNS TXT record sets  |
+| <a name="output_azurerm_dns_a_record_id"></a> [azurerm\_dns\_a\_record\_id](#output\_azurerm\_dns\_a\_record\_id) | list of exported id attribute values from the DNS A record sets  |
+| <a name="output_azurerm_dns_aaaa_record_id"></a> [azurerm\_dns\_aaaa\_record\_id](#output\_azurerm\_dns\_aaaa\_record\_id) | list of exported id attribute values from the DNS AAAA record sets |
+| <a name="output_azurerm_dns_caa_record_id"></a> [azurerm\_dns\_caa\_record\_id](#output\_azurerm\_dns\_caa\_record\_id) | list of exported id attribute values from the DNS CAA record sets |
+| <a name="output_azurerm_dns_cname_record_id"></a> [azurerm\_dns\_cname\_record\_id](#output\_azurerm\_dns\_cname\_record\_id) | list of exported id attribute values from the DNS CNAME record sets |
+| <a name="output_azurerm_dns_mx_record_id"></a> [azurerm\_dns\_mx\_record\_id](#output\_azurerm\_dns\_mx\_record\_id) | list of exported id attribute values from the DNS MX record sets |
+| <a name="output_azurerm_dns_ns_record_id"></a> [azurerm\_dns\_ns\_record\_id](#output\_azurerm\_dns\_ns\_record\_id) | list of exported id attribute values from the DNS NS record sets |
+| <a name="output_azurerm_dns_soa_record_id"></a> [azurerm\_dns\_soa\_record\_id](#output\_azurerm\_dns\_soa\_record\_id) | list of exported id attribute values from the DNS SOA record sets |
+| <a name="output_azurerm_dns_srv_record_id"></a> [azurerm\_dns\_srv\_record\_id](#output\_azurerm\_dns\_srv\_record\_id) | list of exported id attribute values from the DNS SRV record sets |
+| <a name="output_azurerm_dns_txt_record_id"></a> [azurerm\_dns\_txt\_record\_id](#output\_azurerm\_dns\_txt\_record\_id) | list of exported id attribute values from the DNS TXT record sets |
+
+#### Using the outputs in the root module
 
 ##### Examples
 
