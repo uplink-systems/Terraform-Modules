@@ -118,8 +118,6 @@ output "azurerm_dns_zone_id_group_1" {
 
 ### Known Issues
 
-The module is affected by the following known issues:
-
 n/a
   
 ---
