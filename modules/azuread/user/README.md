@@ -205,15 +205,13 @@ The value for *var.user.is_admin* (true/false) is used to force the use of admin
 * 'local.domain_name' --> force 'initial' domain as domain suffix  
 * ... and more ...  
 
-[^1]: 'var.user.export'
+[^1]: <b>'var.user.export'</b>: 
   The value of *var.user.export.enabled* specifies if the module exports the user's credentials to an output file (true) or not (false). The default value is 'true' if no other value is provided. The values for *var.user.export.path* and *var.user.export.file* represent the path and name of the credential export file to create. The module has a default value \"${path.root}/files/export/azuread/user\" for *var.user.export.path* and an auto-build rule for *var.user.export.file* using the created *local.given_names*, *local.surname* values.
   Therefore, *var.user.export.enabled* must be specified only if credentials shall not be exported and *var.user.export.path* and/or *var.user.export.file* only if the value/rule shall not apply.  
-  
   <b>'var.user.export.path'</b>   
   The value for *var.user.export.path* must be in Unix style (using forward slashes) even if Terraform is running on Windows.  
   Examples for valid paths:  
-  
-  <pre>
+   <pre>
   /terraform/files/output
   ./terraform/files/output
   ../terraform/files/output
