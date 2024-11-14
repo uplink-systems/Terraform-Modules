@@ -118,7 +118,9 @@ The module currently generates the following outputs:
 2) <b>azuread_user_credential</b> => list of exported azruead_user.user_principal_name, random_string.password.result and local_file.azuread_user_credential[0].id attribute values as map from all users   
 3) <b>azuread_user_credential_csv</b> => list of exported azruead_user.user_principal_name and random_string.password.result attribute values as comma-separated values from all users 
 
-#### Using module output in root module
+
+<details>
+<summary><b>Using module output in root module</b></summary>
 
 ##### Examples
 
@@ -137,24 +139,31 @@ output "azuread_user_credentials" {
   value       = values(module.azuread_user).*.azuread_user_credential
 }
 </pre>
+</details>
 
 ### Known Issues
 
-The module is affected by the following known issues:  
+<details>
+<summary><b>Passwords with 'random_string' resources</b></summary>
 
-#### Passwords with 'random_string' resources
-
+######
 The module uses 'random_string' resources to generate the users' passwords instead of 'random_password'. Using 'random_string' is "easier" for a user mass deployment as this lets Terraform output the password in plain text instead of sensitive values like 'random_password' does.  
 This should be changed for security reasons!  
+######
+</details>
 
-#### Parental control attributes
+<details>
+<summary><b>Parental control attributes</b></summary>
 
+######
 The attributes 'parental_control.age_group' and 'parental_control.consent_provided_for_minor' can't be configured in one apply run. This is by design. The attribute 'parental_control.age_group' must be configured prior to 'parental_control.consent_provided_for_minor'.  
+######
+</details>
 
-### Future implementations
+<details>
+<summary><b>'sponsors'</b></summary>
 
-#### 'sponsors'
-
+######
 The Azure AD attribute 'sponsors' is already available in Azure AD and can be set via Entra ID admin portal. The implementation in the Azure AD provider is currently still missing at the time of writing but may probably be available in a future version. <i>var.user.sponsors</i> and <i>data.azuread_user.sponsors</i> is already made available in the module but is not yet having any impacts.  
 
 <pre>
@@ -164,9 +173,13 @@ resource "azuread_user" "user" {
   sponsors              = var.user.is_admin == false ? null : (var.user.sponsors == null ? null : data.azuread_users.sponsors.object_ids)
 }
 </pre>
+######
+</details>
 
-#### 'certificate_user_ids'
+<details>
+<summary><b>'certificate_user_ids'</b></summary>
 
+######
 The Azure AD attribute 'certificateUserIds' is already available in Azure AD and can be set via Entra ID admin portal. The implementation in the Azure AD provider is currently still missing at the time of writing but may probably be available in a future version.
 
 <pre>
@@ -187,3 +200,5 @@ The Azure AD attribute 'certificateUserIds' is already available in Azure AD and
     certificate_user_ids  = var.user.certificate_user_ids == null ? locals.certificate_user_ids : var.user.certificate_user_ids
   }
 </pre>
+######
+</details>
