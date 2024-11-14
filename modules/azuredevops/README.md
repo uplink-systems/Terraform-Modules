@@ -36,38 +36,74 @@ Resources related to Azure DevOps organization settings are out ouf scope, excep
 For an example how to use the modules please navigate to:  
 https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevops  
 
-### Modules
+## Modules
 
-#### Module 'organization_user_entitlement'
+### Module 'organization_user_entitlement'
 
 [Module README](organization_user_entitlement/README.md)
 
-#### Module 'project'
+### Module 'project'
 
-[Module README](project/README.md)
+[Module README](project/README.md)  
 
-- [x] Create and manage basic project with default team and git repository
+#### Tasks & ToDos
+
+- [x] Create and manage a project with default team and git repository
 - [x] Add and manage project pipeline settings to the project
-- [x] Manage default team's administrators with groups
+- [x] Manage default team's administrators using groups
 - [x] Manage "Project Administrators" group membership
 - [ ] \(Optional) Review code for optional improvements
 
-#### Module 'project_git_repository'
+### Module 'project_git_repository'
 
-[Module README](project_git_repository/README.md)
+[Module README](project_git_repository/README.md)  
 
-#### Module 'project_repository_policy'
+#### Tasks & ToDos
+
+- [x] Create and manage a project git repository
+- [ ] \(Optional) Review code for optional improvements
+
+### Module 'project_repository_policy'
 
 [Module README](project_repository_policy/README.md)
 
-#### Module 'project_team'
+#### Tasks & ToDos
+
+- [ ] Create and manage a project repository author email pattern policy
+- [ ] Create and manage a project repository case enforcement policy
+- [ ] Create and manage a project repository check credentials policy
+- [ ] Create and manage a project repository file path pattern policy
+- [ ] Create and manage a project repository max file size policy
+- [ ] Create and manage a project repository max path length policy
+- [ ] Create and manage a project repository reserved names policy
+- [ ] \(Optional) Review code for optional improvements
+
+### Module 'project_team'
 
 [Module README](project_team/README.md)
 
-#### Module 'project_wiki'
+#### Tasks & ToDos
+
+- [x] Create and manage a project team
+- [x] Manage a project team's administrators using groups
+- [x] Manage a project team's members using groups
+- [ ] \(Optional) Review code for optional improvements
+
+### Module 'project_wiki'
 
 [Module README](project_wiki/README.md)
 
-#### Module 'project_workitem'
+#### Tasks & ToDos
+
+- [x] Create and manage a project wikis
+- [x] Create and manage a code wikis
+- [ ] \(Optional) Review code for optional improvements
+
+### Module 'project_workitem'
 
 [Module README](project_workitem/README.md)
+
+#### Tasks & ToDos
+
+- [x] Create and manage a project workitems
+- [ ] \(Optional) Review code for optional improvements
