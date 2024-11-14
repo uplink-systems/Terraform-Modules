@@ -3,7 +3,7 @@
 ### Description
 
 The module **organization_user_entitlement** manages Azure DevOps user entitlements for the organization.  
-It's purpose is:
+It configures the following:  
 * **user_entitlement**: add users from the connected Azure AD tenant to the organization's users via user entitlement
 
 #### How does it work?
@@ -50,5 +50,7 @@ n/a
 
 This module was thankfully kind of \"forked\", inspired by and customized to my business needs from:  
 **[My Tech Ramblings](https://www.mytechramblings.com/posts/automate-azure-devops-setup-using-terraform/)**  
+  
+---
   
 [Back to README.md](../README.md)  
