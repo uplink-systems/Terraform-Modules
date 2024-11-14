@@ -42,7 +42,12 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 
 ### Known Issues
 
-n/a
+<details>
+<summary><b>n/a</b></summary>
+
+######
+  
+</details>
 
 ### Sources
 
