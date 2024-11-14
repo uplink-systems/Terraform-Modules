@@ -52,9 +52,17 @@ It configures the following:
 | <a name="ouput_import_id_team"></a> [import_id_team](#output\_import\_id\_team) | output of a formatted id needed to import the team resource to Terraform state |
 | <a name="ouput_import_id_git_repository"></a> [import_id_git_repository](#output\_import\_id\_git\_repository) | output of a formatted id needed to import the git_resource resource to Terraform state |
 
-### Known Issues / Open Issues
+### Task List & Open/Closed Issues
 
-#### Known: <i>git_repository</i> and <i>team</i> resources created with a project by default
+- [x] Create basic AzDO project with default team and git repository
+- [x] Add pipeline settings to the project
+- [x] Configure default team's administrators as group
+- [x] Configure "Project Administrators" group membership
+- [ ] \(Optional) Review code for optional improvements
+
+### Known Issues
+
+#### <i>git_repository</i> and <i>team</i> resources created with a project by default
  
 A new created project in Azure Devops automatically generates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled) and a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.  
   
