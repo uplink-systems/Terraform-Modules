@@ -40,7 +40,16 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 
 ### Module 'organization_user_entitlement'
 
-[Module README](organization_user_entitlement/README.md)
+[Module README](organization_user_entitlement/README.md)  
+
+#### Tasks & ToDos
+
+- [x] Get AzDO-related groups from a connected Microsoft Entra directory
+- [x] Build (flattened) user list from the AzDO-related groups
+- [x] Create and manage a user entitlement for all affected users.
+- [X] \(Optional) Apply input variable validation rules if necessary to match available resource values
+- [X] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [ ] \(Optional) Review code regularly for possible improvements and updates
 
 ### Module 'project'
 
@@ -52,7 +61,9 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Add and manage project pipeline settings to the project
 - [x] Manage default team's administrators using groups
 - [x] Manage "Project Administrators" group membership
-- [ ] \(Optional) Review code for optional improvements
+- [X] \(Optional) Apply input variable validation rules if necessary to match available resource values
+- [X] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [ ] \(Optional) Review code regularly for possible improvements and updates
 
 ### Module 'project_git_repository'
 
@@ -61,7 +72,9 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 #### Tasks & ToDos
 
 - [x] Create and manage a project git repository
-- [ ] \(Optional) Review code for optional improvements
+- [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
+- [X] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [ ] \(Optional) Review code regularly for possible improvements and updates
 
 ### Module 'project_repository_policy'
 
@@ -76,7 +89,9 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [ ] Create and manage a project repository max file size policy
 - [ ] Create and manage a project repository max path length policy
 - [ ] Create and manage a project repository reserved names policy
-- [ ] \(Optional) Review code for optional improvements
+- [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
+- [ ] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [ ] \(Optional) Review code regularly for possible improvements and updates
 
 ### Module 'project_team'
 
@@ -87,7 +102,9 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Create and manage a project team
 - [x] Manage a project team's administrators using groups
 - [x] Manage a project team's members using groups
-- [ ] \(Optional) Review code for optional improvements
+- [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
+- [X] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [ ] \(Optional) Review code regularly for possible improvements and updates
 
 ### Module 'project_wiki'
 
@@ -97,7 +114,9 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 
 - [x] Create and manage a project wikis
 - [x] Create and manage a code wikis
-- [ ] \(Optional) Review code for optional improvements
+- [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
+- [ ] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [ ] \(Optional) Review code regularly for possible improvements and updates
 
 ### Module 'project_workitem'
 
@@ -106,4 +125,6 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 #### Tasks & ToDos
 
 - [x] Create and manage a project workitems
-- [ ] \(Optional) Review code for optional improvements
+- [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
+- [ ] \(Optional) Apply input variable validation rules if necessary to match the business standards
+- [ ] \(Optional) Review code regularly for possible improvements and updates
