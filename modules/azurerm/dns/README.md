@@ -1,36 +1,26 @@
-## Module Description
+## Module 'dns'
 
-### Purpose
+### Description
 
 This module is intended to create public DNS zones and resource record sets in Azure RM. The module only manages forward lookup zones. Reverse lookup zones are currently not in scope of this module.  
-
-### Example
-
+  
 For an example how to use this module please navigate to: https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azurerm/dns
 
-### Versions
+### Requirements
 
-This module was tested with the following Terraform and provider versions before release:
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.0 |
 
-<pre>
-terraform {
-  required_version = "= 1.9.6"
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "= 4.8.0"
-    }
-  }
-}
-</pre>
+### Resources
 
-Other version might work but are not tested by the developer of the module.
+| Name | Type |
+|------|------|
+| [azurerm_dns_zone.zone](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dns_zone) | resource |
 
-### Files
 
-n/a  
-
-### Variables
+## Variables
 
 #### 'var.zone'
 
@@ -60,13 +50,22 @@ module "azurerm_dns" {
 }
 </pre>
 
+### Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_zone"></a> [zone](#input\_zone) | 'var.zone' is the main variable for azurerm_dns zone resource attributes | <pre>type = object({<br>  name                = string<br>  resource_group_name = string<br>  tags                = optional(map(string))<br>})<br></pre> | none | yes |
+| <a name="input_recordset"></a> [recordset](#input\_recordset) | 'var.recordset' is the main variable for azurerm_dns recordset resource attributes and can contain all types of recordsets that can be managed via Terraform | <pre> tbd </pre> | {} | no |
+
 ### Outputs
 
-The module currently generates the following outputs for the DNS zone:  
-1) <b>azurerm_dns_zone</b> => list of all exported attributes values from the DNS zone  
-2) <b>azurerm_dns_zone_id</b> => list of exported id attribute values from the DNS zone  
-3) <b>azurerm_dns_zone_name_servers</b> => list of exported name_servers attribute values from the DNS zone  
-4) <b>azurerm_dns_zone_number_of_record_sets</b> => list of exported number_of_record_sets attribute values from the DNS zone  
+| Name | Description |
+|------|-------------|
+| <a name="output_azurerm_dns_zone"></a> [azurerm\_dns\_zone](#output\_azurerm\_dns\_zone) | list of all exported attributes values from the DNS zone |
+| <a name="output_azurerm_dns_zone_id"></a> [azurerm\_dns\_zone\_id](#output\_azurerm\_dns\_zone\_) | list of exported id attribute values from the DNS zone |
+| <a name="output_azurerm_dns_zone_name_servers"></a> [azurerm\_dns\_zone\_name\_servers](#output\_azurerm\_dns\_zone\_name\_servers) | list of exported name_servers attribute values from the DNS zone |
+| <a name="output_azurerm_dns_zone_number_of_record_sets"></a> [azurerm\_dns\_zone\_number\_of\_record\_sets](#output\_azurerm\_dns\_zone\_number\_of\_record\_sets) | list of exported number_of_record_sets attribute values from the DNS zone |
+
   
 The module is planned to generate the following outputs for the DNS recordsets (development in progress):  
 1) <b>azurerm_dns_a_record</b>          => list of all exported attributes values from all DNS A record sets  
@@ -124,3 +123,31 @@ output "azurerm_dns_zone_id_group_1" {
 The module is affected by the following known issues:
 
 n/a
+ 
+A new created project in Azure Devops automatically generates a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.  
+  
+If the default resource should or need to be used, it can only be managed if it is imported. The *project* module provides explicit output to use as import sources.  
+
+*Best Practice*/*Recommendation*: The *azuredevops_team* resource can only manage the team's name, description, administrators and members. Name and description should not be changed for the defaul team. Administrators and members can be managed using *azuredevops_team_administrators* and *azuredevops_team_members* resources. Therefore, it is not necessary to import the team into Terraform state.  
+
+If an import is necessary one can use the following code snippet:
+
+<pre>
+import {
+  id = module.<i>&lt;project-module-name&gt;</i>.import_id_team
+  to = module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
+}
+</pre>
+
+> [!IMPORTANT]  
+> Remove the 'import' block from code after importing the resource into Terraform state!
+
+If the default team has been imported into Terraform state, deleting a project via *terraform destroy* command will fail. This is also by design because the default team resource cannot be deleted on their own but has to be deleted via the project resource. Remove the imported resource manually from Terraform state before executing the destroy-command to workaround this:  
+
+<pre>
+terraform state rm module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
+</pre>
+  
+---
+  
+[Back to README.md](../README.md)  

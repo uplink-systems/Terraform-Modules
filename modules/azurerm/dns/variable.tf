@@ -4,7 +4,7 @@
 
 variable "zone" {
   description = <<-EOF
-    'var.zone' is the main variable for azurerm_dns zone resource settings.
+    'var.zone' is the main variable for azurerm_dns zone resource attributes
   EOF
   type = object({
     name                = string
@@ -15,8 +15,8 @@ variable "zone" {
 
 variable "recordset" {
   description = <<-EOF
-    'var.recordset' is the main variable for azurerm_dns recordset resource settings.
-    It can contain all types of recordsets that can be managed via Terraform.
+    'var.recordset' is the main variable for azurerm_dns recordset resource attributes and 
+    can contain all types of recordsets that can be managed via Terraform.
   EOF
   type        = object({
     a           = optional(map(object({
