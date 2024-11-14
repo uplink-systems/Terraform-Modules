@@ -13,7 +13,7 @@ variable "invitation" {
     user_type           = optional(string, null)
     message             = optional(object({
       enabled               = optional(bool, true)
-      additional_recipients = optional(list(string), null)  # optional(list(string), [])
+      additional_recipients = optional(list(string), null)
       body                  = optional(string, null)
       language              = optional(string, null)
     }), { enabled = false })

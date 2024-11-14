@@ -3,10 +3,6 @@
 ### Description
 
 This module is intended to create Cloud-only user accounts in Azure AD with 'user_type' **Member*. The module manages user accounts and admin accounts and scopes all attributes available in the provider. It is designed to handle multiple users or even all users using for_each loop in the root module.  
-  
-**Please note that the module and its settings/results are build and optimized for Uplink Systems' internal requirements and conventions (e.g. users use the company's custom domain as UPN suffix whereas admins use the initial domain)! These settings have to be customized to your own needs.**  
-
-For an example how to use this module please navigate to: https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuread/user 
 
 ### Requirements
 
@@ -16,6 +12,14 @@ For an example how to use this module please navigate to: https://github.com/upl
 | <a name="requirement_azuread"></a> [hashicorp\/azuread](#requirement\_azuread) | ~> 3.0 |
 | <a name="requirement_local"></a> [hashicorp\/local](#requirement\_local) | ~> 2.5 |
 | <a name="requirement_random"></a> [hashicorp\/random](#requirement\_random) | ~> 3.6 |
+
+### Resources
+
+| Name | Type |
+|------|------|
+| [azuread_user.user](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/user) | resource |
+| [local_file.credential](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
+| [random_string.password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 
 ### Inputs
 
@@ -41,19 +45,19 @@ For an example how to use this module please navigate to: https://github.com/upl
 
 Output - UPNs of all users using 'azuread_user' output:  
 
-<pre>
+```
 output "azuread_user_user_principal_name" {
   value   = values(module.azuread_user).*.azuread_user.user_principal_name
 }
-</pre>
+```
 
 Output - Credential details of all users using 'azuread_user_credential' output:
 
-<pre>
+```
 output "azuread_user_credentials" {
   value   = values(module.azuread_user).*.azuread_user_credential
 }
-</pre>
+```
 </details>
 
 ### Known Issues
@@ -184,3 +188,7 @@ Examples for valid paths:
 ../terraform/files/output
 C:/terraform/files/output
 </pre>
+  
+---
+  
+[Back to README.md](../README.md)  
