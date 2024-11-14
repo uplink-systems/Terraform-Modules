@@ -90,6 +90,12 @@ Examples for valid paths:
 C:/terraform/files/output
 </pre>
 
+### Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_user"></a> [user](#input\_user) | 'var.user' is the main variable for azuread_user resource settings | <pre>type = object({<br>  given_name                  = string<br>  surname                     = string<br>  display_name                = optional(string, null)<br>  user_principal_name         = optional(string, null)<br>  account_enabled             = optional(bool, true)<br>  force_password_change       = optional(bool, true)<br>  disable_password_expiration = optional(bool, false)<br>  disable_strong_password     = optional(bool, false)<br>  is_admin                    = optional(bool, false)<br>  preferred_language          = optional(string, "en-US")<br>  usage_location              = optional(string, null)<br>  mail_nickname               = optional(string, null)<br>  mail                        = optional(string, null)<br>  other_mails                 = optional(list(string), [])<br>  show_in_address_list        = optional(bool, true)<br>  employee_id                 = optional(string, null)<br>  employee_type               = optional(string, null)<br>  job_title                   = optional(string, null)<br>  company_name                = optional(string, null)<br>  division                    = optional(string, null)<br>  department                  = optional(string, null)<br>  cost_center                 = optional(string, null)<br>  manager_id                  = optional(string, null)<br>  sponsors                    = optional(list(string), [])<br>  country                     = optional(string, null)<br>  state                       = optional(string, null)<br>  postal_code                 = optional(string, null)<br>  city                        = optional(string, null)<br>  street_address              = optional(string, null)<br>  office_location             = optional(string, null)<br>  business_phones             = optional(list(string), [])<br>  mobile_phone                = optional(string, null)<br>  fax_number                  = optional(string, null)<br>  parental_control            = optional(object({<br>    enabled                     = optional(bool, true)<br>    age_group                   = optional(string, null)<br>    consent_provided_for_minor  = optional(string, null)<br>  }), { enabled = false })<br>  export                      = optional(object({<br>    enabled                     = optional(bool, true)<br>    file                        = optional(string, null)<br>    path                        = optional(string, null)<br>  }), { enabled = true })<br>})<br></pre> | none | yes |
+
 ### Outputs
 
 | Name | Description |
@@ -107,7 +113,7 @@ Output - UPNs of all users using 'azuread_user' output:
 
 <pre>
 output "azuread_user_user_principal_name" {
-  value       = values(module.azuread_user).*.azuread_user.user_principal_name
+  value   = values(module.azuread_user).*.azuread_user.user_principal_name
 }
 </pre>
 
@@ -115,7 +121,7 @@ Output - Credential details of all users using 'azuread_user_credential' output:
 
 <pre>
 output "azuread_user_credentials" {
-  value       = values(module.azuread_user).*.azuread_user_credential
+  value   = values(module.azuread_user).*.azuread_user_credential
 }
 </pre>
 </details>
@@ -140,10 +146,10 @@ The attributes 'parental_control.age_group' and 'parental_control.consent_provid
 </details>
 
 <details>
-<summary><b>'sponsors'</b></summary>
+<summary><b>(Optional) possible prospective attribute/feature: 'sponsors'</b></summary>
 
 ######
-The Azure AD attribute 'sponsors' is already available in Azure AD and can be set via Entra ID admin portal. The implementation in the Azure AD provider is currently still missing at the time of writing but may probably be available in a future version. *var.user.sponsors* and *data.azuread_user.sponsors* is already made available in the module but is not yet having any impacts.  
+The Azure AD attribute 'sponsors' is already available in Azure AD and can be set via Entra admin portal. The implementation in the Azure AD provider is currently still missing at the time of writing but may probably be available in a future version. *var.user.sponsors* and *data.azuread_user.sponsors* is already made available in the module but is not yet having any impacts until this feature becomes available.  
 
 <pre>
 #####  main.tf
@@ -156,10 +162,10 @@ resource "azuread_user" "user" {
 </details>
 
 <details>
-<summary><b>'certificate_user_ids'</b></summary>
+<summary><b>(Optional) possible prospective attribute/feature: 'certificate_user_ids'</b></summary>
 
 ######
-The Azure AD attribute 'certificateUserIds' is already available in Azure AD and can be set via Entra ID admin portal. The implementation in the Azure AD provider is currently still missing at the time of writing but may probably be available in a future version.
+The Azure AD attribute 'certificateUserIds' is already available in Azure AD and can be set via Entra admin portal. The implementation in the Azure AD provider is currently still missing at the time of writing but may probably be available in a future version.
 
 <pre>
 #####  variables.tf
@@ -181,3 +187,37 @@ The Azure AD attribute 'certificateUserIds' is already available in Azure AD and
 </pre>
 ######
 </details>
+
+
+
+
+## Footnotes
+
+[^1]:
+#### 'var.user.is_admin'
+
+The value for *var.user.is_admin* (true/false) is used to force the use of admin-related values for some attributes:  
+
+* 'random_string.password.length' --> force value '16' instead of default value '12'  
+* 'azuread_user.user.disable_strong_password' -> force value 'false'  
+* 'azuread_user.user.show_in_address_list' --> force value 'false'  
+* 'azuread_user.user.manager_id' --> force value 'null'  
+* 'local.domain_name' --> force 'initial' domain as domain suffix  
+* ... and more ...  
+
+[^2]:
+#### 'var.user.export.enabled', 'var.user.export.path' and 'var.user.export.file'
+
+The value of *var.user.export.enabled* specifies if the module exports the user's credentials to an output file (true) or not (false). The default value is 'true' if no other value is provided. The values for *var.user.export.path* and *var.user.export.file* represent the path and name of the credential export file to create. The module has a default value \"${path.root}/files/export/azuread/user\" for *var.user.export.path* and an auto-build rule for *var.user.export.file* using the created *local.given_names*, *local.surname* values.
+Therefore, *var.user.export.enabled* must be specified only if credentials shall not be exported and *var.user.export.path* and/or *var.user.export.file* only if the value/rule shall not apply.  
+  
+<b>'var.user.export.path'</b>   
+The value for *var.user.export.path* must be in Unix style (using forward slashes) even if Terraform is running on Windows.  
+Examples for valid paths:  
+
+<pre>
+/terraform/files/output
+./terraform/files/output
+../terraform/files/output
+C:/terraform/files/output
+</pre>
