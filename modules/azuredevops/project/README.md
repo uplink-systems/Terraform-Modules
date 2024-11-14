@@ -44,13 +44,13 @@ It configures the following:
 
 | Name | Description |
 |------|-------------|
-| <a name="ouput_project"></a> [project](#output\_project) | list of all exported attributes values from the project resource |
-| <a name="ouput_group_membership_project_administrators"></a> [group\_membership\_project\_administrators](#output\_group\_membership\_project\_administrators) | list of all exported attribute values from the group_membership.project_administrators resource |
-| <a name="ouput_project_pipeline_settings"></a> [project_pipeline_settings](#output\_project\_pipeline\_settings) | list of all exported attributes values from the project_pipeline_settings resource |
-| <a name="ouput_team"></a> [team](#output\_team) | list of all exported attributes values from the (project's default) team resource |
-| <a name="ouput_git_repository"></a> [git_repository](#output\_git\_repository) | list of all exported attributes values from the (project's default) git_repository resource |
-| <a name="ouput_import_id_team"></a> [import_id_team](#output\_import\_id\_team) | output of a formatted id needed to import the team resource to Terraform state |
-| <a name="ouput_import_id_git_repository"></a> [import_id_git_repository](#output\_import\_id\_git\_repository) | output of a formatted id needed to import the git_resource resource to Terraform state |
+| <a name="output_project"></a> [project](#output\_project) | list of all exported attributes values from the project resource |
+| <a name="output_group_membership_project_administrators"></a> [group\_membership\_project\_administrators](#output\_group\_membership\_project\_administrators) | list of all exported attribute values from the group_membership.project_administrators resource |
+| <a name="output_project_pipeline_settings"></a> [project\_pipeline\_settings](#output\_project\_pipeline\_settings) | list of all exported attributes values from the project_pipeline_settings resource |
+| <a name="output_team"></a> [team](#output\_team) | list of all exported attributes values from the (project's default) team resource |
+| <a name="output_git_repository"></a> [git\_repository](#output\_git\_repository) | list of all exported attributes values from the (project's default) git_repository resource |
+| <a name="output_import_id_team"></a> [import\_id\_team](#output\_import\_id\_team) | output of a formatted id needed to import the team resource to Terraform state |
+| <a name="output_import_id_git_repository"></a> [import\_id\_git\_repository](#output\_import\_id\_git\_repository) | output of a formatted id needed to import the git_resource resource to Terraform state |
 
 ### Known Issues
 

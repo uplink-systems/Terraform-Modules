@@ -39,8 +39,8 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 
 | Name | Description |
 |------|-------------|
-| <a name="ouput_user_entitlement"></a> [user\_entitlement](#output\_user\_entitlement) | list of all exported attributes values from the user_entitlement resource |
-| <a name="ouput_user_entitlement_user"></a> [user\_entitlement\_user](#output\_user\_entitlement\_user) | list of user_entitlement resource entitled users' display names |
+| <a name="output_user_entitlement"></a> [user\_entitlement](#output\_user\_entitlement) | list of all exported attributes values from the user_entitlement resource |
+| <a name="output_user_entitlement_user"></a> [user\_entitlement\_user](#output\_user\_entitlement\_user) | list of user_entitlement resource entitled users' display names |
 
 ### Known Issues
 
