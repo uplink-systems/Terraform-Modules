@@ -49,6 +49,10 @@ The module **project** manages Azure DevOps projects. This includes the project 
 
 ### Known Issues
 
+<details>
+
+<summary><b>Default <i>git_repository</i> resource automatically created with a project</b></summary>
+
 #### Default <i>git_repository</i> resource automatically created with a project
  
 A new created project in Azure Devops automatically generates a repository labeled as <i>&lt;name of project&gt;</i> (if repository feature is enabled). This is by design and can't be suppressed.  
@@ -75,6 +79,12 @@ If the default repository has been imported into Terraform state, deleting a pro
 terraform state rm module.<i>&lt;git-repository-module-name&gt;</i>.azuredevops_git_repository.git_repository
 </pre>
 
+</details>
+
+<details>
+
+<summary><b>Default <i>team</i> resource automatically created with a project</b></summary>
+
 #### Default <i>team</i> resource automatically created with a project
  
 A new created project in Azure Devops automatically generates a default team labeled as <i>&lt;name of project&gt; Team</i>. This is by design and can't be suppressed.  
@@ -100,6 +110,8 @@ If the default team has been imported into Terraform state, deleting a project v
 <pre>
 terraform state rm module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
 </pre>
+
+</details>
   
 ---
   

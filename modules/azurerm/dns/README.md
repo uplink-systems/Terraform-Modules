@@ -28,9 +28,7 @@ For an example how to use this module please navigate to: https://github.com/upl
   
 <details>
 <summary><b>Using the variables in the root module</b></summary>
-
-#### Using the variables in the root module
-
+  
 The following lines explain how the main variable in the root module has to be defined with minimum required settings if the module is used with a for_each loop and shall create multiple resources:  
 
 <pre>
@@ -85,7 +83,7 @@ The module is planned to generate the following outputs for the DNS recordsets (
   
 <details>
 
-<summary>Using the outputs in the root module</summary>
+<summary><b>Using the outputs in the root module</b</summary>
 
 #### Examples
 
