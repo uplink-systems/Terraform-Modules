@@ -13,7 +13,9 @@ For an example how to use this module please navigate to: https://github.com/upl
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
-| <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | ~> 3.0 |
+| <a name="requirement_azuread"></a> [hashicorp\/azuread](#requirement\_azuread) | ~> 3.0 |
+| <a name="requirement_local"></a> [hashicorp\/local](#requirement\_local) | ~> 2.5 |
+| <a name="requirement_random"></a> [hashicorp\/random](#requirement\_random) | ~> 3.6 |
 
 ### Inputs
 
