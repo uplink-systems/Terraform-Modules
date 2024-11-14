@@ -17,8 +17,8 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
-| <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) | ~> 1.4 |
-| <a name="requirement_azurerm"></a> [azuread](#requirement\_azuread) | ~> 3.0 |
+| <a name="requirement_azuredevops"></a> [microsoft\/azuredevops](#requirement\_azuredevops) | ~> 1.4 |
+| <a name="requirement_azurerm"></a> [hashicorp\/azuread](#requirement\_azuread) | ~> 3.0 |
 
 ### Resources
 
