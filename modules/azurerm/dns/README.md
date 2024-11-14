@@ -78,7 +78,9 @@ The module is planned to generate the following outputs for the DNS recordsets (
 | <a name="output_azurerm_dns_srv_record_id"></a> [azurerm\_dns\_srv\_record\_id](#output\_azurerm\_dns\_srv\_record\_id) | list of exported id attribute values from the DNS SRV record sets |
 | <a name="output_azurerm_dns_txt_record_id"></a> [azurerm\_dns\_txt\_record\_id](#output\_azurerm\_dns\_txt\_record\_id) | list of exported id attribute values from the DNS TXT record sets |
 
-#### Using the outputs in the root module
+<details>
+
+<summar>#### Using the outputs in the root module</summary>
 
 ##### Examples
 
@@ -108,6 +110,8 @@ output "azurerm_dns_zone_id_group_1" {
     value = module.azurerm_dns["<i>&lt;Terraform-Resource-Name&gt;</i>"].azurerm_dns_zone_id
 }
 </pre>
+
+</details>
 
 ### Known Issues
 
