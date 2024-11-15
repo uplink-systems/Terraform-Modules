@@ -23,6 +23,10 @@ variable "repository_policy" {
       enabled                 = false
       enforce_consistent_case = false
     })
+    check_credentials     = optional(object({
+      enabled                 = optional(bool, true)
+      blocking                = optional(bool, true)
+    }), { enabled = false })
     file_path_pattern     = optional(object({
       enabled                 = optional(bool, true)
       blocking                = optional(bool, true)

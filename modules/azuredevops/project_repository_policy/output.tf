@@ -12,6 +12,11 @@ output "repository_policy_case_enforcement" {
     value         = azuredevops_repository_policy_case_enforcement.case_enforcement
 }
 
+output "repository_policy_check_credentials" {
+    description   = "check_credentials attributes"
+    value         = azuredevops_repository_policy_check_credentials.check_credentials
+}
+
 output "repository_policy_file_path_pattern" {
     description   = "file_path_pattern attributes"
     value         = azuredevops_repository_policy_file_path_pattern.file_path_pattern

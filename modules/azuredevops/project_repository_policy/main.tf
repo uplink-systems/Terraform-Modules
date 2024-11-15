@@ -18,6 +18,13 @@ resource "azuredevops_repository_policy_case_enforcement" "case_enforcement" {
   enforce_consistent_case = var.repository_policy.case_enforcment.enforce_consistent_case
 }
 
+resource "azuredevops_repository_policy_check_credentials" "check_credentials" {
+  project_id              = var.repository_policy.project_id
+  repository_ids          = var.repository_policy.repository_ids
+  enabled                 = var.repository_policy.check_credentials.enabled
+  blocking                = var.repository_policy.check_credentials.blocking
+}
+
 resource "azuredevops_repository_policy_file_path_pattern" "file_path_pattern" {
   project_id              = var.repository_policy.project_id
   repository_ids          = var.repository_policy.repository_ids
