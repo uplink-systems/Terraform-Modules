@@ -63,6 +63,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 - [x] Add and manage project pipeline settings to the project
 - [x] Manage default team's administrators using groups
 - [x] Manage "Project Administrators" group membership
+- [ ] Opt-in to initialize the project's default repository and/or to disable it
 - [x] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [x] \(Optional) Apply input variable validation rules if necessary to match the business standards
 - [x] Create and manage modules outputs
