@@ -88,17 +88,17 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 
 #### Tasks & ToDos
 
-- [ ] Create and manage a project repository author email pattern policy
-- [ ] Create and manage a project repository case enforcement policy
-- [ ] Create and manage a project repository check credentials policy
-- [ ] Create and manage a project repository file path pattern policy
-- [ ] Create and manage a project repository max file size policy
-- [ ] Create and manage a project repository max path length policy
-- [ ] Create and manage a project repository reserved names policy
+- [x] Create and manage a project repository author email pattern policy
+- [x] Create and manage a project repository case enforcement policy
+- [x] Create and manage a project repository check credentials policy
+- [x] Create and manage a project repository file path pattern policy
+- [x] Create and manage a project repository max file size policy
+- [x] Create and manage a project repository max path length policy
+- [x] Create and manage a project repository reserved names policy
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [ ] \(Optional) Apply input variable validation rules if necessary to match the business standards
-- [ ] Create and manage modules outputs
-- [ ] Document module with README.md
+- [x] Create and manage modules outputs
+- [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
 
 ### Module 'project_team'

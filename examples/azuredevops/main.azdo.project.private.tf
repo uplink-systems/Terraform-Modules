@@ -20,7 +20,7 @@ module "team_private_team_01" {
     name                = "${module.project_private.project.name} Team 01"
     project_id          = module.project_private.project.id
   }
-  depends_on        = [ module.project_private ]
+  depends_on          = [ module.project_private ]
 }
 
 module "repository_private_repository_01" {
@@ -37,16 +37,17 @@ module "repository_private_repository_01" {
 
 module "workitem_private_workitem_01" {
   source          = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/project_workitem"
-  workitem = {
+  workitem        = {
     title                 = "${module.project_private.project.name} Workitem 01"
     project_id            = module.project_private.project.id
     type                  = "Issue"
     state                 = "New"
   }
+  depends_on        = [ module.project_private ]
 }
 
 module "repository_policy_private_project_repository_policy" {
-  source          = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/project_repository_policy"
+  source            = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/project_repository_policy"
   repository_policy = {
     project_id            = module.project_private.project.id
     author_email_pattern  = {
@@ -56,4 +57,5 @@ module "repository_policy_private_project_repository_policy" {
       max_file_size         = 100
     }
   }
+  depends_on        = [ module.project_private ]
 }

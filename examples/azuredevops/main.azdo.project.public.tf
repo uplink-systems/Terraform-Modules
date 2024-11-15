@@ -41,11 +41,12 @@ module "repository_public_repository_01" {
 
 module "workitem_public_workitem_01" {
   source          = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/workitem"
-  workitem = {
+  workitem        = {
     title                 = "${module.project_public.project.name} Workitem 01"
     project_id            = module.project_public.project.id
     type                  = "User Story"
   }
+  depends_on        = [ module.project_public ]
 }
 
 module "repository_policy_private_repository_policy_01" {
@@ -60,5 +61,6 @@ module "repository_policy_private_repository_policy_01" {
       max_path_length       = 256
     }
   }
+  depends_on        = [ module.project_public,module.repository_public_repository_01 ]
 }
 
