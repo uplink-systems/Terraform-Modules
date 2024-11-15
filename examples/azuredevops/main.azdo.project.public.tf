@@ -47,3 +47,18 @@ module "workitem_public_workitem_01" {
     type                  = "User Story"
   }
 }
+
+module "repository_policy_private_repository_policy_01" {
+  source            = "github.com/uplink-systems/Terraform-Modules//modules/azuredevops/project_repository_policy"
+  repository_policy = {
+    project_id            = module.project_public.project.id
+    repository_ids        = ["repository_public_repository_01"]
+    author_email_pattern  = {
+      author_email_patterns = ["project.admin@example.com","code.contributor@example.com"]
+    }
+    max_path_length       = {
+      max_path_length       = 256
+    }
+  }
+}
+

@@ -2,9 +2,6 @@
 
 ### Description
 
-> [!NOTE]  
-> The **project_repository_policy** module is under development and not yet released to public.  
-
 The module **project_repository_policy** manages Azure DevOps project and/or repository policies.   
 
 ### Requirements
@@ -18,6 +15,7 @@ The module **project_repository_policy** manages Azure DevOps project and/or rep
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_repository_policy"></a> [repository\_policy](#input\_repository\_policy) | repository policy attributes to process | <pre>type        = object({<br>  project_id            = string<br>  repository_ids        = optional(list(string), null)<br>  author_email_pattern  = optional(object({<br>    enabled                 = optional(bool, true)<br>    blocking                = optional(bool, true)<br>    author_email_patterns   = list(string)<br>  }), {<br>    enabled                 = false<br>    author_email_patterns   = ["*@example.code"]<br>  })<br>  case_enforcment       = optional(object({<br>    enabled                 = optional(bool, true)<br>    blocking                = optional(bool, true)<br>    enforce_consistent_case = optional(bool, true)<br>  }), {<br>    enabled                 = false<br>    enforce_consistent_case = false<br>  })<br>  file_path_pattern     = optional(object({<br>    enabled                 = optional(bool, true)<br>    blocking                = optional(bool, true)<br>    file_path_patterns      = list(string)<br>  }), {<br>    enabled                 = false<br>    file_path_patterns      = ["example.code","/code/*.example"]<br>  })<br>  max_file_size         = optional(object({<br>    enabled                 = optional(bool, true)<br>    blocking                = optional(bool, true)<br>    max_file_size           = optional(number, 10)<br>  }), { enabled = false })<br>  max_path_length       = optional(object({<br>    enabled                 = optional(bool, true)<br>    blocking                = optional(bool, true)<br>    max_path_length         = optional(number, 1000)<br>  }), { enabled = false })<br>  reserved_names        = optional(object({<br>    enabled                 = optional(bool, true)<br>    blocking                = optional(bool, true)<br>  }), { enabled = false })<br>})<br></pre> | n/a | yes |
 
 ### Outputs
 

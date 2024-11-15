@@ -38,7 +38,7 @@ The module **poroject_wiki** manages Azure DevOps wikis. This includes project w
 <summary><b>Changing Wiki type</b></summary>
 
 ######
-Changing the Wiki type from codeWiki to projectWiki and vice versa is not supported. While changing from codeWiki to projectWiki is working, the other way round is not.  
+Changing the Wiki type from codeWiki to projectWiki and vice versa is not supported. While changing from codeWiki to projectWiki is working and processes the change of the resource, the other way round is not. Instead, *terraform plan* always outputs a planned change that is processed during *terraform apply* but not realized in the Azure DevOps environment. As result, this becomes an infinite *plan* / *apply* loop until the code is changed back again to *projectWiki*.  
 ######
 </details>
 
