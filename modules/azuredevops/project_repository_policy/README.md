@@ -2,7 +2,7 @@
 
 ### Description
 
-The module **project_repository_policy** manages Azure DevOps project and/or repository policies.   
+The module **project_repository_policy** manages Azure DevOps project and/or repository policies. Its primary purpose is to create the policies on project-level but has the option to configure repository-level policies to differ from project default.   
 
 ### Requirements
 
