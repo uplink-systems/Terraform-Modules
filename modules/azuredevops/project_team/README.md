@@ -26,9 +26,9 @@ The module **project_team** manages Azure DevOps project teams. This includes th
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_team"></a> [team](#input\_team) | team main variable with resource attributes | <pre>type = object({<br>  project_id = string<br>  name = string<br>  description = optional(string, null)<br>})<br></pre> | none | yes |
-| <a name="input_team_administrators"></a> [team\_administrators](#input\_team\_administrators) | team_administrators main variable with resource attributes | <pre>type = object({<br>  name = optional(list(string), ["Project Administrators"])<br>  mode = optional(string, "add")<br>})<br></pre> | <pre>type = object({<br>  name = ["Project Administrators"]<br>  mode = "add"<br>})<br></pre> | no |
-| <a name="input_team_members"></a> [team\_members](#input\_team\_members) | team_members main variable with resource attributes | <pre>type = object({<br>  name = optional(list(string), ["Readers"])<br>  mode = optional(string, "add")<br>})<br></pre> | <pre>type = object({<br>  name = ["Readers"]<br>  mode = "add"<br>})<br></pre> | no |
+| <a name="input_team"></a> [team](#input\_team) | team main variable with resource attributes | <pre>type        = object({<br>  project_id          = string<br>  name                = string<br>  description         = optional(string, null)<br>})</pre> | none | yes |
+| <a name="input_team_administrators"></a> [team\_administrators](#input\_team\_administrators) | team_administrators main variable with resource attributes | <pre>type = object({<br>  name = optional(list(string), ["Project Administrators"])<br>  mode = optional(string, "add")<br>})<br></pre> | <pre>type = object({<br>  name = ["Project Administrators"]<br>  mode = "add"<br>})</pre> | no |
+| <a name="input_team_members"></a> [team\_members](#input\_team\_members) | team_members main variable with resource attributes | <pre>type = object({<br>  name = optional(list(string), ["Readers"])<br>  mode = optional(string, "add")<br>})<br></pre> | <pre>type = object({<br>  name = ["Readers"]<br>  mode = "add"<br>})</pre> | no |
 
 ### Outputs
 

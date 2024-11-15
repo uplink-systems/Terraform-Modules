@@ -24,7 +24,7 @@ The module **poroject_wiki** manages Azure DevOps wikis. This includes project w
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_wiki"></a> [wiki](#input\_wiki) | wiki main variable with resource attributes | <pre>type = object({<br>  name = string<br>  project_id = string<br>  mapped_path = optional(string, "/")<br>  repository_id = optional(string, null)<br>  type = optional(string, "codeWiki")<br>  version = optional(string, "main")<br>})<br></pre> | none | yes |
+| <a name="input_wiki"></a> [wiki](#input\_wiki) | wiki main variable with resource attributes | <pre>type        = object({<br>  name          = string<br>  project_id    = string<br>  mapped_path   = optional(string, "/")<br>  repository_id = optional(string, null)<br>  type          = optional(string, "codeWiki")<br>  version       = optional(string, "main")<br>})</pre> | none | yes |
 
 ### Outputs
 

@@ -21,7 +21,7 @@ The module <i>project_git_repository</i> manages Azure DevOps project Git reposi
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_git_repository"></a> [git\_repository](#input\_git\_repository) | git_repository main variable with resource attributes | <pre>object({<br>  name = string<br>  project_id = string<br>  default_branch = optional(string, "refs/heads/main")<br>  disabled = optional(bool, false)<br>  initialization = optional(object({<br>    init_type = optional(string, "Clean")<br>    source_type = optional(string, null)<br>    source_url = optional(string, null)<br>    service_connection_id = optional(string, null)<br>  }), {})<br>  parent_repository_id  = optional(string, null)<br>})</pre> | none | yes |
+| <a name="input_git_repository"></a> [git\_repository](#input\_git\_repository) | git_repository main variable with resource attributes | <pre>type        = object({<br>  name                  = string<br>  project_id            = string<br>  default_branch        = optional(string, "refs/heads/main")<br>  disabled              = optional(bool, false)<br>  initialization        = optional(object({<br>    init_type             = optional(string, "Clean")<br>    source_type           = optional(string, null)<br>    source_url            = optional(string, null)<br>    service_connection_id = optional(string, null)<br>  }), {})<br>  parent_repository_id  = optional(string, null)<br>})</pre> | none | yes |
 
 ### Outputs
 

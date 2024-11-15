@@ -21,7 +21,7 @@ The module **project_workitem** manages Azure DevOps project work items. This in
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_workitem"></a> [workitem](#input\_workitem) | workitem main variable with resource attributes | <pre>type = object({<br>  title = string<br>  project_id = string<br>  type = string<br>  area_path = optional(string, null)<br>  custom_fields = optional(any)<br>  iteration_path = optional(string, null)<br>  state = optional(string, null)<br>  tags = optional(list(string), null)<br>})<br></pre> | none | yes |
+| <a name="input_workitem"></a> [workitem](#input\_workitem) | workitem main variable with resource attributes | <pre>type        = object({<br>  title                 = string<br>  project_id            = string<br>  type                  = string<br>  area_path             = optional(string, null)<br>  custom_fields         = optional(any)<br>  iteration_path        = optional(string, null)<br>  state                 = optional(string, null)<br>  tags                  = optional(list(string), null)<br>})</pre> | none | yes |
 
 ### Outputs
 
