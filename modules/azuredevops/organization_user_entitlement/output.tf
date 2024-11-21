@@ -9,7 +9,5 @@ output "user_entitlement" {
 
 output "user_entitlement_user" {
   description = "user_entitlement resource entitled user display names"
-  value       = {
-    for user in data.azuread_user.user : user.id => user.display_name
-  }
+  value       = { for user in data.azuread_user.user : user.id => user.display_name }
 }
