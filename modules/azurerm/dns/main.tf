@@ -8,7 +8,24 @@ resource "azurerm_dns_zone" "zone" {
   name                = var.zone.name
   resource_group_name = var.zone.resource_group_name
   tags                = var.zone.tags
+  dynamic "soa_record" {
+    for_each            = var.zone.soa_record.enabled ? [1] : []
+    content {
+      email               = var.zone.soa_record.email
+      expire_time         = var.zone.soa_record.expire_time
+      host_name           = var.zone.soa_record.host_name
+      minimum_ttl         = var.zone.soa_record.minimum_ttl
+      refresh_time        = var.zone.soa_record.refresh_time
+      retry_time          = var.zone.soa_record.retry_time
+      serial_number       = var.zone.soa_record.serial_number
+      ttl                 = var.zone.soa_record.ttl
+      tags                = var.zone.soa_record.tags
+    }
+  }
   depends_on          = [local.resource_group_name]
+  lifecycle {
+    ignore_changes      = [var.zone.soa_record.host_name]
+  }
 } 
 
 ######################### DNS Record Sets: A #######################################################
