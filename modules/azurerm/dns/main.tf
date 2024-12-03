@@ -23,9 +23,6 @@ resource "azurerm_dns_zone" "zone" {
     }
   }
   depends_on          = [local.resource_group_name]
-  lifecycle {
-    ignore_changes      = [var.zone.soa_record.host_name]
-  }
 } 
 
 ######################### DNS Record Sets: A #######################################################
