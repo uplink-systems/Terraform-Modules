@@ -8,17 +8,16 @@ module "pki_1_tier" {
     algorithm   = "ECDSA"
     ecdsa_curve = "P384"
     subject = {
-      common_name         = "RootCA"
-      organization        = "Org"
-      organizational_unit = "OU"
+      common_name         = "Root CA"
+      organization        = "Example GmbH"
+      organizational_unit = "IT"
       street_address = [
-        "Street"
+        "Example Stasse 1"
       ]
-      locality      = "Locality"
-      province      = "Province"
-      country       = "Country"
-      postal_code   = "Postal Code"
-      serial_number = "Serial Number"
+      country       = "DE"
+      locality      = "Munich"
+      province      = "BY"
+      postal_code   = "80331"
     }
     validity_period_hours = 87600
     allowed_uses = [
