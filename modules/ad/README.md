@@ -19,9 +19,9 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/ad
 
 #### Tasks & ToDos
 
-- [x] Create and manage a GPO
-- [x] Create and manage one or more OU links for the GPO
-- [x] Create and manage security settings available in the GPO
+- [x] Create and manage a Group Policy object
+- [x] Create and manage one or more OU links for the Group Policy object
+- [x] Create and manage security settings available in the Group Policy object
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [ ] \(Optional) Apply input variable validation rules if necessary to match business standards
 - [x] Create and manage modules outputs for the GPO, the links and the security settings
