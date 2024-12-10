@@ -12,7 +12,7 @@ output "azuread_user_credential" {
   value       = tomap({
     username        = azuread_user.user.user_principal_name
     password        = nonsensitive(random_password.password.result)
-    credential_file = length(local_sensitive_file.credential) > 0 ? local.export : null
+    credential_file = length(local_sensitive_file.credential) > 0 ? local.export.filename : null
   })
 }
 

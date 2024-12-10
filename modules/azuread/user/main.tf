@@ -62,6 +62,6 @@ resource "local_sensitive_file" "credential" {
     ${azuread_user.user.user_principal_name}
     ${nonsensitive(random_password.password.result)}
   EOT
-  filename    = local.export
+  filename    = local.export.filename
   depends_on  = [ azuread_user.user ]
 }
