@@ -2,7 +2,7 @@
 
 ### Description
 
-These modules are intended to create and manage PKI resources like Certificate Authorities and certificates.
+These modules are intended to create and manage PKI resources like Certificate Authorities and certificates following my business needs and standards.
   
 If you make use of the modules please either use the same guidelines or download and customize the modules to your needs.  
 
@@ -15,7 +15,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/pki
 
 ### Module 'pki_1_tier'
 
-[Module README](dns/README.md)  
+[Module README](pks_1_tier/README.md)  
 
 #### Tasks & ToDos
 
