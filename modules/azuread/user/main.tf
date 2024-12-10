@@ -2,8 +2,8 @@
 #   main.tf                                                                                        #
 ####################################################################################################
 
-# generate password as plaintext string
-resource "random_string" "password" {
+# generate password
+resource "random_password" "password" {
   length                = var.user.is_admin == false ? 12 : 16
   special               = true
   min_lower             = 1
@@ -20,7 +20,7 @@ resource "azuread_user" "user" {
   display_name                = var.user.display_name == null ? local.display_name : var.user.display_name
   user_principal_name         = var.user.user_principal_name == null ? local.user_principal_name : var.user.user_principal_name
   account_enabled             = var.user.account_enabled
-  password                    = random_string.password.result
+  password                    = random_password.password.result
   force_password_change       = var.user.force_password_change
   disable_password_expiration = var.user.disable_password_expiration
   disable_strong_password     = var.user.is_admin == false ? var.user.disable_strong_password : false
@@ -49,18 +49,18 @@ resource "azuread_user" "user" {
   fax_number                  = var.user.fax_number
   age_group                   = var.user.parental_control.age_group
   consent_provided_for_minor  = var.user.parental_control.consent_provided_for_minor
-  depends_on                  = [ random_string.password ]
+  depends_on                  = [ random_password.password ]
   lifecycle {
     ignore_changes  = [ force_password_change, password, preferred_language, usage_location ]
   }
 }
 
 # create credential output file
-resource "local_file" "credential" {
+resource "local_sensitive_file" "credential" {
   count       = var.user.export.enabled == true ? 1 : 0
   content     = <<-EOT
     ${azuread_user.user.user_principal_name}
-    ${random_string.password.result}
+    ${nonsensitive(random_password.password.result)}
   EOT
   filename    = local.export
   depends_on  = [ azuread_user.user ]

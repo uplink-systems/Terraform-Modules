@@ -3,6 +3,10 @@
 ### Description
 
 This module is intended to create Cloud-only user accounts in Azure AD with 'user_type' *Member*. The module manages user accounts and admin accounts and scopes all attributes available in the provider. It is designed to handle multiple users or even all users using for_each loop in the root module.  
+  
+> [!WARNING]
+>The module's outputs may expose sensitive data like user credentials in the CLI as well as in the file system.  
+>Therefore it should only be used by trusted admins and store its output to highly restricted locations. 
 
 ### Requirements
 
@@ -19,7 +23,7 @@ This module is intended to create Cloud-only user accounts in Azure AD with 'use
 |------|------|
 | [azuread_user.user](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/user) | resource |
 | [local_file.credential](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
-| [random_string.password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [random_password.password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 
 ### Inputs
 
@@ -36,7 +40,7 @@ This module is intended to create Cloud-only user accounts in Azure AD with 'use
 | <a name="output_azuread_user_credential_csv"></a> [azuread\_user\_credential\_csv](#output\_azuread\_user\_credential\_csv) | list of exported azruead_user.user_principal_name and random_string.password.result attribute values as comma-separated values from all users |
 
 >[!IMPORTANT]
->Apart from that the module exports each user's username and passwort physically as text file by default using 'local_file' resources (export can be prevented by setting *var.user.export.enabled* value to 'false'). Path and filename have default values but can be modified by configuring *var.user.export.path* and *var.user.export.file* (see section \"Variables / Locals\"). |
+>Apart from that the module exports each user's username and passwort physically as text file by default using 'local_sensitive_file' resources (export can be prevented by setting *var.user.export.enabled* value to 'false'). Path and filename have default values but can be modified by configuring *var.user.export.path* and *var.user.export.file* (see section \"Variables / Locals\"). |
 
 <details>
 <summary><b>Using module output in root module</b></summary>
@@ -61,15 +65,6 @@ output "azuread_user_credentials" {
 </details>
 
 ### Known Issues
-
-<details>
-<summary><b>Passwords with 'random_string' resources</b></summary>
-
-######
-The module uses 'random_string' resources to generate the users' passwords instead of 'random_password'. Using 'random_string' is "easier" for a user mass deployment as this lets Terraform output the password in plain text instead of sensitive values like 'random_password' does.  
-This should be changed for security reasons!  
-######
-</details>
 
 <details>
 <summary><b>Parental control attributes</b></summary>
