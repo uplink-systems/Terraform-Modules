@@ -97,34 +97,34 @@ The variable *var.gpo_security* consists of attributes that have only a select l
     - any other non-zero value disables the policy
 - *var.gpo_security.password_policies.clear_text_password*
   - 0 = disable
-  - 2^1 - 2^16 = enable and configure value
+  - 2<sup>1</sup> - 2<sup>16</sup> = enable and configure value
 - *var.gpo_security.password_policies.maximum_password_age*
   - 0 - 9999 days
 - *var.gpo_security.password_policies.minimum_password_age*
   - 0 - 9999 days
 - *var.gpo_security.password_policies.minimum_password_length*
   - 0 = no password
-  - 2^1 - 2^16 = enable and configure value
+  - 2<sup>1</sup> - 2<sup>16</sup> = enable and configure value
 - *var.gpo_security.password_policies.password_complexity*
   - 0 = disable
-  - 2^1 - 2^16 = enable
+  - 2<sup>1</sup> - 2<sup>16</sup> = enable
 - *var.gpo_security.password_policies.password_history_size*
   - 0 = disable
-  - 2^1 - 2^16 = enable and configure value
+  - 2<sup>1</sup> - 2<sup>16</sup> = enable and configure value
 - *var.gpo_security.registry_keys.propagation_mode*
   - 0 = Propagate permissions to all subkeys
   - 1 = Replace existing permissions on all subkeys
   - 2 = Do not allow permissions to be replaced on the key
 - *var.gpo_security.registry_values.value_type*
- - 1 = REG_SZ
- - 2 = REG_EXPAND_SZ
- - 3 = REG_BINARY
- - 4 = REG_DWORD
- - 5 = REG_MULTI_SZ
+  - 1 = REG_SZ
+  - 2 = REG_EXPAND_SZ
+  - 3 = REG_BINARY
+  - 4 = REG_DWORD
+  - 5 = REG_MULTI_SZ
 - *var.gpo_security.system_services.startup_type*
- - 2 = Automatic
- - 3 = Manual
- - 4 = Disabled
+  - 2 = Automatic
+  - 3 = Manual
+  - 4 = Disabled
 
 ---
   
