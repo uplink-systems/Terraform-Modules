@@ -60,10 +60,11 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 #### Tasks & ToDos
 
 - [x] Create and manage a project with default team and git repository
+- [x] Initialize the project's default repository
 - [x] Add and manage project pipeline settings to the project
 - [x] Manage default team's administrators using groups
 - [x] Manage "Project Administrators" group membership
-- [ ] Opt-in to initialize the project's default repository and/or to disable it
+- [x] Opt-in to disable the project's default repository
 - [x] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [x] \(Optional) Apply input variable validation rules if necessary to match the business standards
 - [x] Create and manage modules outputs
