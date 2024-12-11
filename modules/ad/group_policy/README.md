@@ -31,7 +31,9 @@ This module is intended to create and manage a Group Policy object in an local A
 
 | Name | Description |
 |------|-------------|
-| <a name="output_ad_gpo"></a> [ad\_gpo](#output\_ad\_gpo) | list of all exported attributes values from the gpo |
+| <a name="output_ad_gpo"></a> [ad\_gpo](#output\_ad\_gpo) | list of all exported attributes values from the gpo resourc |
+| <a name="output_ad_gplink"></a> [ad\_gplink](#output\_ad\_gplink) | list of all exported attributes values from the gplink resource(s) |
+| <a name="output_ad_gpo_security"></a> [ad\_gpo\_security](#output\_ad\_gpo\_security) | list of all exported attributes values from the gpo_security resource |
 
 
 <details>
@@ -48,6 +50,82 @@ output "ad_gpo" {
 ```
 </details>
   
+## Notes
+
+### Variables / Locals
+
+#### 'var.gpo'
+
+The variable *var.gpo* consists of attributes that have only a select list of accepted values.  
+- *var.gpo.status* (values are case sensitive)
+  - AllSettingsEnabled
+  - UserSettingsDisabled
+  - ComputerSettingsDisabled
+  - AllSettingsDisabled
+
+#### 'var.gpo_security'
+
+The variable *var.gpo_security* consists of attributes that have only a select list of accepted values.  
+- *var.gpo_security.application_log.audit_log_retention_period*
+  - 0 = overwrite events as needed
+  - 1 = overwrite events as specified specified by *var.gpo_security.application_log.retention_days*
+  - 2 = never overwrite events.
+- *var.gpo_security.application_log.maximum_log_size*
+  - 64 - 4194240 KB
+- *var.gpo_security.application_log.retention_days*
+  - 1 - 365 days
+- *var.gpo_security.application_log.audit_<*>*
+  - 0 = None
+  - 1 = Success audits only
+  - 2 = Failure audits only
+  - 3 = Success and failure audits
+  - 4 = None
+- *var.gpo_security.filesystem.propagation_mode*
+  - 0 = Propagate permissions to all subfolders and files
+  - 1 = Replace existing permissions on all subfolders and files
+  - 2 = Do not allow permissions to be replaced
+- *var.gpo_security.kerberos_policy.max_clock_skew*
+  - 0 - 99999
+- *var.gpo_security.kerberos_policy.max_renew_age*
+  - 0 - 99999
+- *var.gpo_security.kerberos_policy.max_service_age*
+  - 10 - value of *.max_ticket_age*
+- *var.gpo_security.kerberos_policy.max_ticket_age*
+  - 0 - 99999
+- *var.gpo_security.kerberos_policy.ticket_validate_client*
+  - 0
+    - any other non-zero value disables the policy
+- *var.gpo_security.password_policies.clear_text_password*
+  - 0 = disable
+  - 2^1 - 2^16 = enable and configure value
+- *var.gpo_security.password_policies.maximum_password_age*
+  - 0 - 9999 days
+- *var.gpo_security.password_policies.minimum_password_age*
+  - 0 - 9999 days
+- *var.gpo_security.password_policies.minimum_password_length*
+  - 0 = no password
+  - 2^1 - 2^16 = enable and configure value
+- *var.gpo_security.password_policies.password_complexity*
+  - 0 = disable
+  - 2^1 - 2^16 = enable
+- *var.gpo_security.password_policies.password_history_size*
+  - 0 = disable
+  - 2^1 - 2^16 = enable and configure value
+- *var.gpo_security.registry_keys.propagation_mode*
+  - 0 = Propagate permissions to all subkeys
+  - 1 = Replace existing permissions on all subkeys
+  - 2 = Do not allow permissions to be replaced on the key
+- *var.gpo_security.registry_values.value_type*
+ - 1 = REG_SZ
+ - 2 = REG_EXPAND_SZ
+ - 3 = REG_BINARY
+ - 4 = REG_DWORD
+ - 5 = REG_MULTI_SZ
+- *var.gpo_security.system_services.startup_type*
+ - 2 = Automatic
+ - 3 = Manual
+ - 4 = Disabled
+
 ---
   
 [Back to README.md](../README.md)  

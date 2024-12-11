@@ -4,7 +4,7 @@ variable "gpo" {
     name        = string
     description = optional(string, null)
     domain      = optional(string, null)
-    status      = optional(string, null)    # AllSettingsEnabled, UserSettingsDisabled, ComputerSettingsDisabled, AllSettingsDisabled (case sensitive)
+    status      = optional(string, null)
   })
 }
 
@@ -30,10 +30,10 @@ variable "gpo_security" {
       reset_lockout_count           = optional(string, null)
     }))
     application_log     = optional(object({
-      audit_log_retention_period    = optional(string, null)    # 0: overwrite events as needed, 1: overwrite events as specified specified by retention_days, 2: never overwrite events.
-      maximum_log_size              = optional(string, null)    # 64 - 4194240 KB
+      audit_log_retention_period    = optional(string, null)
+      maximum_log_size              = optional(string, null)
       restrict_guest_access         = optional(string, null)
-      retention_days                = optional(string, null)    # 1 - 365
+      retention_days                = optional(string, null)
     }))
     audit_log           = optional(object({
       audit_log_retention_period    = optional(string, null)
@@ -42,45 +42,45 @@ variable "gpo_security" {
       retention_days                = optional(string, null)
     }))
     event_audit         = optional(object({
-      audit_account_logon           = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
-      audit_account_manage          = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
-      audit_ds_access               = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
-      audit_logon_events            = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
-      audit_object_access           = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
-      audit_policy_change           = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
-      audit_privilege_use           = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
-      audit_process_tracking        = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
-      audit_system_events           = optional(string, null)  # 0 (None), 1 (Success audits only), 2 (Failure audits only), 3 (Success and failure audits), 4 (None) 
+      audit_account_logon           = optional(string, null)
+      audit_account_manage          = optional(string, null)
+      audit_ds_access               = optional(string, null)
+      audit_logon_events            = optional(string, null)
+      audit_object_access           = optional(string, null)
+      audit_policy_change           = optional(string, null)
+      audit_privilege_use           = optional(string, null)
+      audit_process_tracking        = optional(string, null)
+      audit_system_events           = optional(string, null)
     }))
     filesystem          = optional(list(object({
       path                          = string
       acl                           = string
-      propagation_mode              = optional(string, "0")  # 0: Propagate permissions to all subfolders and files, 1: Replace existing permissions on all subfolders and files, 2: Do not allow permissions to be replaced.
+      propagation_mode              = optional(string, "0")
     })))
     kerberos_policy     = optional(object({
-      max_clock_skew                = optional(string, null)  # 0 - 99999
-      max_renew_age                 = optional(string, null)  # 0 - 99999
-      max_service_age               = optional(string, null)  # 10 - max_ticket_age
-      max_ticket_age                = optional(string, null)  # 0 - 99999
-      ticket_validate_client        = optional(string, null)  # 0 (A non-zero value disables the policy)
+      max_clock_skew                = optional(string, null)
+      max_renew_age                 = optional(string, null)
+      max_service_age               = optional(string, null)
+      max_ticket_age                = optional(string, null)
+      ticket_validate_client        = optional(string, null)
     }))
     password_policies   = optional(object({
-      clear_text_password           = optional(string, null)  # 0 - 2^16 -> 0 = off - any other = on
-      maximum_password_age          = optional(string, null)  # 0 - 999 days
-      minimum_password_age          = optional(string, null)  # 0 - 999 days
-      minimum_password_length       = optional(string, null)  # 0 - 2^16 -> 0 = no password
-      password_complexity           = optional(string, null)  # 0 - 2^16 -> 0 = off - any other = on
-      password_history_size         = optional(string, null)  # 0 - 2^16 -> 0 = off - any other = on
+      clear_text_password           = optional(string, null)
+      maximum_password_age          = optional(string, null)
+      minimum_password_age          = optional(string, null)
+      minimum_password_length       = optional(string, null)
+      password_complexity           = optional(string, null)
+      password_history_size         = optional(string, null)
     }))
     registry_keys       = optional(list(object({
       key_name                      = string
       acl                           = string
-      propagation_mode              = optional(string, "0")    # 0: Propagate permissions to all subkeys, 1: Replace existing permissions on all subkeys, 2: Do not allow permissions to be replaced on the key.
+      propagation_mode              = optional(string, "0")
     })))
     registry_values     = optional(list(object({
       key_name                      = string
       value                         = string
-      value_type                    = optional(string, "1")    # 1: String, 2: Expand String, 3: Binary, 4: DWORD, 5: MULTI_SZ
+      value_type                    = optional(string, "1")
     })))
     restricted_groups   = optional(list(object({
       group_name                    = string
@@ -95,7 +95,7 @@ variable "gpo_security" {
     }))
     system_services     = optional(list(object({
       service_name                  = string
-      startup_mode                  = optional(string, "2")    # 2: Automatic, 3: Manual, 4: Disabled
+      startup_mode                  = optional(string, "2")
       acl                           = optional(string, "")
     })))
   })
