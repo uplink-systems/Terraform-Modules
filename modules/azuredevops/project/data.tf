@@ -2,6 +2,9 @@
 #   data.tf                                                                                        #
 ####################################################################################################
 
+# get client config attributes                             -> main.tf (terraform_data.disable_repository, terraform_data.initialize_repository)
+data "azuredevops_client_config" "current" { }
+
 # get project administrators group attributes               -> main.tf (azuredevops_group_membership.project_administrators)
 data "azuredevops_group" "project_administrators" {
   project_id      = azuredevops_project.project.id

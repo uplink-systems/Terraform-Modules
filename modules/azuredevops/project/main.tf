@@ -42,3 +42,74 @@ resource "azuredevops_project_pipeline_settings" "project_pipeline_settings" {
   status_badges_are_private             = var.project_pipeline_settings.status_badges_are_private
   depends_on                            = [ azuredevops_project.project ]
 }
+
+resource "terraform_data" "initialize_default_repository" {
+  provisioner "local-exec" {
+    command             = <<EOT
+      $PersonalAccessTokenBase64  = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":${var.organization.personal_access_token}"))
+      $Headers                    = @{"Authorization"="Basic $PersonalAccessTokenBase64"}
+      $Uri                        = [string]::Format("${local.local_exec.initialize_default_repository.uri}")
+      $BodyAsJson                 = @"
+{
+  "refUpdates": [
+    {
+      "name": "refs/heads/main",
+      "oldObjectId": "0000000000000000000000000000000000000000"
+    }
+  ],
+  "commits": [
+    {
+      "comment": "Initial commit.",
+      "changes": [
+        {
+          "changeType": "add",
+          "item": {
+            "path": "/README.md"
+          },
+          "newContent": {
+            "content": "Terraform local-exec provisioner initiated commit and push",
+            "contentType": "rawtext"
+          }
+        }
+      ]
+    }
+  ]
+}
+"@
+      $Result                     = Invoke-RestMethod -Uri $Uri -Method POST -Body $BodyAsJson -ContentType "application/json" -Headers $Headers
+    EOT
+    interpreter         = [ "pwsh", "-Command" ]
+  }
+  depends_on          = [ data.azuredevops_git_repository.git_repository, local.local_exec ]
+}
+
+resource "terraform_data" "disable_default_repository" {
+  count               = var.project.disable_default_repository ? 1 : 0
+  provisioner "local-exec" {
+    command             = <<EOT
+      $PersonalAccessToken  = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":${var.organization.personal_access_token}"))
+      $Headers              = @{"Authorization"="Basic $PersonalAccessToken"}
+      $Uri                  = [string]::Format("${local.local_exec.disable_default_repository.uri}")
+      $BodyAsJson           = '{ "isDisabled" : "true" }'
+      $Result               = Invoke-RestMethod -Uri $Uri -Method Patch -Body $BodyAsJson -ContentType "application/json" -Headers $Headers
+    EOT
+    interpreter         = [ "pwsh", "-Command" ]
+  }
+  depends_on          = [ data.azuredevops_git_repository.git_repository, local.local_exec, terraform_data.initialize_default_repository ]
+}
+
+resource "terraform_data" "enable_default_repository" {
+  count               = var.project.enable_default_repository ? 1 : 0
+  provisioner "local-exec" {
+    command             = <<EOT
+      $PersonalAccessToken  = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":${var.organization.personal_access_token}"))
+      $Headers              = @{"Authorization"="Basic $PersonalAccessToken"}
+      $Uri                  = [string]::Format("${local.local_exec.enable_default_repository.uri}")
+      $BodyAsJson           = '{ "isDisabled" : "false" }'
+      $Result               = Invoke-RestMethod -Uri $Uri -Method Patch -Body $BodyAsJson -ContentType "application/json" -Headers $Headers
+    EOT
+    interpreter         = [ "pwsh", "-Command" ]
+  }
+  depends_on          = [ data.azuredevops_git_repository.git_repository, local.local_exec, terraform_data.initialize_default_repository ]
+}
+

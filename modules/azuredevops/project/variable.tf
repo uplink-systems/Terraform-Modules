@@ -2,25 +2,34 @@
 #   variable.tf                                                                                    #
 ####################################################################################################
 
+variable "organization" {
+  description = "Organization attributes required for the project's resources"
+  type        = object({
+    personal_access_token   = string
+  })
+}
+
 variable "project" {
   description = "Project attributes"
   type        = object({
-    name                    = string
-    description             = optional(string, null)
-    features                = optional(object({
-      artifacts               = optional(string, "disabled")
-      boards                  = optional(string, "enabled")
-      repositories            = optional(string, "enabled")
-      pipelines               = optional(string, "disabled")
-      testplans               = optional(string, "disabled")
+    name                        = string
+    description                 = optional(string, null)
+    features                    = optional(object({
+      artifacts                   = optional(string, "disabled")
+      boards                      = optional(string, "enabled")
+      repositories                = optional(string, "enabled")
+      pipelines                   = optional(string, "disabled")
+      testplans                   = optional(string, "disabled")
     }), {})
-    visibility              = optional(string, "private")
-    version_control         = optional(string, "Git")
-    work_item_template      = optional(string, "Agile")
-    project_administrators  = optional(object({
-      users                   = optional(list(string), null)
-      mode                    = optional(string, "overwrite")
+    visibility                  = optional(string, "private")
+    version_control             = optional(string, "Git")
+    work_item_template          = optional(string, "Agile")
+    project_administrators      = optional(object({
+      users                       = optional(list(string), null)
+      mode                        = optional(string, "overwrite")
     }), {})
+    disable_default_repository  = optional(bool, false)
+    enable_default_repository   = optional(bool, false)
   })
   validation {
     condition     = can(regex("^[a-zA-Z0-9.-]+$", var.project.name))
@@ -100,6 +109,13 @@ variable "project" {
       Variable attribute 'project_administrators.mode' has an invalid value.
       Value must be one of:
         "add", "overwrite" or null
+    EOF
+  }
+  validation {
+    condition     = (var.project.disable_default_repository && var.project.enable_default_repository ) ? false : true
+    error_message = <<-EOF
+      Variable attributes' values 'var.project.disable_default_repository' and 'var.project.enable_default_repository' are both set to 'true'.
+      Default repository can only be disabled OR enabled but not both.
     EOF
   }
 }

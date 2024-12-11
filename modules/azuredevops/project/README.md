@@ -49,8 +49,8 @@ The module **project** manages Azure DevOps projects. This includes the project 
 | <a name="output_project_pipeline_settings"></a> [project\_pipeline\_settings](#output\_project\_pipeline\_settings) | list of all exported attributes values from the project_pipeline_settings resource |
 | <a name="output_team"></a> [team](#output\_team) | list of all exported attributes values from the (project's default) team resource |
 | <a name="output_git_repository"></a> [git\_repository](#output\_git\_repository) | list of all exported attributes values from the (project's default) git_repository resource |
-| <a name="output_import_id_team"></a> [import\_id\_team](#output\_import\_id\_team) | output of a formatted id needed to import the team resource to Terraform state |
-| <a name="output_import_id_git_repository"></a> [import\_id\_git\_repository](#output\_import\_id\_git\_repository) | output of a formatted id needed to import the git_resource resource to Terraform state |
+| <a name="output_import_id_team"></a> [import\_id\_team](#output\_import\_id\_team) | formatted id needed to import the team resource to Terraform state |
+| <a name="output_import_id_git_repository"></a> [import\_id\_git\_repository](#output\_import\_id\_git\_repository) | formatted id needed to import the git_resource resource to Terraform state |
 
 ### Known Issues
 
@@ -68,15 +68,15 @@ If an import is necessary one can use the following code snippet:
 
 ```
 import {
-  id = module.<i>&lt;project-module-name&gt;</i>.import_id_git_repository
-  to = module.<i>&lt;git-repository-module-name&gt;</i>.azuredevops_git_repository.git_repository
+  id = module.<project-module-name>.import_id_git_repository
+  to = module.<git-repository-module-name>.azuredevops_git_repository.git_repository
 }
 ```
 
 If the default repository has been imported into Terraform state, deleting a project via *terraform destroy* command will fail. This is also by design because the default repository resource cannot be deleted on its own but has to be deleted via the project resource. Remove the imported resource manually from Terraform state before executing the destroy-command to workaround this:  
 
 ```
-terraform state rm module.<i>&lt;git-repository-module-name&gt;</i>.azuredevops_git_repository.git_repository
+terraform state rm module.<git-repository-module-name>.azuredevops_git_repository.git_repository
 ```
 
 </details>
@@ -95,15 +95,15 @@ If an import is needed one can use the following code snippet:
 
 ```
 import {
-  id = module.<i>&lt;project-module-name&gt;</i>.import_id_team
-  to = module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
+  id = module.<project-module-name>.import_id_team
+  to = module.<team-module-name>.azuredevops_team.team
 }
 ```
 
 If the default team has been imported into Terraform state, deleting a project via *terraform destroy* command will fail. This is also by design because the default team resource cannot be deleted on their own but has to be deleted via the project resource. Remove the imported resource manually from Terraform state before executing the destroy-command to workaround this:  
 
 ```
-terraform state rm module.<i>&lt;team-module-name&gt;</i>.azuredevops_team.team
+terraform state rm module.<team-module-name>.azuredevops_team.team
 ```
 
 </details>
