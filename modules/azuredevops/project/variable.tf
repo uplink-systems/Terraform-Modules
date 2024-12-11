@@ -12,24 +12,25 @@ variable "organization" {
 variable "project" {
   description = "Project attributes"
   type        = object({
-    name                        = string
-    description                 = optional(string, null)
-    features                    = optional(object({
-      artifacts                   = optional(string, "disabled")
-      boards                      = optional(string, "enabled")
-      repositories                = optional(string, "enabled")
-      pipelines                   = optional(string, "disabled")
-      testplans                   = optional(string, "disabled")
+    name                          = string
+    description                   = optional(string, null)
+    features                      = optional(object({
+      artifacts                     = optional(string, "disabled")
+      boards                        = optional(string, "enabled")
+      repositories                  = optional(string, "enabled")
+      pipelines                     = optional(string, "disabled")
+      testplans                     = optional(string, "disabled")
     }), {})
-    visibility                  = optional(string, "private")
-    version_control             = optional(string, "Git")
-    work_item_template          = optional(string, "Agile")
-    project_administrators      = optional(object({
-      users                       = optional(list(string), null)
-      mode                        = optional(string, "overwrite")
+    visibility                    = optional(string, "private")
+    version_control               = optional(string, "Git")
+    work_item_template            = optional(string, "Agile")
+    project_administrators        = optional(object({
+      users                         = optional(list(string), null)
+      mode                          = optional(string, "overwrite")
     }), {})
-    disable_default_repository  = optional(bool, false)
-    enable_default_repository   = optional(bool, false)
+    initialize_default_repository = optional(bool, true)
+    disable_default_repository    = optional(bool, false)
+    enable_default_repository     = optional(bool, false)
   })
   validation {
     condition     = can(regex("^[a-zA-Z0-9.-]+$", var.project.name))

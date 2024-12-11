@@ -22,7 +22,7 @@ This includes the following guidelines:
   * Repository policies are configured on project level by default.  
 * Git Repository
   * Git Repositories are always named as "<i>&lt;Project-Name&gt;</i> <i>&lt;Git-Repository-Name&gt;</i>".
-  * The project's automatically created default repository is not used and manually disabled.
+  * The project's automatically created default repository is initialized but can be disabled.
 * Team
   * Teams are always name as "<i>&lt;Project-Name&gt;</i> Team <i>&lt;Git-Repository-Name&gt;</i>".
   * The project's automatically created default team is not imported to Terraform state; instead, only the team administrators are configured with Terraform.
@@ -31,7 +31,14 @@ If you make use of the modules please either use the same guidelines or download
   
 Resources related to Azure DevOps organization settings are out ouf scope, except user onboarding.  
 
-### Example
+### Prerequisites
+
+Some modules may require some prerequisites to be fullfilled to work correctly:  
+* The Azure DevOps organisation must already be created and basically pre-configured.  
+* The Azure DevOps organisation must already be connected to an Entra ID directory. This is required to use Entra ID based authentication and user enrollment to make use e.g. central user management and securiy feature like IP-based Entra ID conditional access policies.  
+* Billing must be configured for Azure DevOps organisations with more than 5 Basic access level users.  
+
+### Examples
 
 For an example how to use the modules please navigate to:  
 https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevops  
@@ -60,11 +67,12 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/azuredevo
 #### Tasks & ToDos
 
 - [x] Create and manage a project with default team and git repository
-- [x] Initialize the project's default repository
 - [x] Add and manage project pipeline settings to the project
 - [x] Manage default team's administrators using groups
 - [x] Manage "Project Administrators" group membership
-- [x] Opt-in to disable the project's default repository
+- [x] Initialize the project's default repository (via AzDO REST API call)
+- [x] Opt-in to skip initialization of the project's default repository for imported projects
+- [x] Opt-in to disable/enable the project's default repository (via AzDO REST API calls)
 - [x] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [x] \(Optional) Apply input variable validation rules if necessary to match the business standards
 - [x] Create and manage modules outputs

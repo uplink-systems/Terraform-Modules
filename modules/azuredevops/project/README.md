@@ -109,7 +109,20 @@ terraform state rm module.<team-module-name>.azuredevops_team.team
 </details>
 
 <details>
-<summary><b>Disabling/enabling the default repository</b></summary>
+<summary><b>Initialize the default repository</b></summary>
+
+######
+The module contains an option to initialize the automatically generated default repository which is enabled by default. It is triggered via *var.project.initialize_default_repository* variable attribute.  
+
+Setting the *var.project.initialize_default_repository* value to *false* skips the init process. This can be useful for example if the project resource is an imported resource. In this case the init should be disabled to prevent the module from accidentially deleting or overwriting exisiting resources.  
+  
+Please note:  
+**DO NOT** change the *var.project.initialize_default_repository* value **after** the code for the resource has been applied for the first time. This can lead to unexpected results and even to data loss.  
+
+</details>
+
+<details>
+<summary><b>Disable or enable the default repository</b></summary>
 
 ######
 The module contains an option to disable/enable the automatically generated default repository. It is triggered via *var.project.disable_default_repository* and *var.project.enable_default_repository* variable attributes.
