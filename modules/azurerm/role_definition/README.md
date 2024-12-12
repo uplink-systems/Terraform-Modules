@@ -50,9 +50,23 @@ module "azurerm_role_definition" {
 ### Known Issues
 
 <details>
-<summary><b>n/a</b></summary>
+<summary><b>Required permissions</b></summary>
 
 ######
+Although the nature of the matter means that the account used for Terraform deployment requires elevated privileges, the built-in Contributor role is sufficient in most cases and therefore often used. However, the Contributor role has a number of NotActions such as *Microsoft.Authorization/\*/Write*. Without this permissions the following resources cannot be managed:
+  
+- Creating RBAC roles and assigning against scopes
+  - azurerm_role_assignment
+  - azurerm_role_definition
+  - azurerm_user_assigned_identity
+- Creating and assigning policy definitions and initiatives
+  - azurerm_policy_assignment
+  - azurerm_policy_definition
+  
+In this case, either the Owner role is required or a custom role needs to be in place with Contributor permissions and the following permissions in addition:
+- "Microsoft.Authorization/*/Delete"
+- "Microsoft.Authorization/*/Write"
+- "Microsoft.Authorization/elevateAccess/Action"
   
 </details>
   
