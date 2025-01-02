@@ -25,9 +25,29 @@ resource "github_repository" "repository" {
   is_template                             = var.repository.is_template
   license_template                        = var.repository.license_template
   topics                                  = var.repository.topics
-  visibility                              = var.repository.visibility == null ? "private" : var.repository.visbility
+  visibility                              = local.repository.visbility
   vulnerability_alerts                    = var.repository.vulnerability_alerts
   web_commit_signoff_required             = var.repository.web_commit_signoff_required
+  security_and_analysis {
+    dynamic "advanced_security" {
+      for_each = local.repository.security_and_analysis.advanced_security.status != null ? [true] : []
+      content {
+        status                                  = local.repository.security_and_analysis.advanced_security.status        
+      }
+    }
+    dynamic "secret_scanning" {
+      for_each = local.repository.security_and_analysis.secret_scanning.status != null ? [true] : []
+      content {
+        status                                  = local.repository.security_and_analysis.secret_scanning.status        
+      }
+    }
+    dynamic "secret_scanning_push_protection" {
+      for_each = local.repository.security_and_analysis.secret_scanning_push_protection.status != null ? [true] : []
+      content {
+        status                                  = local.repository.security_and_analysis.secret_scanning_push_protection.status        
+      }
+    }
+  }
   dynamic "template" {
     for_each                                = local.repository.template
     content {

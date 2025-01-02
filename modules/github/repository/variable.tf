@@ -27,6 +27,7 @@ variable "repository" {
     is_template                             = optional(bool, false)
     license_template                        = optional(string, null)
     pages                                   = optional(any, null)
+    security_and_analysis                   = optional(any, null)
     template                                = optional(object({
       owner                                   = string
       repository                              = string

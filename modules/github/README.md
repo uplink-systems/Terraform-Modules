@@ -9,7 +9,7 @@ If you make use of the modules please either use the same guidelines or download
 ### Example
 
 ~~For an example how to use the modules please navigate to:~~  
-~~ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/github ~~ (not available yet)  
+https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/github (not available yet)  
 
 ## Modules
 
