@@ -1,0 +1,48 @@
+####################################################################################################
+#   main.tf                                                                                        #
+####################################################################################################
+
+resource "github_repository" "repository" {
+  name                                    = var.repository.name
+  description                             = var.repository.description
+  allow_auto_merge                        = var.repository.allow_auto_merge
+  allow_merge_commit                      = var.repository.allow_merge_commit
+  allow_rebase_merge                      = var.repository.allow_rebase_merge
+  allow_squash_merge                      = var.repository.allow_squash_merge
+  allow_update_branch                     = var.repository.allow_update_branch
+  archive_on_destroy                      = var.repository.archive_on_destroy
+  archived                                = var.repository.archived
+  auto_init                               = var.repository.auto_init
+  delete_branch_on_merge                  = var.repository.delete_branch_on_merge
+  gitignore_template                      = var.repository.gitignore_template
+  has_discussions                         = var.repository.has_discussions
+  has_downloads                           = var.repository.has_downloads
+  has_issues                              = var.repository.has_issues
+  has_projects                            = var.repository.has_projects
+  has_wiki                                = var.repository.has_wiki
+  homepage_url                            = var.repository.homepage_url
+  ignore_vulnerability_alerts_during_read = var.repository.ignore_vulnerability_alerts_during_read
+  is_template                             = var.repository.is_template
+  license_template                        = var.repository.license_template
+  topics                                  = var.repository.topics
+  visibility                              = var.repository.visibility == null ? "private" : var.repository.visbility
+  vulnerability_alerts                    = var.repository.vulnerability_alerts
+  web_commit_signoff_required             = var.repository.web_commit_signoff_required
+  dynamic "template" {
+    for_each                                = local.repository.template
+    content {
+      owner                                   = template.value.owner
+      repository                              = template.value.repository
+      include_all_branches                    = template.value.include_all_branches
+    }
+  }
+  lifecycle {
+    ignore_changes = [ auto_init, license_template, gitignore_template, template ]
+  }
+}
+
+resource "github_branch_default" "branch_default" {
+  repository                              = github_repository.repository.name
+  branch                                  = local.branch_default.branch
+  depends_on                              = [ github_repository.repository ]
+}
