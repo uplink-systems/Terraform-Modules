@@ -27,7 +27,7 @@ This module is intended to create groups in Azure AD. The module scopes all type
 
 | Name | Description |
 |------|-------------|
-| <a name="output_azuread_group"></a> [azuread\_group](#output\_azuread\_group) | list of all exported attributes values from from all groups |
+| <a name="output_azuread_group"></a> [azuread\_group](#output\_azuread\_group) | list of all exported attributes values from all groups |
 | <a name="output_azuread_group_display_name"></a> [azuread\_group\_display\_name](#output\_azuread\_group\_display\_name) | list of exported display_name attribute values from all groups |
 | <a name="output_azuread_group_object_id"></a> [azuread\_group\_object\_id](#output\_azuread\_group\_object\_id) | list of exported object_id attribute values from all groups |
 
