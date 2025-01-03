@@ -19,16 +19,16 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/github (n
 
 #### Tasks & ToDos
 
-- [x] Create and manage a GitHub repository (ex. GitHub pages)
-- [ ] Create and manage a GitHub repository (incl. GitHub pages)
-- [x] Create and manage the default Git repository branch
-- [ ] Create and manage repository collaborators
-- [ ] Create and manage repository projects
-- [ ] Create and manage additional Git repository branches
-- [ ] Create and manage branch protections
+- [x] Create and manage github_repository resources (ex. GitHub pages)
+- [ ] Create and manage github_repository resources (incl. GitHub pages)
+- [x] Create and manage github_branch_default resource
+- [x] Create and manage github_repository_collaborator resources
+- [x] Create and manage github_team_repository resources
+- [ ] Create and manage github_repository_project resources
+- [ ] Create and manage additional github_repository_branch resources
+- [ ] Create and manage github_branch_protection resources
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
 - [ ] \(Optional) Apply input variable validation rules if necessary to match business standards
 - [x] Create and manage module outputs
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
-

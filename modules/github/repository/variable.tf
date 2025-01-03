@@ -40,6 +40,32 @@ variable "repository" {
   })
 }
 
+variable "collaborator" {
+  description = "(Optional) Lists of collaborators separated by their permission (full/maintain/read-only/read-write/triage)"
+  type        = object({
+    enabled     = optional(bool, true)
+    admin       = optional(list(string), [])
+    maintain    = optional(list(string), [])
+    pull        = optional(list(string), [])
+    push        = optional(list(string), [])
+    triage      = optional(list(string), [])
+  })
+  default     = { enabled = false }
+}
+
+variable "team" {
+  description = "(Optional) Lists of team names separated by their permission (full/maintain/read-only/read-write/triage)"
+  type        = object({
+    enabled     = optional(bool, true)
+    admin       = optional(list(string), [])
+    maintain    = optional(list(string), [])
+    pull        = optional(list(string), [])
+    push        = optional(list(string), [])
+    triage      = optional(list(string), [])
+  })
+  default     = { enabled = false }
+}
+
 variable "branch_default" {
   description = "(Optional) Settings for the repository's default branch."
   type        = object({

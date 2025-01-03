@@ -61,6 +61,22 @@ resource "github_repository" "repository" {
   }
 }
 
+resource "github_repository_collaborator" "collaborator" {
+  for_each                                = { for i in concat(local.collaborator.admin,local.collaborator.maintain,local.collaborator.pull,local.collaborator.push,local.collaborator.triage) : i.username => i }
+  repository                              = github_repository.repository.name
+  username                                = each.value.username
+  permission                              = each.value.permission
+  depends_on                              = [ github_repository.repository ]
+}
+
+resource "github_team_repository" "team" {
+  for_each                                = { for i in concat(local.team.admin,local.team.maintain,local.team.pull,local.team.push,local.team.triage) : i.slug => i }
+  repository                              = github_repository.repository.name
+  team_id                                 = each.value.slug
+  permission                              = each.value.permission
+  depends_on                              = [ github_repository.repository ]
+}
+
 resource "github_branch_default" "branch_default" {
   repository                              = github_repository.repository.name
   branch                                  = local.branch_default.branch
