@@ -38,6 +38,20 @@ variable "repository" {
     vulnerability_alerts                    = optional(bool, null)
     web_commit_signoff_required             = optional(bool, false)
   })
+  validation {
+    condition     = can(regex("^[a-z0-9.-]+$", var.repository.name))
+    error_message = <<-EOF
+      Naming convention violation: 'var.repository.name' has an invalid value.
+      Only the following characters are allowed for the repository's name: "0-9", "a-z", ".", "-"
+    EOF
+  }
+  validation {
+    condition     = lower(var.repository.name) == var.repository.name
+    error_message = <<-EOF
+      Naming convention violation: 'var.repository.name' has an invalid value.
+      Only lowercase letters are allowed for the repository's name.
+    EOF
+  }
 }
 
 variable "collaborator" {

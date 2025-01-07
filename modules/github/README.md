@@ -1,9 +1,13 @@
 ## README
 
-### Description
+### Description & Purpose
 
-These modules are intended to create and manage GitHub resources.
-  
+These modules are intended to create and manage GitHub resources following my business needs standards.  
+This includes the following guidelines:  
+* Repository names
+  * Names of GitHub repositories are lowercase and can contain the following characters only:  
+    * "a-z", "0-9", ".", "-"  
+
 If you make use of the modules please either use the same guidelines or download and customize the modules to your needs.  
 
 ### Example
@@ -28,7 +32,7 @@ https://github.com/uplink-systems/Terraform-Modules/tree/main/examples/github (n
 - [ ] Create and manage additional github_repository_branch resources
 - [ ] Create and manage github_branch_protection resources
 - [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
-- [ ] \(Optional) Apply input variable validation rules if necessary to match business standards
+- [x] \(Optional) Apply input variable validation rules if necessary to match business standards
 - [x] Create and manage module outputs
 - [x] Document module with README.md
 - [ ] \(Optional) Review code regularly for possible improvements and updates
