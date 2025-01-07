@@ -48,6 +48,17 @@ The module currently does not allow to create a repository for GitHub pages. Thi
 </details>
 
 <details>
+<summary><b>'Error 422' after changing <i>security_and_analysis</i> values</b></summary>
+
+######
+Changing security_and_analysis' state attributes from "enabled" to "disabled" or vice versa can lead to Error 422 during apply, e.g.:  
+*Error: PATCH https://api.github.com/repos/{GitHub-Id}/{Repository}: 422 Secret scanning is not available for this repository. []*  
+This is a known issue of the GitHub provider (see: https://github.com/integrations/terraform-provider-github/issues/2145).  
+In some cases it helps to apply the change for a second time. Otherwise the repository needs to be destroyed and recreated.  
+######
+</details>
+
+<details>
 <summary><b>Variable 'branch_default'</b></summary>
 
 ######
