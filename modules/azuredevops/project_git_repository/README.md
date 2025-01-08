@@ -39,9 +39,11 @@ While in the past 'master' was often used as the default branch, today it is oft
   
 To work around this there are currently only 3 options, both of which are unfortunately unpleasant, because they need manual interaction and therefore contradict the idea of IaC deployment.  
 
-1) The variable is configured as 'default_branch = "refs/heads/master"' when applying the code to create the repository. After that, a 'main' branch must be created manually in the Web UI. Then, in a further apply, the default branch variable can be removed from the code so that Terraform changes the default branch for the repository to the 'main' branch that now exists. Finally, the 'master' branch must be removed in the Web UI.  
+<b>Option 1</b>  
+The variable is configured as 'default_branch = "refs/heads/master"' when applying the code to create the repository. After that, a 'main' branch must be created manually in the Web UI. Then, in a further apply, the default branch variable can be removed from the code so that Terraform changes the default branch for the repository to the 'main' branch that now exists. Finally, the 'master' branch must be removed in the Web UI.  
   
-2) The variable is configured as 'default_branch = "refs/heads/master"' when applying the code to create the repository. An additional code snipped must be added to the code, to create a 'main' branch during apply:
+<b>Option 2</b>  
+The variable is configured as 'default_branch = "refs/heads/master"' when applying the code to create the repository. An additional code snipped must be added to the code, to create a 'main' branch during apply:
 <pre>
 resource "azuredevops_git_repository_branch" "main" {
   repository_id     = module.<i>{module-name}</i>.git_repository.repository.id
@@ -54,7 +56,8 @@ After the resources including the main branch have been created, it is deleted f
 <pre>terraform state rm [-dry-run] "azuredevops_git_repository_branch.main"</pre>
 Finally, the snippet and the default_branch variable are removed from the code and an apply is executed again.  
   
-3) The repository is created in the Web UI and imported afterwards. That at least enables to manage the repository after initial creation.  
+<b>Option 3</b> 
+The repository is created in the Web UI and imported afterwards. That at least enables to manage the repository after initial creation.  
   
 </details>
 
