@@ -53,8 +53,7 @@ The module currently does not allow to create a repository for GitHub pages. Thi
 ######
 Changing security_and_analysis' state attributes from "enabled" to "disabled" or vice versa can lead to Error 422 during apply, e.g.:  
 *Error: PATCH https://api.github.com/repos/{GitHub-Id}/{Repository}: 422 Secret scanning is not available for this repository. []*  
-This is a known issue of the GitHub provider (see: https://github.com/integrations/terraform-provider-github/issues/2145).  
-In some cases it helps to apply the change for a second time. Otherwise the repository needs to be destroyed and recreated.  
+This is a known issue of the GitHub provider (see: https://github.com/integrations/terraform-provider-github/issues/2145) and mostly happens when a security_and_analysis feature shall be applied to a private repository where the features are not available. Advanced Security and its depended features is only available for enterprise accounts on GitHub Enterprise Cloud and GitHub Enterprise Server!  
 ######
 </details>
 

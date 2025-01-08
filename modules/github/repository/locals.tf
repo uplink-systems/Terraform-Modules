@@ -11,10 +11,10 @@ locals {
         status                          = var.repository.visibility == "public" ? null : try(var.repository.security_and_analysis.advanced_security.status, null)
       }
       secret_scanning                 = {
-        status                          = (var.repository.visibility == "public" ? try(var.repository.security_and_analysis.secret_scanning.status, "disabled") : (try(var.repository.security_and_analysis.advanced_security.status == "enabled", false) ? try(var.repository.security_and_analysis.secret_scanning.status, "disabled") : "disabled"))
+        status                          = (var.repository.visibility == "public" ? try(var.repository.security_and_analysis.secret_scanning.status, "disabled") : (try(var.repository.security_and_analysis.advanced_security.status == "enabled", false) ? try(var.repository.security_and_analysis.secret_scanning.status, null) : null))
       }
       secret_scanning_push_protection = {
-        status                          = (var.repository.visibility == "public" ? try(var.repository.security_and_analysis.secret_scanning_push_protection.status, "disabled") : (try(var.repository.security_and_analysis.advanced_security.status == "enabled", false) ? try(var.repository.security_and_analysis.secret_scanning_push_protection.status, "disabled") : "disabled"))
+        status                          = (var.repository.visibility == "public" ? try(var.repository.security_and_analysis.secret_scanning_push_protection.status, "disabled") : (try(var.repository.security_and_analysis.advanced_security.status == "enabled", false) ? try(var.repository.security_and_analysis.secret_scanning_push_protection.status, null) : null))
       }
     }
   }
