@@ -32,9 +32,15 @@ The module <i>project_git_repository</i> manages Azure DevOps project Git reposi
 ### Known Issues
 
 <details>
-<summary><b>n/a</b></summary>
+<summary><b>Name of 'default branch' is not as expected</b></summary>
 
 ######
+While in the past 'master' was often used as the default branch, today it is often 'main'. This is also reflected in AzDo, for example: the default branch name in the initially automatically generated project's repository is also 'main'. Unfortunately, the <i>git_repository</i> resource creates an old 'master' branch instead of a 'main' branch by default. In addition, the provider ignores the AzDo setting 'Default branch name for new repositories'. Even if this is enabled and the default branch name is set to 'main', a 'master' branch will be created instead. Since the default branch name in the module is 'refs/heads/main', an apply will fail if the variable is not explicitly passed with the 'refs/heads/master' default branch value.   
+  
+To work around this there are currently only 2 options, both of which are unfortunately unpleasant, because they need manual interaction and therefore contradict the idea of IaC deployment.  
+
+1) The variable is configured as 'default_branch = "refs/heads/main"' when applying the code to create the repository. After that, a 'main' branch must be created manually in the Web UI. Then, in a further apply, the default branch variable can be removed from the code so that Terraform changes the default branch for the repository to the 'main' branch that now exists. Finally, the 'master' branch must be removed in the Web UI.  
+2) The repository is created in the Web UI and imported afterwards. That at least enables to manage the repository after initial creation.  
   
 </details>
 
