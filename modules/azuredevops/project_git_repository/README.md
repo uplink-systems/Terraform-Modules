@@ -56,7 +56,7 @@ After the resources including the main branch have been created, it is deleted f
 <pre>terraform state rm [-dry-run] "azuredevops_git_repository_branch.main"</pre>
 Finally, the snippet and the default_branch variable are removed from the code and an apply is executed again.  
   
-<b>Option 3</b> 
+<b>Option 3</b>  
 The repository is created in the Web UI and imported afterwards. That at least enables to manage the repository after initial creation.  
   
 </details>
