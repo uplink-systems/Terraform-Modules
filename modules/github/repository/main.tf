@@ -25,7 +25,7 @@ resource "github_repository" "repository" {
   is_template                             = var.repository.is_template
   license_template                        = var.repository.license_template
   topics                                  = var.repository.topics
-  visibility                              = local.repository.visbility
+  visibility                              = local.repository.visibility
   vulnerability_alerts                    = var.repository.vulnerability_alerts
   web_commit_signoff_required             = var.repository.web_commit_signoff_required
   dynamic "security_and_analysis" {

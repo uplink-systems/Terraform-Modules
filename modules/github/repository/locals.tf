@@ -5,7 +5,7 @@
 locals {
   repository      = {
     template                  = var.repository.template == null ? [] : [var.repository.template]
-    visbility                 = var.repository.visibility == null ? "private" : var.repository.visibility
+    visibility                = var.repository.visibility == null ? "private" : var.repository.visibility
     security_and_analysis     = {
       advanced_security               = {
         status                          = var.repository.visibility == "public" ? null : try(var.repository.security_and_analysis.advanced_security.status, null)
