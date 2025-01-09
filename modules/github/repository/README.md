@@ -2,7 +2,27 @@
 
 ### Description
 
-This module is intended to create repositories in GitHub. Currently the module only creates the repository and configures the default branch. Further features are planned in future releases.  
+These modules are intended to create and manage GitHub repository resources following my business needs standards.  
+This includes the following guidelines:  
+* Repository names  
+  * Names of GitHub repositories are lowercase and can contain the following characters only:  
+    * "a-z", "0-9", ".", "-"  
+
+#### Tasks & ToDos
+
+- [x] Create and manage github_repository resources (ex. GitHub pages)
+- [ ] Create and manage github_repository resources (incl. GitHub pages)
+- [x] Create and manage github_branch_default resource
+- [x] Create and manage github_repository_collaborator resources
+- [x] Create and manage github_team_repository resources
+- [ ] Create and manage github_repository_project resources
+- [ ] Create and manage additional github_repository_branch resources
+- [ ] Create and manage github_branch_protection resources
+- [ ] \(Optional) Apply input variable validation rules if necessary to match available resource values
+- [x] \(Optional) Apply input variable validation rules if necessary to match business standards
+- [x] Create and manage module outputs
+- [x] Document module with README.md
+- [ ] \(Optional) Review code regularly for possible improvements and updates
 
 ### Requirements
 
@@ -54,7 +74,7 @@ The module currently does not allow to create a repository for GitHub pages. Thi
 Changing security_and_analysis' state attributes from "enabled" to "disabled" or vice versa can lead to Error 422 during apply, e.g.:  
 *Error: PATCH https://api.github.com/repos/{GitHub-Id}/{Repository}: 422 Secret scanning is not available for this repository. []*  
 This is a known issue of the GitHub provider (see: https://github.com/integrations/terraform-provider-github/issues/2145).
- and occurs using this module in the following cases:
+ and occurs using this module in the following cases:  
 * GitHub Actions is disabled on repository level or on organization level.  
 * The repositories visibiliy is changed from 'private' to 'public'. The error occurs because the feature is not yet available when the visibility change is applied. A second apply is needed to change the 'security_and_analysis' values.   
 The module is configured to apply security_and_analysis features only if 'var.repository.visibiliy' is configured to 'public' because AAdvanced Security for private repositories and its depended features is only available for enterprise accounts on GitHub Enterprise Cloud and GitHub Enterprise Server whereas the module is intended for non-enterprise environments. For private repositories the state values are 'null' and cannot be enabled to prevent to enable security_and_analysis feature to a repository where the features are not available.   
@@ -69,7 +89,3 @@ The module is configured to apply security_and_analysis features only if 'var.re
 The variable 'branch_default' is unset (null) by default and if no other values are specified. In this case the 'main' branch is configured as default. Setting the variable to another branch can only be done after a repository has already been created, and after a correct reference has been created for the target branch inside the repository. This means a user will have to omit this parameter from the initial repository creation and create the target branch inside of the repository prior to setting this attribute.  
 ######
 </details>
-  
----
-  
-[Back to README.md](../README.md)  
