@@ -1,3 +1,7 @@
+> [!CAUTION]
+> This repository is archived now because its content will be split to an own repository per module. As soon as all modules are moved to their new location this repository's visibility will change to "Private".  
+
+
 # Terraform
 
 ### Terraform module collection
